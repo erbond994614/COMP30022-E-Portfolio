@@ -2,7 +2,7 @@
   "name": "e-portfolio",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:3000",
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently \"cd ./server && nodemon server.js\" \"npm start\""
+    "dev": "concurrently --kill-others \"cd ./server && nodemon server.js\" \"npm start\""
   },
   "eslintConfig": {
     "extends": "react-app"

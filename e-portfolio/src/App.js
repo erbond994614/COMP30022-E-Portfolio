@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function buttonTest() {
-  fetch('/api/users/signup', {
+  fetch('/api/users/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

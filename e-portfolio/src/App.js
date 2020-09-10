@@ -2,13 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import LoginForm from './components/LoginForm'
+
 function buttonTest() {
   fetch('/api/users/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({username: 'Admin', password: 'password'})
+    body: JSON.stringify({ username: 'Admin', password: 'password' })
   }).then(response => response.json()).then(result => console.log("Client recieved ", result))
 }
 
@@ -29,6 +31,7 @@ function App() {
           Learn React
         </a>
         <button onClick={buttonTest}>Test Button</button>
+        <LoginForm />
       </header>
     </div>
   );

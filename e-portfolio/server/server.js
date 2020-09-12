@@ -1,4 +1,5 @@
 const express = require('express')
+const fileUpload = require('express-fileupload')
 const path = require('path')
 const router = require('./routes/routes.js')
 
@@ -11,6 +12,7 @@ require('./dbModels/db')
 
 //Setup routes
 server.use(express.json())
+server.use(fileUpload())
 server.use('/api', router)
 
 //Setup client path

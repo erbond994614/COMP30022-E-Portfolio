@@ -3,14 +3,14 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 
 // components
 import Header from './components/headerComponent/header';
 import Footer from './components/footerComponent/footer';
 import Homepage from './components/pages/homePage';
-import Login from './components/pages/login';
+import Register from './components/pages/register';
 import LoginForm from './components/pages/LoginForm'
 
 // includes
@@ -26,6 +26,7 @@ class App extends Component {
 
         <Route exact path='/' component={Homepage} />
         <Route exact path='/Login' component={LoginForm} />
+        <Route exact path='/Register' component={Register} />
 
 
 

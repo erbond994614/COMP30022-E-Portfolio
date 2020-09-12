@@ -6,31 +6,46 @@ class LoginForm extends React.Component {
         super(props)
         this.state = { username: "", password: "" }
 
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleLogin = this.handleLogin.bind(this)
+        this.handleSignup = this.handleSignup.bind(this)
     }
 
-    handleSubmit(event) {
+    handleLogin(event) {
+        event.preventDefault()
         fetch('/api/users/login', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username: this.state.username, password: this.state.password })
+            body: JSON.stringify(this.state)
         }).then(response => response.json()).then(result => console.log("Client Recieved", result))
+    }
+
+    handleSignup(event) {
         event.preventDefault()
+        fetch('/api/users/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        }).then(response => response.json()).then(result => console.log("Client recieved", result))
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <div>
                 <label>
                     Username:
                     <input type='text' name="Username" value={this.state.username} onChange={event => this.setState({ username: event.target.value })} />
+                    <br></br>
                     Password:
                     <input type='text' name="Password" value={this.state.password} onChange={event => this.setState({ password: event.target.value })} />
                 </label>
-                <input type='submit' value="Login" />
-            </form>
+                <br></br>
+                <button onClick={this.handleLogin}>Login</button>
+                <button onClick={this.handleSignup}>Sign Up</button>
+            </div>
         )
     }
 }

@@ -1,11 +1,9 @@
 const Image = require('../dbModels/images')
-const fs = require('fs')
-const path = require('path')
 
 const uploadImage = async function(req, res) {
     try {
         if (req.files) {
-            const input = erq.files.input
+            const input = req.files.input
             const image = new Image({
                 name: input.name,
                 image: {

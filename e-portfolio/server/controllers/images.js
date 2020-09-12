@@ -1,7 +1,6 @@
 const Image = require('../dbModels/images')
 const fs = require('fs')
 const path = require('path')
-const upload = require('../middleware/upload')
 
 const uploadImage = async function(req, res) {
     try {
@@ -19,7 +18,7 @@ const uploadImage = async function(req, res) {
             res.status(400).send({message: "No file found"})
         }
     } catch (error) {
-        res.status(400).send({errorCode: error.code, error: "This Function is not yet available"})
+        res.status(400).send({errorCode: error.code})
     }
 }
 

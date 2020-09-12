@@ -9,7 +9,6 @@ class ImageUploadForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(new FormData(this.form.current))
         event.preventDefault()
         fetch('/api/images/upload', {
             method: 'POST',

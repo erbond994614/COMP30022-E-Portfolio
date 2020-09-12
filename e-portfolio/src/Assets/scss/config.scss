@@ -14,6 +14,10 @@ body {
   font-style: normal;
 }
 
+.container-fluid {
+  line-height: 24px;
+}
+
 // Mixins
 
 @mixin translateY($e) {
@@ -26,4 +30,15 @@ body {
   -webkit-transition:$e;
   -moz-transition:$e;
   transition:$e;
+}
+
+a {
+  text-decoration: none;
+  @include transition(.4s ease-in-out);
+  cursor: pointer;
+
+  &:hover {
+    color: $red;
+    @include transition(.4s ease-in-out);
+  }
 }

@@ -6,6 +6,9 @@ class Homepage extends Component {
 
       <div className="container-fluid">
       HOME PAGE CONTENT HERE
+      <div>
+        <a href='temp'>Template</a>
+      </div>
       </div>
 
     );

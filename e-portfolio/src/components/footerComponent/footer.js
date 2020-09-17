@@ -6,11 +6,9 @@ class Footer extends Component {
       <footer>
 
       <div className="footer">
-      INSERT FOOTER HERE
+        © 2018-{(new Date().getFullYear())} <strong>IT Project</strong>
       </div>
-
-
-
+      
       </footer>
     );
   }

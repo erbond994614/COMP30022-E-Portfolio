@@ -4,4 +4,4 @@ IT Project Team Work Repository
 
 Supervisor: Shubham Rawal
 
-Group Members: Edward Bond; Huier Lin; Lijun Wang; Joseph Matthew Leonardi; Chang Liu;
+Group Members: Edward Bond; Lijun Wang; Joseph Matthew Leonardi;

@@ -12,7 +12,8 @@ import Homepage from './components/pages/homePage';
 import Register from './components/pages/register';
 import LoginForm from './components/pages/LoginForm';
 import TestPage from './components/pages/TestPage';
-import Template from './components/Template/Template';
+import Portfolio from './components/Portfolio';
+import {studentTemplate} from './components/Template/templates'
 
 // includes
 import './Assets/css/default.min.css';
@@ -29,7 +30,7 @@ class App extends Component {
         <Route exact path='/Login' component={LoginForm} />
         <Route exact path='/Register' component={Register} />
         <Route exact path='/dev' component={TestPage} />
-        <Route exact path='/temp' component={Template} />
+        <Route exact path='/temp' component={() => <Portfolio state={studentTemplate}/>} />
 
 
       <Footer />

@@ -7,8 +7,9 @@ const createUser = async function (req, res) {
         const user = new User(req.body)
         await user.save()
         res.status(201).send({
-            username: user.username,
-            password: user.password
+            email: user.email,
+            password: user.password,
+            portfolio: user.portfolio
         })
     } catch (error) {
         if (error.code == 11000) {

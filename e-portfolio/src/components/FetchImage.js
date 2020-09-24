@@ -1,28 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
+const FetchImage = () => {
+    const dispatch = useDispatch()
+    const [image, setImage] = useState("")
 
-//Called by <FetchImage imagename="..." />
-class FetchImage extends React.Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            image: ""
-        }
+    // TODO: dispatch(fetchImage(image))
+    /*fetch(`/api/images/${props.imageName}`, {
+        method: 'GET',
+    }).then(response => response.json()).then(result => {
+        this.setState({image: result.image})
+    })*/
 
-        fetch(`/api/images/${props.imageName}`, {
-            method: 'GET',
-        }).then(response => response.json()).then(result => {
-            this.setState({image: result.image})
-        })
-    }
-
-    render () {
-        return (
-            <div>
-                <img src={"data:image/png;base64," + this.state.image} alt="failed render" />
-            </div>
-        )
-    }
+    return (
+        <div>
+            <img src={"data:image/png;base64," + image} alt="failed render" />
+        </div>
+    )
 }
 
 export default FetchImage

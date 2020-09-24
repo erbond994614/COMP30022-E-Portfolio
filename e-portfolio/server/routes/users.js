@@ -9,6 +9,4 @@ router.post('/signup', controller.createUser)
 //login user and retrieve their page
 router.post('/login', controller.loginUser)
 
-router.get('/', controller.getAllUsers)
-
 module.exports = router

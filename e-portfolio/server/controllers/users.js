@@ -6,10 +6,10 @@ const createUser = async function (req, res) {
     try {
         const user = new User(req.body)
         await user.save()
+        const token = await user.generateAuthToken()
         res.status(201).send({
-            email: user.email,
-            password: user.password,
-            portfolio: user.portfolio
+            user: user.toObject(),
+            token
         })
     } catch (error) {
         if (error.code == 11000) {
@@ -26,13 +26,17 @@ const createUser = async function (req, res) {
 
 //login user and retrieve their page
 const loginUser = async function(req, res) {
-    const user = await User.findOne({username: req.body.username})
+    const user = await User.findOne({email: req.body.email})
     if (!user) {
         res.status(400).send({
             error: "Username does not exist"
         })
     } else if (bcrypt.compareSync(req.body.password, user.password)) {
-        res.status(200).send(req.body)
+        const token = user.generateAuthToken()
+        res.status(201).send({
+            user,
+            token
+        })
     } else {
         res.status(400).send({
             error: "Incorrect Username or Password"
@@ -40,12 +44,7 @@ const loginUser = async function(req, res) {
     }
 }
 
-const getAllUsers = function(req, res) {
-
-}
-
 module.exports = {
     createUser,
-    loginUser,
-    getAllUsers
+    loginUser
 }

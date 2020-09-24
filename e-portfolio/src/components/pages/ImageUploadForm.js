@@ -1,29 +1,25 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 
-class ImageUploadForm extends React.Component {
-    constructor(props) {
-        super(props)
+const ImageUpload = () => {
+    const dispatch = useDispatch()
+    const form = React.createRef()
 
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.form = React.createRef()
-    }
-
-    handleSubmit(event) {
+    function handleSubmit(event) {
         event.preventDefault()
-        fetch('/api/images/upload', {
+        // TODO: dispatch(uploadimage(new FormData(form.current)))
+        /*fetch('/api/images/upload', {
             method: 'POST',
             body: new FormData(this.form.current)
-        }).then(response => response.json()).then(result => console.log(result))
+        }).then(response => response.json()).then(result => console.log(result))*/
     }
     
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit} ref={this.form}>
-                <input type='file' name='input' required />
-                <input type='submit' value='Upload' />
-            </form>
-        )
-    }
+    return (
+        <form onSubmit={handleSubmit} ref={form}>
+            <input type='file' name='input' required />
+            <input type='submit' value='Upload' />
+        </form>
+    )
 }
 
-export default ImageUploadForm
+export default ImageUpload

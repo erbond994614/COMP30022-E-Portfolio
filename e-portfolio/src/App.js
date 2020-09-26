@@ -10,6 +10,7 @@ import Register from './components/pages/Register';
 import Login from './components/pages/Login';
 import TestPage from './components/pages/TestPage';
 import Portfolio from './components/Portfolio';
+import StudentInformation from './components/pages/StudentInformation/StudentInformation'
 
 // includes
 import './Assets/css/default.min.css';
@@ -25,9 +26,10 @@ const App = () => {
           <Route exact path='/' component={Homepage} />
           <Route exact path='/Login' component={Login} />
           <Route exact path='/Register' component={Register} />
+          <Route exact path='/info' component={auth ? StudentInformation : Homepage} />
+          <Route exact path='/portfolio' component={auth ? Portfolio : Homepage} />
           <Route exact path='/dev' component={TestPage} />
           <Route exact path='/temp' component={Portfolio} />
-          <Route exact path='/portfolio' component={auth ? Portfolio : Homepage} />
 
         </Switch>
       <Footer />

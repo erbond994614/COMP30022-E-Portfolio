@@ -1,16 +1,30 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { updatePortfolio } from '../../../redux/actions/users'
+import history from '../../../history'
 
 const StudentInformation = () => {
+    const dispatch = useDispatch()
+    const portfolio = useSelector(state => state.userAuth.user.portfolio)
+    const userEmail = useSelector(state => state.userAuth.user.email)
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [age, setAge] = useState("")
-  const [major, setMajor] = useState("")
-  const [aboutMe, setAboutMe] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [age, setAge] = useState("")
+    const [major, setMajor] = useState("")
+    const [aboutMe, setAboutMe] = useState("")
 
+    function handleSubmit(event) {
+        event.preventDefault()
+        var newPortfolio = portfolio
+        newPortfolio.name = firstName + " " + lastName
+        newPortfolio.info = `Name: ${firstName} ${lastName}\r\nAge: ${age}\r\nMajor: ${major}`
+        dispatch(updatePortfolio(userEmail, newPortfolio))
+        history.push('/portfolio')
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <h3>Edit your portfolio</h3>
                 <div className="form-group">
                     <label>First Name</label>
@@ -34,11 +48,11 @@ const StudentInformation = () => {
                     <input type="text" className="form-control" value={aboutMe} onChange={event => setAboutMe(event.target.value)} placeholder="About Me" />
                 </div>
 
-                <button type="Save" className="btn btn-primary btn-block" >Save</button>
-                <button type="Discard Changes" className="btn btn-primary btn-block" >Discard Changes</button>
+                <button type="submit" className="btn btn-primary btn-block" >Save</button>
+                <button type="reset" className="btn btn-primary btn-block" >Discard Changes</button>
         </form>
-        );
-      }
+    )
+}
 
 
 

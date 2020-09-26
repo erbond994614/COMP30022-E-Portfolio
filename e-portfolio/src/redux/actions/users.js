@@ -7,7 +7,10 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_FAILURE,
     LOGOUT_REQUEST,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    PORTFOLIO_UPDATE_REQUEST,
+    PORTFOLIO_UPDATE_SUCCESS,
+    PORTFOLIO_UPDATE_FAILURE
 } from '../constants/users'
 import { downloadUserImages } from './images'
 
@@ -45,6 +48,19 @@ export const logoutRequest = () => ({
 
 export const logoutSuccess = () => ({
     type: LOGOUT_SUCCESS
+})
+
+export const portfolioUpdateRequest = () => ({
+    type: PORTFOLIO_UPDATE_REQUEST
+})
+
+export const portfolioUpdateSuccess = (portfolio) => ({
+    type: PORTFOLIO_UPDATE_SUCCESS,
+    portfolio
+})
+
+export const portfolioUpdateFailure = () => ({
+    type: PORTFOLIO_UPDATE_FAILURE
 })
 
 export const login = (payload) => {
@@ -86,12 +102,31 @@ export const signup = (payload) => {
             response.json().then(result => {
                 if (response.status === 201) {
                     dispatch(signupSuccess(result.user, result.token))
-                    history.push('/portfolio')
+                    history.push('/info')
                 } else {
                     dispatch(signupFailure())
                     alert(result.error)
                 }
             })
         )
+    }
+}
+
+export const updatePortfolio = (userEmail, payload) => {
+    return dispatch => {
+        dispatch(portfolioUpdateRequest())
+        const request = {
+            method: 'PUT',
+            body: JSON.stringify(payload)
+        }
+        fetch(`/api/users/${userEmail}/portfolio`, request).then(response =>
+            response.json().then(result => {
+                if (response.status === 201) {
+                    dispatch(portfolioUpdateSuccess(result))
+                } else {
+                    dispatch(portfolioUpdateFailure())
+                    alert(result.error)
+                }
+            }))
     }
 }

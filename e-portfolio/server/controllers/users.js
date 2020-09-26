@@ -44,7 +44,19 @@ const loginUser = async function(req, res) {
     }
 }
 
+const updatePortfolio = async function(req, res) {
+    const user = await User.findOne({email: req.params.userEmail})
+    user.updateOne({portfolio: req.body}, (err) => {
+        if (err) {
+            res.status(400).send({error: "portfolio update failed"})
+        } else {
+            res.status(201).send(req.body)
+        }
+    })
+}
+
 module.exports = {
     createUser,
-    loginUser
+    loginUser,
+    updatePortfolio
 }

@@ -5,8 +5,8 @@ const controller = require('../controllers/images')
 
 router.post('/upload', controller.uploadImage)
 
-router.get('/:imageName', controller.getImage)
+router.get('/:userEmail', controller.getUserImages)
 
-router.get('/', controller.getAllImages)
+router.get('/:userEmail/:imageId', controller.getImage)
 
 module.exports = router

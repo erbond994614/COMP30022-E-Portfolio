@@ -1,17 +1,17 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { uploadImage } from '../../redux/actions/images'
 
 const ImageUpload = () => {
     const dispatch = useDispatch()
     const form = React.createRef()
+    const userEmail = useSelector(state => state.userAuth.user.email)
 
     function handleSubmit(event) {
         event.preventDefault()
-        // TODO: dispatch(uploadimage(new FormData(form.current)))
-        /*fetch('/api/images/upload', {
-            method: 'POST',
-            body: new FormData(this.form.current)
-        }).then(response => response.json()).then(result => console.log(result))*/
+        var formData = new FormData(form.current)
+        formData.set('userEmail', userEmail)
+        dispatch(uploadImage(formData))
     }
     
     return (

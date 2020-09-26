@@ -9,6 +9,7 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS
 } from '../constants/users'
+import { downloadUserImages } from './images'
 
 export const loginRequest = () => ({
     type: LOGIN_REQUEST
@@ -60,6 +61,7 @@ export const login = (payload) => {
             response.json().then(result => {
                 if (response.status === 201) {
                     dispatch(loginSuccess(result.user, result.token))
+                    dispatch(downloadUserImages(result.user.email))
                     history.push('/portfolio')
                 } else {
                     dispatch(loginFailure())

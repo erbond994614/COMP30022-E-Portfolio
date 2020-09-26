@@ -6,6 +6,7 @@ import { studentTemplate } from "./Template/templates";
 
 const Portfolio = () => {
     var portfolio = useSelector(state => state.userAuth.user.portfolio)
+
     if (!portfolio) {
         portfolio = studentTemplate
     }

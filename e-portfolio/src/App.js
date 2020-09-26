@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux'
 // components
 import Header from './components/headerComponent/header';
 import Footer from './components/footerComponent/footer';
-import Homepage from './components/pages/homePage';
-import Register from './components/pages/register';
+import Homepage from './components/pages/Homepage';
+import Register from './components/pages/Register';
 import Login from './components/pages/Login';
 import TestPage from './components/pages/TestPage';
 import Portfolio from './components/Portfolio';

@@ -32,7 +32,7 @@ const loginUser = async function(req, res) {
             error: "Username does not exist"
         })
     } else if (bcrypt.compareSync(req.body.password, user.password)) {
-        const token = user.generateAuthToken()
+        const token = await user.generateAuthToken()
         res.status(201).send({
             user,
             token
@@ -45,14 +45,18 @@ const loginUser = async function(req, res) {
 }
 
 const updatePortfolio = async function(req, res) {
-    const user = await User.findOne({email: req.params.userEmail})
-    user.updateOne({portfolio: req.body}, (err) => {
-        if (err) {
-            res.status(400).send({error: "portfolio update failed"})
-        } else {
-            res.status(201).send(req.body)
-        }
-    })
+    const user = await User.findOne({email: req.user.email})
+    if (user) {
+        user.updateOne({portfolio: req.body}, (err) => {
+            if (err) {
+                res.status(400).send({error: "portfolio update failed"})
+            } else {
+                res.status(201).send(req.body)
+            }
+        })
+    } else {
+        res.status(400).send({error: "User does not exist"})
+    }
 }
 
 module.exports = {

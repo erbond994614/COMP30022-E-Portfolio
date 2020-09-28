@@ -1,9 +1,10 @@
 const express = require('express')
 
 const router = express.Router()
+const auth = require('../middleware/auth')
 const controller = require('../controllers/images')
 
-router.post('/upload', controller.uploadImage)
+router.post('/upload', auth, controller.uploadImage)
 
 router.get('/:userEmail', controller.getUserImages)
 

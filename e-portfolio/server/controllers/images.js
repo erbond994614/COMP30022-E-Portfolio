@@ -1,13 +1,12 @@
 const Image = require('../dbModels/images')
 
 const uploadImage = async function(req, res) {
-    console.log(req.body)
     try {
         if (req.files) {
             const input = req.files.input
             const image = new Image({
                 name: input.name,
-                owner: req.body.userEmail,
+                owner: req.user.userEmail,
                 mimetype: input.mimetype,
                 size: input.size,
                 image: input.data.toString('base64')

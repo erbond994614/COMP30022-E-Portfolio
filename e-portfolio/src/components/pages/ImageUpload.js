@@ -5,13 +5,12 @@ import { uploadImage } from '../../redux/actions/images'
 const ImageUpload = () => {
     const dispatch = useDispatch()
     const form = React.createRef()
-    const userEmail = useSelector(state => state.userAuth.user.email)
+    const token = useSelector(state => state.userAuth.token)
 
     function handleSubmit(event) {
         event.preventDefault()
         var formData = new FormData(form.current)
-        formData.set('userEmail', userEmail)
-        dispatch(uploadImage(formData))
+        dispatch(uploadImage(formData, token))
     }
     
     return (

@@ -35,11 +35,15 @@ export const imageDownloadFailure = () => ({
     type: IMAGE_DOWNLOAD_FAILURE
 })
 
-export const uploadImage = (payload) => {
+export const uploadImage = (payload, token) => {
     return dispatch => {
+        console.log(token)
         dispatch(imageUploadRequest())
         const request = {
             method: 'POST',
+            headers: {
+                Authorization: token
+            },
             body: payload
         }
         fetch('/api/images/upload', request).then(response => 

@@ -5,8 +5,8 @@ import history from '../../../history'
 
 const StudentInformation = () => {
     const dispatch = useDispatch()
-    const portfolio = useSelector(state => state.userAuth.user.portfolio)
-    const userEmail = useSelector(state => state.userAuth.user.email)
+    const user = useSelector(state => state.userAuth.user)
+    const token = useSelector(state => state.userAuth.token)
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -16,10 +16,10 @@ const StudentInformation = () => {
 
     function handleSubmit(event) {
         event.preventDefault()
-        var newPortfolio = portfolio
+        var newPortfolio = user.portfolio
         newPortfolio.name = firstName + " " + lastName
         newPortfolio.info = `Name: ${firstName} ${lastName}\r\nAge: ${age}\r\nMajor: ${major}`
-        dispatch(updatePortfolio(userEmail, newPortfolio))
+        dispatch(updatePortfolio(user.userEmail, newPortfolio, token))
         history.push('/portfolio')
     }
 

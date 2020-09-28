@@ -112,11 +112,15 @@ export const signup = (payload) => {
     }
 }
 
-export const updatePortfolio = (userEmail, payload) => {
+export const updatePortfolio = (userEmail, payload, token) => {
     return dispatch => {
         dispatch(portfolioUpdateRequest())
         const request = {
             method: 'PUT',
+            headers: {
+                "Content-Type": 'application/json',
+                Authorization: token
+            },
             body: JSON.stringify(payload)
         }
         fetch(`/api/users/${userEmail}/portfolio`, request).then(response =>

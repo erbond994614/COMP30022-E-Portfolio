@@ -6,7 +6,10 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_FAILURE,
     LOGOUT_REQUEST,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    PORTFOLIO_UPDATE_REQUEST,
+    PORTFOLIO_UPDATE_SUCCESS,
+    PORTFOLIO_UPDATE_FAILURE
 } from '../constants/users'
 
 const user = JSON.parse(localStorage.getItem('user'))
@@ -82,6 +85,29 @@ const userAuth = (state = initialState, action) => {
                 success: false,
                 user: {},
                 token: ''
+            }
+        case PORTFOLIO_UPDATE_REQUEST:
+            return {
+                pending: true,
+                success: true,
+                user: state.user,
+                token: state.token
+            }
+        case PORTFOLIO_UPDATE_SUCCESS:
+            var newUser = user
+            newUser.portfolio = action.portfolio
+            return {
+                pending: false,
+                success: true,
+                user: newUser,
+                token: state.token
+            }
+        case PORTFOLIO_UPDATE_FAILURE:
+            return {
+                pending: false,
+                success: true,
+                user: state.user,
+                token: state.token
             }
         default:
             return state

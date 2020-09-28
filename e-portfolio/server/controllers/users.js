@@ -44,6 +44,18 @@ const loginUser = async function(req, res) {
     }
 }
 
+const logoutUser = async function(req, res) {
+    try {
+        req.user.tokens = req.user.tokens.filter(token => {
+            return token.token !== req.token
+        })
+        await req.user.save()
+        res.status(201).send()
+    } catch (error) {
+        res.status(400).send({error: "an unknown error occured"})
+    }
+}
+
 const updatePortfolio = async function(req, res) {
     const user = await User.findOne({email: req.user.email})
     if (user) {
@@ -62,5 +74,6 @@ const updatePortfolio = async function(req, res) {
 module.exports = {
     createUser,
     loginUser,
+    logoutUser,
     updatePortfolio
 }

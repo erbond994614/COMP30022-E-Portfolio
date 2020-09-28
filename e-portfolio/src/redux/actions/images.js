@@ -4,7 +4,8 @@ import {
     IMAGE_UPLOAD_FAILURE,
     IMAGE_DOWNLOAD_REQUEST,
     IMAGE_DOWNLOAD_SUCCESS,
-    IMAGE_DOWNLOAD_FAILURE
+    IMAGE_DOWNLOAD_FAILURE,
+    IMAGE_CLEAR
 } from '../constants/images'
 
 export const imageUploadRequest = () => ({
@@ -33,6 +34,10 @@ export const imageDownloadSuccess = (id, image) => ({
 
 export const imageDownloadFailure = () => ({
     type: IMAGE_DOWNLOAD_FAILURE
+})
+
+export const imageClear = () => ({
+    type: IMAGE_CLEAR
 })
 
 export const uploadImage = (payload, token) => {

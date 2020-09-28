@@ -4,7 +4,8 @@ import {
     IMAGE_UPLOAD_FAILURE,
     IMAGE_DOWNLOAD_REQUEST,
     IMAGE_DOWNLOAD_SUCCESS,
-    IMAGE_DOWNLOAD_FAILURE
+    IMAGE_DOWNLOAD_FAILURE,
+    IMAGE_CLEAR
 } from '../constants/images'
 
 const images = JSON.parse(localStorage.getItem("images"))
@@ -44,6 +45,11 @@ const imageStore = (state = initialState, action) => {
             return {
                 pending: false,
                 images: state.images
+            }
+        case IMAGE_CLEAR:
+            return {
+                pending: false,
+                images: {}
             }
         default:
             return state

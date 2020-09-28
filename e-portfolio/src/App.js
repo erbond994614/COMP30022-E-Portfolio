@@ -11,6 +11,7 @@ import Login from './components/pages/Login';
 import TestPage from './components/pages/TestPage';
 import Portfolio from './components/Portfolio';
 import StudentInformation from './components/pages/StudentInformation/StudentInformation'
+import Logout from './components/Logout'
 
 // includes
 import './Assets/css/default.min.css';
@@ -28,6 +29,7 @@ const App = () => {
           <Route exact path='/Register' component={Register} />
           <Route exact path='/info' component={auth ? StudentInformation : Homepage} />
           <Route exact path='/portfolio' component={auth ? Portfolio : Homepage} />
+          <Route exact path='/logout' component={auth ? Logout : Homepage} />
           <Route exact path='/dev' component={TestPage} />
           <Route exact path='/temp' component={Portfolio} />
 

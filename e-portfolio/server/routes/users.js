@@ -10,6 +10,8 @@ router.post('/signup', controller.createUser)
 //login user and retrieve their page
 router.post('/login', controller.loginUser)
 
+router.post('/logout', auth, controller.logoutUser)
+
 router.put('/:userEmail/portfolio', auth, controller.updatePortfolio)
 
 module.exports = router

@@ -12,7 +12,7 @@ import {
     PORTFOLIO_UPDATE_SUCCESS,
     PORTFOLIO_UPDATE_FAILURE
 } from '../constants/users'
-import { downloadUserImages } from './images'
+import { downloadUserImages, imageClear } from './images'
 
 export const loginRequest = () => ({
     type: LOGIN_REQUEST
@@ -132,5 +132,21 @@ export const updatePortfolio = (userEmail, payload, token) => {
                     alert(result.error)
                 }
             }))
+    }
+}
+
+export const logout = (token) => {
+    return dispatch => {
+        dispatch(logoutRequest())
+        const request = {
+            method: "POST",
+            headers: {
+                Authorization: token
+            }
+        }
+        fetch('/api/users/logout', request)
+        dispatch(logoutSuccess())
+        dispatch(imageClear())
+        history.push('/')
     }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Register from './Register'
 import Login from './Login';
 import ImageUploadForm from './ImageUpload';
-import FetchImage from '../FetchImage'
+import FetchImage from './FetchImage'
 
 const TestPage = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { updatePortfolio } from '../../../redux/actions/users'
-import history from '../../../history'
+import { updatePortfolio } from '../redux/actions/users'
+import history from '../history'
 
 const StudentInformation = () => {
     const dispatch = useDispatch()

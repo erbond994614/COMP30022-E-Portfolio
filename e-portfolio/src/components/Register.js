@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {studentTemplate, artistTemplate, professionalTemplate} from '../Template/templates'
-import { signup } from '../../redux/actions/users'
+import {studentTemplate, artistTemplate, professionalTemplate} from './Template/templates'
+import { signup } from '../redux/actions/users'
 
 const Register = () => {
   const dispatch = useDispatch()

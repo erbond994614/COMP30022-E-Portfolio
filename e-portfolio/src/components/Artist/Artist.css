@@ -1,0 +1,99 @@
+h1.intro {
+  text-align: center;
+  color: blue;
+}
+
+.text {
+  text-align: center;
+  color: blue;
+}
+
+.title {
+  left: -50px;
+}
+
+.aboutme {
+  column-count: 3;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.row {
+  float: left;
+  width: 50%;
+  height: 800px;
+  padding: 25px;
+  overflow: hidden;
+}
+
+
+/* Clear floats after image containers */
+.column {
+  content: "";
+  clear: both;
+  display: table;
+  height: 100%;
+}
+
+.crop {
+ height: 150px;
+ width: 200px;
+ overflow: hidden;
+}
+
+
+.crop column {
+  width:50px;
+   height:auto;
+}
+
+.crop row {
+  width:50px;
+   height:auto;
+}
+
+.crop people {
+  width:50px;
+   height:auto;
+}
+
+.crop travel {
+  width:50px;
+   height:auto;
+}
+
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

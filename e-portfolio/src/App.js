@@ -3,14 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
 // components
-import Header from './components/headerComponent/header';
-import Footer from './components/footerComponent/footer';
-import Homepage from './components/pages/Homepage';
-import Register from './components/pages/Register';
-import Login from './components/pages/Login';
-import TestPage from './components/pages/TestPage';
+import Header from './components/header';
+import Footer from './components/footer';
+import Homepage from './components/Homepage';
+import Register from './components/Register';
+import Login from './components/Login';
+import TestPage from './components/TestPage';
 import Portfolio from './components/Portfolio';
-import StudentInformation from './components/pages/StudentInformation/StudentInformation'
+import StudentInformation from './components/StudentInformation'
 import Logout from './components/Logout'
 
 // includes

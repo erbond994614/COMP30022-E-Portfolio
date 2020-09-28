@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { uploadImage } from '../../redux/actions/images'
+import { uploadImage } from '../redux/actions/images'
 
 const ImageUpload = () => {
     const dispatch = useDispatch()

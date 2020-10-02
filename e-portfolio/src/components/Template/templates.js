@@ -1,5 +1,8 @@
 export const studentTemplate = {
-    name: "",
+    firstName: "",
+    lastName: "",
+    age: "",
+    major: "",
     profilePicture: "",
     info: "Name: \r\nAge: \r\nSchool/University: \r\nStudy Area: ",
     AboutMe: {

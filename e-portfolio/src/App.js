@@ -11,6 +11,7 @@ import Login from './components/Login';
 import TestPage from './components/TestPage';
 import Portfolio from './components/Portfolio';
 import StudentInformation from './components/StudentInformation'
+import AboutMe from './components/AboutMe'
 import Logout from './components/Logout'
 
 // includes
@@ -29,6 +30,7 @@ const App = () => {
           <Route exact path='/Register' component={Register} />
           <Route exact path='/info' component={auth ? StudentInformation : Homepage} />
           <Route exact path='/portfolio' component={auth ? Portfolio : Homepage} />
+          <Route exact path='/aboutme' component={auth ? AboutMe : Homepage} />
           <Route exact path='/logout' component={auth ? Logout : Homepage} />
           <Route exact path='/dev' component={TestPage} />
           <Route exact path='/temp' component={Portfolio} />

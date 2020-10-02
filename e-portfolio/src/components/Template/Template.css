@@ -36,6 +36,17 @@ img {
   position: relative;
 }
 
+.editButton {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: x-small;
+}
+
 /* Bottom left text */
 .bottom-left {
   position: absolute;

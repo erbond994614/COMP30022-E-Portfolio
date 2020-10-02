@@ -88,7 +88,7 @@ export const login = (payload) => {
     }
 }
 
-export const signup = (payload) => {
+export const signup = (payload) => { // {email, password, portfolio}
     return dispatch => {
         dispatch(signupRequest())
         const request = {
@@ -112,6 +112,20 @@ export const signup = (payload) => {
     }
 }
 
+export const enterUpdatePortfolio = (payload) => { // {email, password, portfolio}
+    return dispatch => {
+        dispatch(signupSuccess(payload.user, payload.token))
+        history.push('/info')
+    }
+}
+
+export const enterUpdateAboutMe = (payload) => { // {email, password, portfolio}
+    return dispatch => {
+        dispatch(signupSuccess(payload.user, payload.token))
+        history.push('/aboutme')
+    }
+}
+
 export const updatePortfolio = (userEmail, payload, token) => {
     return dispatch => {
         dispatch(portfolioUpdateRequest())
@@ -126,7 +140,7 @@ export const updatePortfolio = (userEmail, payload, token) => {
         fetch(`/api/users/${userEmail}/portfolio`, request).then(response =>
             response.json().then(result => {
                 if (response.status === 201) {
-                    dispatch(portfolioUpdateSuccess(result))
+                    dispatch(portfolioUpdateSuccess(payload))
                 } else {
                     dispatch(portfolioUpdateFailure())
                     alert(result.error)

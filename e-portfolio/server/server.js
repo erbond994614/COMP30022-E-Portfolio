@@ -12,7 +12,10 @@ require('./dbModels/db')
 
 //Setup routes
 server.use(express.json())
-server.use(fileUpload())
+server.use(fileUpload({
+    limits: { fileSize: 10 * 1024 * 1024}, // 10MB
+    abortOnLimit: true
+}))
 server.use('/api', router)
 
 //Setup client path

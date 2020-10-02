@@ -12,7 +12,6 @@ const StudentInformation = () => {
     const [lastName, setLastName] = useState("")
     const [age, setAge] = useState("")
     const [major, setMajor] = useState("")
-    const [aboutMe, setAboutMe] = useState("")
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -41,11 +40,6 @@ const StudentInformation = () => {
                 <div className="form-group">
                     <label>Major</label>
                     <input type="text" className="form-control" value={major} onChange={event => setMajor(event.target.value)} placeholder="Major" />
-                </div>
-
-                <div className="form-group">
-                    <label>About Me</label>
-                    <input type="text" className="form-control" value={aboutMe} onChange={event => setAboutMe(event.target.value)} placeholder="About Me" />
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block" >Save</button>

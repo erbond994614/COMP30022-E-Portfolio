@@ -15,7 +15,7 @@ const ImageUpload = () => {
     
     return (
         <form onSubmit={handleSubmit} ref={form}>
-            <input type='file' name='input' required />
+            <input type='file' accept='image/*' name='input' required />
             <input type='submit' value='Upload' />
         </form>
     )

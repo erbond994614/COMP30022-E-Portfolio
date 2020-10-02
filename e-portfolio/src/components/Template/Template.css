@@ -6,6 +6,7 @@ h1.intro {
 .text {
   text-align: center;
   color: aliceblue;
+  white-space: pre-line;
 }
 
 .title {

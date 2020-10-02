@@ -1,45 +1,42 @@
-import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
-
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
 // components
 import Header from './components/headerComponent/header';
 import Footer from './components/footerComponent/footer';
-import Homepage from './components/pages/homePage';
-import Register from './components/pages/register';
-import LoginForm from './components/pages/LoginForm';
+import Homepage from './components/pages/Homepage';
+import Register from './components/pages/Register';
+import Login from './components/pages/Login';
 import TestPage from './components/pages/TestPage';
-import Template from './components/Template/Template';
+import Portfolio from './components/Portfolio';
+import StudentInformation from './components/pages/StudentInformation/StudentInformation'
+import AboutMe from './components/pages/StudentInformation/AboutMe'
 
 // includes
 import './Assets/css/default.min.css';
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-      <div className="App">
+const App = () => {
+  const auth = useSelector(store => store.userAuth.token)
 
-      <Header />
+  return (
+    <div className='App'>
+      <Header/>
+        <Switch>
 
-        <Route exact path='/' component={Homepage} />
-        <Route exact path='/Login' component={LoginForm} />
-        <Route exact path='/Register' component={Register} />
-        <Route exact path='/dev' component={TestPage} />
-        <Route exact path='/temp' component={Template} />
+          <Route exact path='/' component={Homepage} />
+          <Route exact path='/Login' component={Login} />
+          <Route exact path='/Register' component={Register} />
+          <Route exact path='/info' component={auth ? StudentInformation : Homepage} />
+          <Route exact path='/portfolio' component={auth ? Portfolio : Homepage} />
+          <Route exact path='/dev' component={TestPage} />
+          <Route exact path='/temp' component={Portfolio} />
+          <Route exact path='/aboutme' component={auth ? AboutMe : Homepage} />
 
-
+        </Switch>
       <Footer />
-
-
-
-      </div>
-      </Router>
-    );
-  }
+    </div>
+  )
 }
 
-export default App;
+export default App

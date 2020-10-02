@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom'
 
-class Homepage extends Component {
-  render() {
-    return (
+const Homepage = () => {
+  return (
 
-      <div className="container-fluid">
+    <div className="container-fluid">
       HOME PAGE CONTENT HERE
       <div>
-        <a href='temp'>Template</a>
+        <Link to='temp'>Template</Link>
       </div>
-      </div>
-
-    );
-  }
+    </div>
+  )
 }
 
 export default Homepage;

@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import LoginForm from './LoginForm';
-import ImageUploadForm from './ImageUploadForm';
+import React from 'react';
+import Register from './Register'
+import Login from './Login';
+import ImageUploadForm from './ImageUpload';
 import FetchImage from '../FetchImage'
 
-class TestPage extends Component {
-  render() {
-    return (
+const TestPage = () => {
+  return (
 
-      <div className="container-fluid">
-        <LoginForm />
-        <ImageUploadForm />
-        <FetchImage imageName='Screenshot (1).png'/>
-      </div>
+    <div className="container-fluid">
+      <Register />
+      <Login />
+      <ImageUploadForm />
+      <FetchImage imageId='5f6ed114cc4e390708db2714'/>
+    </div>
 
-    );
-  }
+  )
 }
 
 export default TestPage;

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="adcf6d34-55a9-4063-af52-1ff34e8e1482" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/css/config.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/css/config.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/css/default.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/css/default.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/scss/config.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/scss/config.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets/scss/default.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets/scss/default.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Artist/Artist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Artist/Artist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Artist/animal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Artist/food.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Artist/people.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Artist/travel.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FetchImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FetchImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Homepage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ImageUpload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Logout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Portfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Portfolio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StudentInformation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Template/Template.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Template/Template.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Template/Template.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Template/Template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Template/avatar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Template/avatar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Template/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Template/background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Template/templates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Template/templates.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TestPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/history.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/history.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/images.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/constants/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/constants/images.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/constants/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/constants/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/images.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1iHCes2aSjIxDXvdx0nwjDURx0V" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="adcf6d34-55a9-4063-af52-1ff34e8e1482" name="Default Changelist" comment="" />
+      <created>1601555229522</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601555229522</updated>
+      <workItem from="1601555233632" duration="1182000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

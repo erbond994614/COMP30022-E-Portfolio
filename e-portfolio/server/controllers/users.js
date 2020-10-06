@@ -63,7 +63,7 @@ const updatePortfolio = async function(req, res) {
             if (err) {
                 res.status(400).send({error: "portfolio update failed"})
             } else {
-                res.status(201).send(req.body)
+                res.status(201).send(user)
             }
         })
     } else {
@@ -71,9 +71,19 @@ const updatePortfolio = async function(req, res) {
     }
 }
 
+const getPortfolio = async function(req, res) {
+    const user = await User.findOne({email: req.params.userEmail})
+    if (user) {
+        res.status(201).send(user.portfolio)
+    } else {
+        res.status(400).send({error: "Unable to find user"})
+    }
+}
+
 module.exports = {
     createUser,
     loginUser,
     logoutUser,
-    updatePortfolio
+    updatePortfolio,
+    getPortfolio
 }

@@ -12,10 +12,9 @@ export const imageUploadRequest = () => ({
     type: IMAGE_UPLOAD_REQUEST
 })
 
-export const imageUploadSuccess = (id, image) => ({
+export const imageUploadSuccess = (images) => ({
     type: IMAGE_UPLOAD_SUCCESS,
-    id,
-    image
+    images
 })
 
 export const imageUploadFailure = () => ({
@@ -26,10 +25,9 @@ export const imageDownloadRequest = () => ({
     type: IMAGE_DOWNLOAD_REQUEST
 })
 
-export const imageDownloadSuccess = (id, image) => ({
+export const imageDownloadSuccess = (images) => ({
     type: IMAGE_DOWNLOAD_SUCCESS,
-    id,
-    image
+    images
 })
 
 export const imageDownloadFailure = () => ({
@@ -40,9 +38,8 @@ export const imageClear = () => ({
     type: IMAGE_CLEAR
 })
 
-export const uploadImage = (payload, token) => {
+export const uploadImage = (payload, images, path, token) => {
     return dispatch => {
-        console.log(token)
         dispatch(imageUploadRequest())
         const request = {
             method: 'POST',
@@ -54,7 +51,9 @@ export const uploadImage = (payload, token) => {
         fetch('/api/images/upload', request).then(response => 
             response.json().then(result => {
                 if (response.status === 201) {
-                    dispatch(imageUploadSuccess(result.id, result.image))
+                    images[result.id] = result.image
+                    dispatch(imageUploadSuccess(images))
+                    path(result.id)
                 } else {
                     dispatch(imageUploadFailure())
                     alert(result.error)
@@ -63,7 +62,7 @@ export const uploadImage = (payload, token) => {
     }
 }
 
-export const downloadImage = (userEmail, imageId) => {
+export const downloadImage = (userEmail, imageId, images) => {
     return dispatch => {
         dispatch(imageDownloadRequest())
         const request = {
@@ -72,7 +71,8 @@ export const downloadImage = (userEmail, imageId) => {
         fetch(`/api/images/${userEmail}/${imageId}`, request).then(response =>
             response.json().then(result => {
                 if (response.status === 201) {
-                    dispatch(imageDownloadSuccess(result.id, result.image))
+                    images[result.id] = result.image
+                    dispatch(imageDownloadSuccess(images))
                 } else {
                     dispatch(imageDownloadFailure())
                     alert(result.error)
@@ -91,9 +91,11 @@ export const downloadUserImages = (userEmail) => {
             response.json().then(result => {
                 if (response.status === 201) {
                     const images = result.values()
+                    var imageStore = {}
                     for (const image of images) {
-                        dispatch(imageDownloadSuccess(image._id, image))
+                        imageStore[image._id] = image
                     }
+                    dispatch(imageDownloadSuccess(imageStore))
                 } else {
                     dispatch(imageDownloadFailure())
                     alert(result.error)

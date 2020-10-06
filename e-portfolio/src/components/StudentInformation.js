@@ -16,7 +16,8 @@ const StudentInformation = () => {
     function handleSubmit(event) {
         event.preventDefault()
         var newPortfolio = user.portfolio
-        newPortfolio.name = firstName + " " + lastName
+        newPortfolio.firstName = firstName
+        newPortfolio.lastName = lastName
         newPortfolio.info = `Name: ${firstName} ${lastName}\r\nAge: ${age}\r\nMajor: ${major}`
         dispatch(updatePortfolio(user.userEmail, newPortfolio, token))
         history.push('/portfolio')
@@ -43,7 +44,7 @@ const StudentInformation = () => {
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block" >Save</button>
-                <button type="reset" className="btn btn-primary btn-block" >Discard Changes</button>
+                <button type="reset" className="btn btn-primary btn-block" onClick={(event) => history.push('/portfolio')}>Discard Changes</button>
         </form>
     )
 }

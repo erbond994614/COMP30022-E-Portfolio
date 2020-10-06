@@ -6,7 +6,7 @@ const uploadImage = async function(req, res) {
             const input = req.files.input
             const image = new Image({
                 name: input.name,
-                owner: req.user.userEmail,
+                owner: req.user.email,
                 mimetype: input.mimetype,
                 size: input.size,
                 image: input.data.toString('base64')

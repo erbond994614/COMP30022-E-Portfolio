@@ -14,4 +14,6 @@ router.post('/logout', auth, controller.logoutUser)
 
 router.put('/:userEmail/portfolio', auth, controller.updatePortfolio)
 
+router.get('/:userEmail/portfolio', controller.getPortfolio)
+
 module.exports = router

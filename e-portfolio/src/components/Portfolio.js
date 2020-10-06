@@ -3,14 +3,10 @@ import { useSelector } from 'react-redux'
 import avatar from './Template/avatar.png'
 import './Template/Template.css'
 import { studentTemplate } from "./Template/templates";
-import { enterUpdatePortfolio, enterUpdateAboutMe } from '../redux/actions/users'
-import { useDispatch } from 'react-redux'
+import history from '../history'
 
 const Portfolio = () => {
-    var user = useSelector(state => state.userAuth.user)
-    var token = useSelector(state => state.userAuth.token)
     var portfolio = useSelector(state => state.userAuth.user.portfolio)
-    const dispatch = useDispatch()
 
     if (!portfolio) {
         portfolio = studentTemplate
@@ -18,12 +14,12 @@ const Portfolio = () => {
 
     function handleEditPortfolio (event) {
         event.preventDefault()
-        dispatch(enterUpdatePortfolio({user, token}))
+        history.push('/info')
     }
 
     function handleEditAboutMe(event) {
         event.preventDefault()
-        dispatch(enterUpdateAboutMe({user, token}))
+        history.push('/aboutme')
     }
 
     return (

@@ -54,9 +54,9 @@ export const portfolioUpdateRequest = () => ({
     type: PORTFOLIO_UPDATE_REQUEST
 })
 
-export const portfolioUpdateSuccess = (portfolio) => ({
+export const portfolioUpdateSuccess = (user) => ({
     type: PORTFOLIO_UPDATE_SUCCESS,
-    portfolio
+    user
 })
 
 export const portfolioUpdateFailure = () => ({
@@ -112,20 +112,6 @@ export const signup = (payload) => { // {email, password, portfolio}
     }
 }
 
-export const enterUpdatePortfolio = (payload) => { // {email, password, portfolio}
-    return dispatch => {
-        dispatch(signupSuccess(payload.user, payload.token))
-        history.push('/info')
-    }
-}
-
-export const enterUpdateAboutMe = (payload) => { // {email, password, portfolio}
-    return dispatch => {
-        dispatch(signupSuccess(payload.user, payload.token))
-        history.push('/aboutme')
-    }
-}
-
 export const updatePortfolio = (userEmail, payload, token) => {
     return dispatch => {
         dispatch(portfolioUpdateRequest())
@@ -140,7 +126,7 @@ export const updatePortfolio = (userEmail, payload, token) => {
         fetch(`/api/users/${userEmail}/portfolio`, request).then(response =>
             response.json().then(result => {
                 if (response.status === 201) {
-                    dispatch(portfolioUpdateSuccess(payload))
+                    dispatch(portfolioUpdateSuccess(result))
                 } else {
                     dispatch(portfolioUpdateFailure())
                     alert(result.error)

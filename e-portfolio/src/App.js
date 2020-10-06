@@ -34,6 +34,7 @@ const App = () => {
           <Route exact path='/logout' component={auth ? Logout : Homepage} />
           <Route exact path='/dev' component={TestPage} />
           <Route exact path='/temp' component={Portfolio} />
+          {/* <Route path='/:userEmail/portfolio' component={Portfolio}/> Display route */}
 
         </Switch>
       <Footer />

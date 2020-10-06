@@ -2,7 +2,7 @@ import React from 'react';
 import Register from './Register'
 import Login from './Login';
 import ImageUploadForm from './ImageUpload';
-import FetchImage from './FetchImage'
+import DisplayImage from './DisplayImage';
 
 const TestPage = () => {
   return (
@@ -11,7 +11,7 @@ const TestPage = () => {
       <Register />
       <Login />
       <ImageUploadForm />
-      <FetchImage imageId='5f6ed114cc4e390708db2714'/>
+      <DisplayImage imageId='5f76b2836399bd3bf8e12341'/>
     </div>
 
   )

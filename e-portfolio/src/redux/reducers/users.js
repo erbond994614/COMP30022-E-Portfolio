@@ -94,12 +94,10 @@ const userAuth = (state = initialState, action) => {
                 token: state.token
             }
         case PORTFOLIO_UPDATE_SUCCESS:
-            var newUser = state.user
-            newUser.portfolio = action.portfolio
             return {
                 pending: false,
                 success: true,
-                user: newUser,
+                user: action.user,
                 token: state.token
             }
         case PORTFOLIO_UPDATE_FAILURE:

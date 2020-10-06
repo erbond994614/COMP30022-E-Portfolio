@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 
-const connection = "mongodb://localhost:27017/e-portfolio"
+const connection = "mongodb+srv://joey:joey@cluster0.lyfeq.mongodb.net/Cluster0?retryWrites=true&w=majority"
+
+
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,

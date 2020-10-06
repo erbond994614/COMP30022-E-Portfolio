@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import userAuth from './users'
-import imageStore from './images'
+import fileStore from './files'
 
 export default combineReducers({
     userAuth,
-    imageStore
+    fileStore
 })

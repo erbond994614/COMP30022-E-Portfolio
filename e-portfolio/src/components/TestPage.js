@@ -1,17 +1,17 @@
 import React from 'react';
 import Register from './Register'
 import Login from './Login';
-import ImageUploadForm from './ImageUpload';
-import FetchImage from './FetchImage'
+import FileUpload from './FileUpload';
+import DisplayFile from './DisplayFile'
 
 const TestPage = () => {
   return (
 
     <div className="container-fluid">
-      <Register />
-      <Login />
-      <ImageUploadForm />
-      <FetchImage imageId='5f6ed114cc4e390708db2714'/>
+      {/* <Register />
+      <Login /> */}
+      <FileUpload />
+      <DisplayFile fileId='5f7bd9987b37a0320816352d'/>
     </div>
 
   )

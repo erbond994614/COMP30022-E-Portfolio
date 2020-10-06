@@ -12,7 +12,7 @@ import {
     PORTFOLIO_UPDATE_SUCCESS,
     PORTFOLIO_UPDATE_FAILURE
 } from '../constants/users'
-import { downloadUserImages, imageClear } from './images'
+import { downloadUserFiles, fileClear } from './files'
 
 export const loginRequest = () => ({
     type: LOGIN_REQUEST
@@ -77,7 +77,7 @@ export const login = (payload) => {
             response.json().then(result => {
                 if (response.status === 201) {
                     dispatch(loginSuccess(result.user, result.token))
-                    dispatch(downloadUserImages(result.user.email))
+                    dispatch(downloadUserFiles(result.user.email))
                     history.push('/portfolio')
                 } else {
                     dispatch(loginFailure())
@@ -146,7 +146,7 @@ export const logout = (token) => {
         }
         fetch('/api/users/logout', request)
         dispatch(logoutSuccess())
-        dispatch(imageClear())
+        dispatch(fileClear())
         history.push('/')
     }
 }

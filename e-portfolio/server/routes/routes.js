@@ -3,10 +3,10 @@ const express = require('express')
 const router = express.Router()
 
 const userRouter = require('./users')
-const imageRouter = require('./images')
+const fileRouter = require('./files')
 
 router.use('/users', userRouter)
 
-router.use('/images', imageRouter)
+router.use('/files', fileRouter)
 
 module.exports = router

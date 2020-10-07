@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrpyt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const portfolioSchema = require('./portfolio')
 
 const tokenSchema = mongoose.Schema({
     token: { type: String, required: true }
@@ -10,7 +11,7 @@ const tokenSchema = mongoose.Schema({
 const userSchema = mongoose.Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true, minlength: 6},
-    portfolio: {type: Object, required: true},
+    portfolio: portfolioSchema,
     tokens: [tokenSchema]
 })
 

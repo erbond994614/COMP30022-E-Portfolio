@@ -12,8 +12,10 @@ router.post('/login', controller.loginUser)
 
 router.post('/logout', auth, controller.logoutUser)
 
-router.put('/:userEmail/portfolio', auth, controller.updatePortfolio)
+router.put('/portfolio', auth, controller.updatePortfolio)
 
 router.get('/:userEmail/portfolio', controller.getPortfolio)
+
+router.post('/profilePicture', auth, controller.uploadProfilePicture)
 
 module.exports = router

@@ -9,7 +9,10 @@ import {
     LOGOUT_SUCCESS,
     PORTFOLIO_UPDATE_REQUEST,
     PORTFOLIO_UPDATE_SUCCESS,
-    PORTFOLIO_UPDATE_FAILURE
+    PORTFOLIO_UPDATE_FAILURE,
+    PROFILE_PICTURE_UPLOAD_REQUEST,
+    PROFILE_PICTURE_UPLOAD_SUCCESS,
+    PROFILE_PICTURE_UPLOAD_FAILURE
 } from '../constants/users'
 
 const user = JSON.parse(localStorage.getItem('user'))
@@ -17,13 +20,11 @@ const token = JSON.parse(localStorage.getItem('token'))
 const initialState = user
     ? {
         pending: false,
-        success: true,
         user,
         token
       }
     : {
         pending: false,
-        success: false,
         user: {},
         token: ""
     }
@@ -31,79 +32,51 @@ const initialState = user
 const userAuth = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
+        case SIGNUP_REQUEST:
             return {
                 pending: true,
-                success: false,
                 user: {},
                 token: ''
             }
         case LOGIN_SUCCESS:
+        case SIGNUP_SUCCESS:
             return {
                 pending: false,
-                success: true,
                 user: action.user,
                 token: action.token
             }
         case LOGIN_FAILURE:
-            return {
-                pending: false,
-                success: false,
-                user: {},
-                token: ''
-            }
-        case SIGNUP_REQUEST:
-            return {
-                pending: true,
-                success: false,
-                user: {},
-                token: ''
-            }
-        case SIGNUP_SUCCESS:
-            return {
-                pending: false,
-                success: true,
-                user: action.user,
-                token: action.token
-            }
         case SIGNUP_FAILURE:
+        case LOGOUT_SUCCESS:
             return {
                 pending: false,
-                success: false,
                 user: {},
                 token: ''
             }
         case LOGOUT_REQUEST:
             return {
                 pending: true,
-                success: true,
                 user: action.user,
                 token: action.token
             }
-        case LOGOUT_SUCCESS:
-            return {
-                pending: false,
-                success: false,
-                user: {},
-                token: ''
-            }
         case PORTFOLIO_UPDATE_REQUEST:
+        case PROFILE_PICTURE_UPLOAD_REQUEST:
             return {
                 pending: true,
-                success: true,
                 user: state.user,
                 token: state.token
             }
         case PORTFOLIO_UPDATE_SUCCESS:
+        case PROFILE_PICTURE_UPLOAD_SUCCESS:
             return {
                 pending: false,
-                success: true,
                 user: action.user,
                 token: state.token
             }
         case PORTFOLIO_UPDATE_FAILURE:
+        case PROFILE_PICTURE_UPLOAD_FAILURE:
             return {
                 pending: false,
-                success: true,
                 user: state.user,
                 token: state.token
             }

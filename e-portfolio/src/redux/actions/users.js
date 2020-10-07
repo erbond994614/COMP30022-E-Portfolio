@@ -10,9 +10,11 @@ import {
     LOGOUT_SUCCESS,
     PORTFOLIO_UPDATE_REQUEST,
     PORTFOLIO_UPDATE_SUCCESS,
-    PORTFOLIO_UPDATE_FAILURE
+    PORTFOLIO_UPDATE_FAILURE,
+    PROFILE_PICTURE_UPLOAD_REQUEST,
+    PROFILE_PICTURE_UPLOAD_SUCCESS,
+    PROFILE_PICTURE_UPLOAD_FAILURE
 } from '../constants/users'
-import { downloadUserImages, imageClear } from './images'
 
 export const loginRequest = () => ({
     type: LOGIN_REQUEST
@@ -63,6 +65,19 @@ export const portfolioUpdateFailure = () => ({
     type: PORTFOLIO_UPDATE_FAILURE
 })
 
+export const profilePictureUploadRequest = () => ({
+    type: PROFILE_PICTURE_UPLOAD_REQUEST
+})
+
+export const profilePictureUploadSuccess = (user) => ({
+    type: PROFILE_PICTURE_UPLOAD_SUCCESS,
+    user
+})
+
+export const profilePictureUploadFailure = () => ({
+    type: PROFILE_PICTURE_UPLOAD_FAILURE
+})
+
 export const login = (payload) => {
     return dispatch => {
         dispatch(loginRequest())
@@ -77,7 +92,6 @@ export const login = (payload) => {
             response.json().then(result => {
                 if (response.status === 201) {
                     dispatch(loginSuccess(result.user, result.token))
-                    dispatch(downloadUserImages(result.user.email))
                     history.push('/portfolio')
                 } else {
                     dispatch(loginFailure())
@@ -112,7 +126,7 @@ export const signup = (payload) => { // {email, password, portfolio}
     }
 }
 
-export const updatePortfolio = (userEmail, payload, token) => {
+export const updatePortfolio = (portfolio, token) => {
     return dispatch => {
         dispatch(portfolioUpdateRequest())
         const request = {
@@ -121,14 +135,37 @@ export const updatePortfolio = (userEmail, payload, token) => {
                 "Content-Type": 'application/json',
                 Authorization: token
             },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(portfolio)
         }
-        fetch(`/api/users/${userEmail}/portfolio`, request).then(response =>
+        fetch(`/api/users/portfolio`, request).then(response =>
             response.json().then(result => {
                 if (response.status === 201) {
                     dispatch(portfolioUpdateSuccess(result))
+                    history.push('/portfolio')
                 } else {
                     dispatch(portfolioUpdateFailure())
+                    alert(result.error)
+                }
+            }))
+    }
+}
+
+export const uploadProfilePicture = (image, token) => {
+    return dispatch => {
+        dispatch(profilePictureUploadRequest())
+        const request = {
+            method: "POST",
+            headers: {
+                Authorization: token
+            },
+            body: image
+        }
+        fetch('/api/users/profilePicture', request).then(response =>
+            response.json().then(result => {
+                if (response.status === 201) {
+                    dispatch(profilePictureUploadSuccess(result))
+                } else {
+                    dispatch(profilePictureUploadFailure())
                     alert(result.error)
                 }
             }))
@@ -146,7 +183,6 @@ export const logout = (token) => {
         }
         fetch('/api/users/logout', request)
         dispatch(logoutSuccess())
-        dispatch(imageClear())
         history.push('/')
     }
 }

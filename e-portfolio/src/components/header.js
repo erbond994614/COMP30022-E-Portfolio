@@ -17,9 +17,17 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           {auth
-            ? <li>
+            ? <div>
+              <li>
                 <Link to="logout">Logout</Link>
               </li>
+              <li>
+                <Link to="dev">TestPage</Link>
+              </li>
+              <li>
+               <Link to="downloads">Downloads</Link>
+              </li>
+            </div>
             : <div>
                 <li>
                   <Link to="login">Login</Link>

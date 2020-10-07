@@ -13,6 +13,7 @@ import Portfolio from './components/Portfolio';
 import StudentInformation from './components/StudentInformation'
 import AboutMe from './components/AboutMe'
 import Logout from './components/Logout'
+//import Downloads from './components/Downloads';
 
 // includes
 import './Assets/css/default.min.css';
@@ -32,6 +33,7 @@ const App = () => {
           <Route exact path='/portfolio' component={auth ? Portfolio : Homepage} />
           <Route exact path='/aboutme' component={auth ? AboutMe : Homepage} />
           <Route exact path='/logout' component={auth ? Logout : Homepage} />
+          {/* <Route exact path='/downloads' component={auth ? Downloads : Homepage} /> */}
           <Route exact path='/dev' component={TestPage} />
           <Route exact path='/temp' component={Portfolio} />
           {/* <Route path='/:userEmail/portfolio' component={Portfolio}/> Display route */}

@@ -7,6 +7,7 @@ const Logout = () => {
     const token = useSelector(state => state.userAuth.token)
 
     function handleLogout(event) {
+        event.preventDefault()
         dispatch(logout(token))
     }
 

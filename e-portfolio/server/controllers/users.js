@@ -13,42 +13,36 @@ const createUser = async function (req, res) {
         })
     } catch (error) {
         if (error.code == 11000) {
-            res.status(400).send({
-                error: "username already exists"
-            })
+            res.status(400).send({error: "username already exists"})
         } else {
-            res.status(400).send({
-                error: `Error code ${error.code} Occured`
-            })
+            res.status(400).send({error: `Error code ${error.code} Occured`})
         }
     }
 }
 
 //login user and retrieve their page
 const loginUser = async function(req, res) {
-    const user = await User.findOne({email: req.body.email})
-    if (!user) {
-        res.status(400).send({
-            error: "Username does not exist"
-        })
-    } else if (bcrypt.compareSync(req.body.password, user.password)) {
-        const token = await user.generateAuthToken()
-        res.status(201).send({
-            user,
-            token
-        })
-    } else {
-        res.status(400).send({
-            error: "Incorrect Username or Password"
-        })
+    try {
+        const user = await User.findOne({email: req.body.email})
+        if (!user) {
+            res.status(400).send({error: "Username does not exist"})
+        } else if (bcrypt.compareSync(req.body.password, user.password)) {
+            const token = await user.generateAuthToken()
+            res.status(201).send({
+                user,
+                token
+            })
+        } else {
+            res.status(400).send({error: "Incorrect Username or Password"})
+        }
+    } catch {
+        res.status(500).send({error: "An unexpected error occured"})
     }
 }
 
 const logoutUser = async function(req, res) {
     try {
-        req.user.tokens = req.user.tokens.filter(token => {
-            return token.token !== req.token
-        })
+        req.user.tokens = []
         await req.user.save()
         res.status(201).send()
     } catch (error) {
@@ -59,13 +53,9 @@ const logoutUser = async function(req, res) {
 const updatePortfolio = async function(req, res) {
     const user = await User.findOne({email: req.user.email})
     if (user) {
-        user.updateOne({portfolio: req.body}, (err) => {
-            if (err) {
-                res.status(400).send({error: "portfolio update failed"})
-            } else {
-                res.status(201).send(user)
-            }
-        })
+        user.portfolio = req.body
+        user.save()
+        res.status(201).send(user)
     } else {
         res.status(400).send({error: "User does not exist"})
     }
@@ -80,10 +70,33 @@ const getPortfolio = async function(req, res) {
     }
 }
 
+const uploadProfilePicture = async function (req, res) {
+    const user = await User.findOne({email: req.user.email})
+    if (user) {
+        if (req.files) {
+            const input = req.files.input
+            const file = {
+                name: input.name,
+                mimetype: input.mimetype,
+                size: input.size,
+                data: input.data.toString('base64')
+            }
+            user.portfolio.info.profilePicture = file
+            await user.save()
+            res.status(201).send(user)
+        } else {
+            res.status(400).send({error: "no file found"})
+        }
+    } else {
+        res.status(400).send({error: "unable to find user"})
+    }
+}
+
 module.exports = {
     createUser,
     loginUser,
     logoutUser,
     updatePortfolio,
-    getPortfolio
+    getPortfolio,
+    uploadProfilePicture
 }

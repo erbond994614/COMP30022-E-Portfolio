@@ -8,19 +8,18 @@ import { studentTemplate } from './Template/templates'
 const AboutMe = () => {
     const dispatch = useDispatch()
     const token = useSelector(state => state.userAuth.token)
-    const userEmail = useSelector(state => state.userAuth.user.email)
     var portfolio = useSelector(state => state.userAuth.user.portfolio)
 
     if (!portfolio) {
         portfolio = studentTemplate
     } 
-    const aboutMe = portfolio.AboutMe
+    const aboutMe = portfolio.aboutMe
 
-    // TODO if paragraph title is customizable, add attr to template and un-comment the following section
-    // title
-    // const [para1t, setFirstTitle] = useState(aboutMe.para1title)
-    // const [para2t, setSecTitle] = useState(aboutMe.para2title)
-    // const [para3t, setThirdTitle] = useState(aboutMe.para3title)
+    /* TODO if paragraph title is customizable, add attr to template and un-comment the following section
+    title
+    const [para1t, setFirstTitle] = useState(aboutMe.para1title)
+    const [para2t, setSecTitle] = useState(aboutMe.para2title)
+    const [para3t, setThirdTitle] = useState(aboutMe.para3title) */
 
     // content var and setters
     const [para1, setFirstPara] = useState(aboutMe.para1)
@@ -30,19 +29,12 @@ const AboutMe = () => {
     function handleSubmit(event) {
         event.preventDefault()
 
-        // update paragraph content to aboutme
-        let newAboutMe = aboutMe
-        newAboutMe.para1 = para1
-        newAboutMe.para2 = para2
-        newAboutMe.para3 = para3
-
         // attach new aboutme to portfolio
-        let newPortfolio = portfolio
-        newPortfolio.AboutMe = newAboutMe
+        const newPortfolio = JSON.parse(JSON.stringify(portfolio)) // Deep copy because of redux immutability
+        newPortfolio.aboutMe = {para1, para2, para3}
 
         // use the same update func to simplify the code
-        dispatch(updatePortfolio(userEmail, newPortfolio, token))
-        history.push('/portfolio')
+        dispatch(updatePortfolio(newPortfolio, token))
     }
     
     function handleReset(event) {

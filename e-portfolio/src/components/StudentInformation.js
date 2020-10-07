@@ -8,31 +8,25 @@ const StudentInformation = () => {
     const user = useSelector(state => state.userAuth.user)
     const token = useSelector(state => state.userAuth.token)
 
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [age, setAge] = useState("")
-    const [major, setMajor] = useState("")
+    const [name, setName] = useState(user.portfolio.info.name)
+    const [age, setAge] = useState(user.portfolio.info.age)
+    const [major, setMajor] = useState(user.portfolio.info.major)
 
     function handleSubmit(event) {
         event.preventDefault()
-        var newPortfolio = user.portfolio
-        newPortfolio.firstName = firstName
-        newPortfolio.lastName = lastName
-        newPortfolio.info = `Name: ${firstName} ${lastName}\r\nAge: ${age}\r\nMajor: ${major}`
-        dispatch(updatePortfolio(user.userEmail, newPortfolio, token))
-        history.push('/portfolio')
+        const newPortfolio = JSON.parse(JSON.stringify(user.portfolio)) // deep copy because of redux immutability
+        newPortfolio.info.name = name
+        newPortfolio.info.age = age
+        newPortfolio.info.major = major
+        dispatch(updatePortfolio(newPortfolio, token))
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <h3>Edit your portfolio</h3>
                 <div className="form-group">
-                    <label>First Name</label>
-                    <input type="text" className="form-control" value={firstName} onChange={event => setFirstName(event.target.value)} placeholder="First Name" />
-                </div>
-                <div className="form-group">
-                    <label>Last Name</label>
-                    <input type="text" className="form-control" value={lastName} onChange={event => setLastName(event.target.value)} placeholder="Last Name" />
+                    <label>Name</label>
+                    <input type="text" className="form-control" value={name} onChange={event => setName(event.target.value)} placeholder="Name" />
                 </div>
                 <div className="form-group">
                     <label>Age</label>

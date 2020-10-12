@@ -1,0 +1,1 @@
+web: cd e-portfolio\server && node server

@@ -5,7 +5,10 @@ const router = require('./routes/routes.js')
 
 //Start the server
 const  server = express()
-const port = 8000
+let port = process.env.PORT
+if (!port) {
+    port = 8000
+}
 
 //Connect database
 require('./dbModels/db')

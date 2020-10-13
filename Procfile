@@ -1,1 +1,1 @@
-web: cd e-portfolio\server && node server
+web: cd server && node server

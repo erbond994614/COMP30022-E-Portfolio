@@ -6,7 +6,6 @@ import travel from "./travel.jpg";
 import avatar from "./avatar.svg";
 import "./Artist.scss";
 import Upload from '../ProfilePictureUpload';
-import {PhotoProvider,ImageList,ViewBox,PhotoConsumer } from 'react-photo-view';
 import Zmage from 'react-zmage'
 const galleyList = [animal,food,people,travel,animal,food,people]
 const Artist = (props) => {

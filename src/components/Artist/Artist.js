@@ -6,6 +6,8 @@ import travel from "./travel.jpg";
 import avatar from "./avatar.svg";
 import "./Artist.scss";
 import Upload from '../ProfilePictureUpload';
+import {PhotoProvider,ImageList,ViewBox,PhotoConsumer } from 'react-photo-view';
+import Zmage from 'react-zmage'
 const galleyList = [animal,food,people,travel,animal,food,people]
 const Artist = (props) => {
   return (
@@ -31,12 +33,12 @@ const Artist = (props) => {
           <div className="row">
             <div className="col-10 col-sm-12">
               <div className="galley-box">
-                <h5>MY GALLEY</h5>
+                <h5 className="mt-3 text-left">MY GALLEY</h5>
                 <div className="col-10 d-flex flex-wrap justify-content-center">
                   {
                     galleyList.map((item,index) => (
-                      <div className="galley-item mr-3 mb-1">
-                        <img src={item} key={index}></img>
+                      <div className="galley-item mr-3 mb-1" key={index}>
+                        <Zmage src={item} />
                       </div>
                     ))
                   }
@@ -47,15 +49,39 @@ const Artist = (props) => {
           </div>
           <div className="row">
             <div className="col-10 col-sm-12">
-              <div className="box">
-                <h5>BLOG</h5>
+              <div className="box d-flex flex-column">
+                <h5 className="mt-3 text-left">BLOG</h5>
+                <div className="d-flex">
+                <div className="col-6">
+                  <div className="blog-img">
+                    <Zmage src={galleyList[0]}></Zmage>
+                  </div>
+                </div>
+                <div className="col-6  text-wrap">
+                  some text...
+                </div>
+                </div>
+               
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-10 col-sm-12">
               <div className="box">
-                <h5>FootPoint</h5>
+                <h5 className="mt-3 text-left">FootPoint</h5>
+                <div className="text-wrap">
+                  some text...
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-10 col-sm-12">
+              <div className="box">
+                <h5 className="mt-3 text-left">Contact</h5>
+                <div className="text-wrap">
+                  some text...
+                </div>
               </div>
             </div>
           </div>

@@ -91,8 +91,12 @@ export const login = (payload) => {
         fetch('/api/users/login', request).then(response =>
             response.json().then(result => {
                 if (response.status === 201) {
-                    dispatch(loginSuccess(result.user, result.token))
-                    history.push('/portfolio')
+                    dispatch(loginSuccess(result.user, result.token));
+                    if(result.user.portfolio.info.major === 'Arts'){
+                        history.push('/artist')
+                    }else {
+                        history.push('/portfolio')
+                    }
                 } else {
                     dispatch(loginFailure())
                     alert(result.error)

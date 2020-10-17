@@ -16,7 +16,21 @@ import {
 } from '../constants/users'
 
 const user = JSON.parse(localStorage.getItem('user'))
-const token = JSON.parse(localStorage.getItem('token'))
+const token = localStorage.getItem('token');
+
+
+
+export const saveUserInfo = (user,token) => {
+    window.localStorage.setItem('user',JSON.stringify(user));
+    window.localStorage.setItem('token',token)
+}
+
+export const clearUserInfo = () => {
+    window.localStorage.removeItem('user');
+    window.localStorage.removeItem('token');
+}
+
+
 const initialState = user
     ? {
         pending: false,
@@ -39,6 +53,12 @@ const userAuth = (state = initialState, action) => {
                 token: ''
             }
         case LOGIN_SUCCESS:
+            saveUserInfo(action.user,action.token);
+            return {
+                pending:true,
+                user:action.user,
+                token:action.token
+            }
         case SIGNUP_SUCCESS:
             return {
                 pending: false,
@@ -48,10 +68,11 @@ const userAuth = (state = initialState, action) => {
         case LOGIN_FAILURE:
         case SIGNUP_FAILURE:
         case LOGOUT_SUCCESS:
+            clearUserInfo();
             return {
                 pending: false,
-                user: {},
-                token: ''
+                user: user,
+                token: token
             }
         case LOGOUT_REQUEST:
             return {

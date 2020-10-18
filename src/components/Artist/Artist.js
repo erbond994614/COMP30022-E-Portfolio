@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import animal from "./animal.jpg";
 import food from "./food.jpg";
 import people from "./people.jpg";
@@ -7,8 +7,8 @@ import avatar from "./avatar.svg";
 import "./Artist.scss";
 import Upload from '../ProfilePictureUpload';
 import Zmage from 'react-zmage'
-const galleyList = [animal,food,people,travel,animal,food,people]
-const Artist = (props) => {
+const galleryList = [animal,food,people,travel,animal,food,people]
+const Artist = () => {
   return (
     <section className="main-container">
       <div className="user-info-box">
@@ -17,7 +17,7 @@ const Artist = (props) => {
             <div className="col-8 col-sm-12">
               <div className="d-flex flex-column justify-content-center align-items-center">
                 <div className="avatar-box">
-                  <img src={avatar}></img>
+                  <img src={avatar} alt='Avatar'></img>
                 </div>
                 <button className="btn btn-primary btn-sm mt-3 mb-3">
                   Edit
@@ -35,7 +35,7 @@ const Artist = (props) => {
                 <h5 className="mt-3 text-left">MY GALLEY</h5>
                 <div className="col-10 d-flex flex-wrap justify-content-center">
                   {
-                    galleyList.map((item,index) => (
+                    galleryList.map((item,index) => (
                       <div className="galley-item mr-3 mb-1" key={index}>
                         <Zmage src={item} />
                       </div>
@@ -53,7 +53,7 @@ const Artist = (props) => {
                 <div className="d-flex">
                 <div className="col-6">
                   <div className="blog-img">
-                    <Zmage src={galleyList[0]}></Zmage>
+                    <Zmage src={galleryList[0]}></Zmage>
                   </div>
                 </div>
                 <div className="col-6  text-wrap">

@@ -1,0 +1,34 @@
+.main-container {
+  width: 100%;
+  .avatar-box {
+    width: 80px;
+    height: 80px;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .galley-box {
+    border-top: 1px solid #ccc;
+  }
+  .galley-item {
+    width: 100px;
+    height: 100px;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .blog-img {
+      width: 100%;
+      height: 80%;
+      img {
+          display: block;
+          width: 100%;
+          height: 100%;
+      }
+  }
+}
+

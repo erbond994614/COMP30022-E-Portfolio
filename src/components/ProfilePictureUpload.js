@@ -25,7 +25,7 @@ const ProfilePictureUpload = () => {
 
     return (
         <form onSubmit={handleSubmit} ref={form}>
-            <input type="file" allow='image/*' name="input" required />
+            <input type="file" accept='image/*' name="input" required />
             <input type='submit' value='Upload'/>
         </form>    
     )

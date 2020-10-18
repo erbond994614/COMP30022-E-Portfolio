@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=node",
     "eject": "react-scripts eject",
     "dev": "concurrently --kill-others \"cd ./server && nodemon server.js\" \"npm start\""
   },
@@ -49,6 +49,8 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
+    "mongodb-memory-server": "^6.9.2",
+    "node-mocks-http": "^1.9.0",
     "nodemon": "^2.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6"

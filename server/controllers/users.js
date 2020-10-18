@@ -13,9 +13,9 @@ const createUser = async function (req, res) {
         })
     } catch (error) {
         if (error.code == 11000) {
-            res.status(400).send({error: "username already exists"})
+            res.status(400).send({error: "email already exists"})
         } else {
-            res.status(400).send({error: `Error code ${error.code} Occured`})
+            res.status(400).send({error: "Bad Request"})
         }
     }
 }
@@ -25,7 +25,7 @@ const loginUser = async function(req, res) {
     try {
         const user = await User.findOne({email: req.body.email})
         if (!user) {
-            res.status(400).send({error: "Username does not exist"})
+            res.status(400).send({error: "Email does not exist"})
         } else if (bcrypt.compareSync(req.body.password, user.password)) {
             const token = await user.generateAuthToken()
             res.status(201).send({
@@ -33,7 +33,7 @@ const loginUser = async function(req, res) {
                 token
             })
         } else {
-            res.status(400).send({error: "Incorrect Username or Password"})
+            res.status(400).send({error: "Incorrect Email or Password"})
         }
     } catch {
         res.status(500).send({error: "An unexpected error occured"})
@@ -54,8 +54,12 @@ const updatePortfolio = async function(req, res) {
     const user = await User.findOne({email: req.user.email})
     if (user) {
         user.portfolio = req.body
-        user.save()
-        res.status(201).send(user)
+        try {
+            await user.save()
+            res.status(201).send(user)
+        } catch {
+            res.status(400).send({error: "Bad Request"})
+        }
     } else {
         res.status(400).send({error: "User does not exist"})
     }

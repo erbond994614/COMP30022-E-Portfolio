@@ -10,6 +10,8 @@ import StudentInformation from './components/StudentInformation'
 import AboutMe from './components/AboutMe'
 import Logout from './components/Logout'
 import Artist from './components/Artist/Artist';
+import DisplayPortfolio from './components/DisplayPortfolio'
+import DisplayRouter from './components/DisplayRouter'
 
 /**
  * import all routes and register routes;
@@ -79,6 +81,18 @@ const Routes = [
         requiresAuth:true,
         role:['CS','Arts'],
         component:Portfolio
+    },
+    {
+        path: "/display",
+        exact: true,
+        requiresAuth: false,
+        component: DisplayPortfolio
+    },
+    {
+        path: "/display/:id",
+        exact: false,
+        requiresAuth: false,
+        component: DisplayRouter
     }
 ]
 
@@ -94,7 +108,7 @@ export default function Router() {
             {
                 Routes.map((route) => {   
                  return <Route exact={route.exact} path={route.path} key={route.path} render={
-                        () => {
+                        (nextState) => {
                             if(route.requiresAuth){
                                 if(!auth){
                                     return (<Redirect to="/"></Redirect>)
@@ -110,10 +124,14 @@ export default function Router() {
                                     }
                                 }
                             }else {
-                                return <route.component />
+                                if (!route.exact) {
+                                    return <route.component params={nextState.match.params}/>
+                                } else {
+                                    return <route.component />
+                                }
                             }
                         }
-                    }></Route>
+                    }/>
                     
                 })
             }

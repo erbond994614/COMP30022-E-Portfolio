@@ -14,7 +14,7 @@ router.post('/logout', auth, controller.logoutUser)
 
 router.put('/portfolio', auth, controller.updatePortfolio)
 
-router.get('/:userEmail/portfolio', controller.getPortfolio)
+router.get('/:userId/portfolio', controller.getPortfolio)
 
 router.post('/profilePicture', auth, controller.uploadProfilePicture)
 

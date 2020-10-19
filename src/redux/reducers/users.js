@@ -15,29 +15,7 @@ import {
     PROFILE_PICTURE_UPLOAD_FAILURE
 } from '../constants/users'
 
-const user = JSON.parse(localStorage.getItem('user'))
-const token = localStorage.getItem('token');
-
-
-
-export const saveUserInfo = (user,token) => {
-    window.localStorage.setItem('user',JSON.stringify(user));
-    window.localStorage.setItem('token',token)
-}
-
-export const clearUserInfo = () => {
-    window.localStorage.removeItem('user');
-    window.localStorage.removeItem('token');
-}
-
-
-const initialState = user
-    ? {
-        pending: false,
-        user,
-        token
-      }
-    : {
+const initialState = {
         pending: false,
         user: {},
         token: ""
@@ -53,11 +31,10 @@ const userAuth = (state = initialState, action) => {
                 token: ''
             }
         case LOGIN_SUCCESS:
-            saveUserInfo(action.user,action.token);
             return {
-                pending:true,
-                user:action.user,
-                token:action.token
+                pending: false,
+                user: action.user,
+                token: action.token
             }
         case SIGNUP_SUCCESS:
             return {
@@ -68,18 +45,12 @@ const userAuth = (state = initialState, action) => {
         case LOGIN_FAILURE:
         case SIGNUP_FAILURE:
         case LOGOUT_SUCCESS:
-            clearUserInfo();
             return {
                 pending: false,
-                user: user,
-                token: token
+                user: {},
+                token: ''
             }
         case LOGOUT_REQUEST:
-            return {
-                pending: true,
-                user: action.user,
-                token: action.token
-            }
         case PORTFOLIO_UPDATE_REQUEST:
         case PROFILE_PICTURE_UPLOAD_REQUEST:
             return {

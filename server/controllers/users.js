@@ -66,7 +66,7 @@ const updatePortfolio = async function(req, res) {
 }
 
 const getPortfolio = async function(req, res) {
-    const user = await User.findOne({email: req.params.userEmail})
+    const user = await User.findOne({_id: req.params.userId})
     if (user) {
         res.status(201).send(user.portfolio)
     } else {

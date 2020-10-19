@@ -1,6 +1,6 @@
 export const studentTemplate = {
     info: {
-        name: "Steve Gates",
+        name: "Student Template",
         age: 20,
         major: "CS",
         profilePicture: null
@@ -15,7 +15,7 @@ export const studentTemplate = {
 
 export const artistTemplate = {
     info: {
-        name: "Steve Gates",
+        name: "Artist Template",
         age: 20,
         major: "Arts",
         profilePicture: null
@@ -30,7 +30,7 @@ export const artistTemplate = {
 
 export const professionalTemplate = {
     info: {
-        name: "Steve Gates",
+        name: "Professional Template",
         age: 20,
         major: "CS",
         profilePicture: null

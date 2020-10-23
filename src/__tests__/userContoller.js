@@ -31,11 +31,11 @@ describe('User Controller - Create User', () => {
                 email: 'test@student',
                 password: 'password',
                 portfolio: {
+                    profilePicture: null,
                     info: {
-                        name: "Steve Gates",
-                        age: 20,
-                        major: "CS",
-                        profilePicture: null
+                        Name: "Steve Gates",
+                        Age: 20,
+                        Major: "CS"
                     },
                     aboutMe: {
                         para1: "i am a student",
@@ -68,11 +68,11 @@ describe('User Controller - Create User', () => {
                 email: 'test@student',
                 password: 'newPassword',
                 portfolio: {
+                    profilePicture: null,
                     info: {
-                        name: "Steve Gates",
-                        age: 20,
-                        major: "CS",
-                        profilePicture: null
+                        Name: "Steve Gates",
+                        Age: 20,
+                        Major: "CS"
                     },
                     aboutMe: {
                         para1: "i am a student",
@@ -183,11 +183,11 @@ describe('User Controller - Update Portfolio', () => {
         const req = httpMocks.createRequest({
             method: 'POST',
             body: {
+                profilePicture: null,
                 info: {
-                    name: "Test Student",
-                    age: 21,
-                    major: "CSS",
-                    profilePicture: null
+                    Name: "Test Student",
+                    Age: 21,
+                    Major: "CSS"
                 },
                 aboutMe: {
                     para1: "i am a student of a uni",

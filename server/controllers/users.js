@@ -85,7 +85,7 @@ const uploadProfilePicture = async function (req, res) {
                 size: input.size,
                 data: input.data.toString('base64')
             }
-            user.portfolio.info.profilePicture = file
+            user.portfolio.profilePicture = file
             await user.save()
             res.status(201).send(user)
         } else {

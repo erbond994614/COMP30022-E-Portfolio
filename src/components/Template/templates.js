@@ -1,9 +1,9 @@
 export const studentTemplate = {
+    profilePicture: null,
     info: {
-        name: "Student Template",
-        age: 20,
-        major: "CS",
-        profilePicture: null
+        Name: "Student Template",
+        Age: '20',
+        Major: "CS"
     },
     aboutMe: {
         para1: "i am a student",
@@ -14,11 +14,11 @@ export const studentTemplate = {
 }
 
 export const artistTemplate = {
+    profilePicture: null,
     info: {
-        name: "Artist Template",
-        age: 20,
-        major: "Arts",
-        profilePicture: null
+        Name: "Artist Template",
+        Age: 20,
+        Major: "Arts"
     },
     aboutMe: {
         para1: "i am a artist",
@@ -29,11 +29,11 @@ export const artistTemplate = {
 }
 
 export const professionalTemplate = {
+    profilePicture: null,
     info: {
-        name: "Professional Template",
-        age: 20,
-        major: "CS",
-        profilePicture: null
+        Name: "Professional Template",
+        Age: 20,
+        Major: "CS"
     },
     aboutMe: {
         para1: "i am a professional",

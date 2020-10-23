@@ -1,5 +1,6 @@
 import React from "react";
 import Router from "./router";
+import { withRouter } from "react-router-dom";
 // components
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -9,26 +10,25 @@ import Footer from "./components/footer";
 // includes
 import "./Assets/css/default.min.css";
 
-const App = () => {
+const App = ({ location }) => {
+  // console.log("location.pathname: ", location.pathname);
   if (
-    window.location.pathname === "/login" ||
-    window.location.pathname === "/register"
+    location.pathname === "/login" ||
+    location.pathname === "/register" ||
+    location.pathname === "/preview"
   ) {
     return (
       <div className="App">
-        <Router />
-        <Footer />
+        <Router Footer={Footer} />
       </div>
     );
   } else {
     return (
       <div className="App">
-        <Header />
-        <Router />
-        <Footer />
+        <Router Header={Header} Footer={Footer} />
       </div>
     );
   }
 };
 
-export default App;
+export default withRouter(App);

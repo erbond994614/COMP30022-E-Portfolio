@@ -8,7 +8,7 @@ import TestPage from "./components/TestPage";
 import PreviewPortfolio from "./components/PreviewPortfolio";
 import DisplaySharablePortfolio from "./components/DisplaySharablePortfolio";
 import Portfolio from "./components/Portfolio";
-import StudentInformation from "./components/StudentInformation";
+import Information from "./components/Information";
 import AboutMe from "./components/AboutMe";
 import Logout from "./components/Logout";
 import Artist from "./components/Artist/Artist";
@@ -42,21 +42,20 @@ const Routes = [
     path: "/info",
     exact: true,
     requiresAuth: true,
-    role: "CS",
-    component: StudentInformation,
+    component: Information,
   },
   {
     path: "/portfolio",
     exact: true,
     requiresAuth: true,
-    role: ["CS", "Arts"],
+    role: "student",
     component: Portfolio,
   },
   {
     path: "/aboutme",
     exact: true,
     requiresAuth: true,
-    role: ["CS", "Arts"],
+    role: ["student", "artist", "professional"],
     component: AboutMe,
   },
   {
@@ -69,6 +68,7 @@ const Routes = [
     path: "/artist",
     exact: true,
     requiresAuth: true,
+    role: "artist",
     component: Artist,
   },
   {
@@ -81,7 +81,7 @@ const Routes = [
     path: "/temp",
     exact: true,
     requiresAuth: true,
-    role: ["CS", "Arts"],
+    role: "student",
     component: Portfolio,
   },
   {
@@ -131,10 +131,7 @@ export default function Router({ Header, Footer }) {
                   return <Redirect to="/"></Redirect>;
                 } else {
                   if (route.role) {
-                    if (
-                      user &&
-                      route.role.includes(user.portfolio.info.major)
-                    ) {
+                    if (user && route.role.includes(user.role)) {
                       return (
                         <>
                           {Header && <Header />}

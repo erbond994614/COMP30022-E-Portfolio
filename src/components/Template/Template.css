@@ -1,11 +1,13 @@
 h1.intro {
   text-align: center;
-  color: aliceblue;
+  /* color: aliceblue; */
+  color: black;
 }
 
 .text {
   text-align: center;
-  color: aliceblue;
+  /* color: aliceblue; */
+  color: black;
   white-space: pre-line;
 }
 
@@ -25,10 +27,11 @@ img {
   margin-right: auto;
 }
 
-.container {
+.col-md-12 {
+  display: flex;
   position: relative;
   text-align: center;
-  background-image: url('./background.png');
+  background-image: url("./background.png");
 }
 
 .avatar {

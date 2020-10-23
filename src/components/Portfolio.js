@@ -28,21 +28,22 @@ const Portfolio = () => {
         <div>
             <section>
                 <div className='container'>
-                    <h1 className='intro'>Welcome to <b>{portfolio.info.name}'s</b> portfolio.</h1>
+                    {portfolio.info.Name ? <h1 className='intro'>Welcome to <b>{portfolio.info.Name}'s</b> portfolio.</h1> : <h1 className='intro'>Welcome to my portfolio</h1>}
                           
-                    {portfolio.info.profilePicture
-                        ? <DisplayFile className='avatar' file={portfolio.info.profilePicture} />
+                    {portfolio.profilePicture
+                        ? <DisplayFile className='avatar' file={portfolio.profilePicture} />
                         : <img className='avatar' src={avatar} alt='Avatar' />
                     }
                     <ProfilePictureUpload/>
 
-                    {/* items = info.items.map((item) => {item.title}: {item.content}<br/>) for arbitrary info */}
                     <div className='text'>
-                        Name: {portfolio.info.name}
-                        <br/>
-                        Age: {portfolio.info.age}
-                        <br/>
-                        Major: {portfolio.info.major}
+                        {Object.entries(portfolio.info).map(([key, value]) => {
+                            return (
+                                <div key={key}>
+                                    {key}: {value}
+                                </div>
+                            )
+                        })}
                     </div>
                     <button className='editButton' onClick={handleEditPortfolio}>Edit</button>
                 </div>

@@ -7,10 +7,7 @@ const createUser = async function (req, res) {
         const user = new User(req.body)
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({
-            user: user.toObject(),
-            token
-        })
+        res.status(201).send({user, token})
     } catch (error) {
         if (error.code == 11000) {
             res.status(400).send({error: "email already exists"})
@@ -36,7 +33,7 @@ const loginUser = async function(req, res) {
             res.status(400).send({error: "Incorrect Email or Password"})
         }
     } catch {
-        res.status(500).send({error: "An unexpected error occured"})
+        res.status(400).send({error: "An unexpected error occured"})
     }
 }
 
@@ -85,7 +82,7 @@ const uploadProfilePicture = async function (req, res) {
                 size: input.size,
                 data: input.data.toString('base64')
             }
-            user.portfolio.info.profilePicture = file
+            user.portfolio.profilePicture = file
             await user.save()
             res.status(201).send(user)
         } else {

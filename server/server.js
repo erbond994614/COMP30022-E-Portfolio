@@ -14,10 +14,12 @@ if (!port) {
 require('./dbModels/db')
 
 //Setup routes
-server.use(express.json())
 server.use(fileUpload({
     limits: { fileSize: 10 * 1024 * 1024}, // 10MB
     abortOnLimit: true
+}))
+server.use(express.json({
+    limit: 10 * 1024 * 1024
 }))
 server.use('/api', router)
 

@@ -8,6 +8,7 @@ import "./Artist.scss";
 import Upload from '../ProfilePictureUpload';
 import Zmage from 'react-zmage'
 const galleryList = [animal,food,people,travel,animal,food,people]
+
 const Artist = () => {
   return (
     <section className="main-container">

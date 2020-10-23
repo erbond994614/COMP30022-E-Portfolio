@@ -30,6 +30,7 @@ describe('User Controller - Create User', () => {
             body: {
                 email: 'test@student',
                 password: 'password',
+                role: 'student',
                 portfolio: {
                     profilePicture: null,
                     info: {
@@ -55,6 +56,7 @@ describe('User Controller - Create User', () => {
             expect(body).toHaveProperty('user')
             expect(body.user).toHaveProperty('email')
             expect(body.user).toHaveProperty('password')
+            expect(body.user).toHaveProperty('role')
             expect(body.user).toHaveProperty('portfolio')
             expect(body.user).toHaveProperty('tokens')
             expect(body.user.email).toBe('test@student')
@@ -138,6 +140,7 @@ describe('User Controller - Login', () => {
             expect(body).toHaveProperty('user')
             expect(body.user).toHaveProperty('email')
             expect(body.user).toHaveProperty('password')
+            expect(body.user).toHaveProperty('role')
             expect(body.user).toHaveProperty('portfolio')
             expect(body.user).toHaveProperty('tokens')
             expect(body.user.email).toBe('test@student')
@@ -206,18 +209,21 @@ describe('User Controller - Update Portfolio', () => {
             expect(res.statusCode).toBe(201)
             expect(body).toHaveProperty('email')
             expect(body).toHaveProperty('password')
+            expect(body).toHaveProperty('role')
             expect(body).toHaveProperty('portfolio')
             expect(body).toHaveProperty('tokens')
             expect(body.email).toBe('test@student')
             expect(body.password).not.toBe('password')
+            expect(body.role).toBe('student')
             expect(body.portfolio).toHaveProperty('info')
             expect(body.portfolio).toHaveProperty('aboutMe')
-            expect(body.portfolio.info).toHaveProperty('name')
-            expect(body.portfolio.info).toHaveProperty('age')
-            expect(body.portfolio.info).toHaveProperty('major')
-            expect(body.portfolio.info.name).toBe('Test Student')
-            expect(body.portfolio.info.age).toBe(21)
-            expect(body.portfolio.info.major).toBe('CSS')
+            expect(body.portfolio).toHaveProperty('profilePicture')
+            expect(body.portfolio.info).toHaveProperty('Name')
+            expect(body.portfolio.info).toHaveProperty('Age')
+            expect(body.portfolio.info).toHaveProperty('Major')
+            expect(body.portfolio.info.Name).toBe('Test Student')
+            expect(body.portfolio.info.Age).toBe(21)
+            expect(body.portfolio.info.Major).toBe('CSS')
             expect(body.portfolio.aboutMe).toHaveProperty('para1')
             expect(body.portfolio.aboutMe).toHaveProperty('para2')
             expect(body.portfolio.aboutMe).toHaveProperty('para3')

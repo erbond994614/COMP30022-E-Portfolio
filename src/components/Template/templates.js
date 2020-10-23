@@ -17,7 +17,7 @@ export const artistTemplate = {
     profilePicture: null,
     info: {
         Name: "Artist Template",
-        Age: 20,
+        Age: '20',
         Major: "Arts"
     },
     aboutMe: {
@@ -32,7 +32,7 @@ export const professionalTemplate = {
     profilePicture: null,
     info: {
         Name: "Professional Template",
-        Age: 20,
+        Age: '20',
         Major: "CS"
     },
     aboutMe: {

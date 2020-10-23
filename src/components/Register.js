@@ -12,11 +12,12 @@ const Register = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState('student')
   const [portfolio, setPortfolio] = useState(studentTemplate);
 
   function handleSignup(event) {
     event.preventDefault();
-    dispatch(signup({ email, password, portfolio }));
+    dispatch(signup({ email, password, role, portfolio }));
   }
 
   return (
@@ -56,10 +57,13 @@ const Register = () => {
             className="form-control"
             onChange={(event) => {
               if (event.target.value === "student") {
+                setRole('student')
                 setPortfolio(studentTemplate);
               } else if (event.target.value === "artist") {
+                setRole('artist')
                 setPortfolio(artistTemplate);
               } else if (event.target.value === "professional") {
+                setRole('professional')
                 setPortfolio(professionalTemplate);
               }
             }}

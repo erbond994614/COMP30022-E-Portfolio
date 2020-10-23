@@ -7,10 +7,7 @@ const createUser = async function (req, res) {
         const user = new User(req.body)
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({
-            user: user.toObject(),
-            token
-        })
+        res.status(201).send({user, token})
     } catch (error) {
         if (error.code == 11000) {
             res.status(400).send({error: "email already exists"})

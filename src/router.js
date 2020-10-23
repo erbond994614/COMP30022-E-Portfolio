@@ -40,21 +40,20 @@ const Routes = [
         path:"/info",
         exact:true,
         requiresAuth:true,
-        role:['CS', 'Arts'],
         component:Information
     },
     {
         path:"/portfolio",
         exact:true,
         requiresAuth:true,
-        role:['CS','Arts'],
+        role:'student',
         component:Portfolio
     },
     {
         path:"/aboutme",
         exact:true,
         requiresAuth:true,
-        role:['CS','Arts'],
+        role:['student', 'artist', 'professional'],
         component:AboutMe
     },
     {
@@ -67,6 +66,7 @@ const Routes = [
         path:"/artist",
         exact:true,
         requiresAuth:true,
+        role:'artist',
         component:Artist
     },
     {
@@ -79,7 +79,7 @@ const Routes = [
         path:"/temp",
         exact:true,
         requiresAuth:true,
-        role:['CS','Arts'],
+        role:'student',
         component:Portfolio
     },
     {
@@ -114,7 +114,7 @@ export default function Router() {
                                     return (<Redirect to="/"></Redirect>)
                                 }else {
                                     if(route.role){
-                                        if(user && route.role.includes(user.portfolio.info.Major)){
+                                        if(user && route.role.includes(user.role)){
                                             return <route.component />
                                         }else {
                                             return (<Redirect to="/"></Redirect>)

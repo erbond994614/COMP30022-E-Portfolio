@@ -3,11 +3,16 @@ $black: #010000;
 $white: #ffffff;
 $lightGrey: #e6e6e6;
 $darkGrey: #333;
+$grey: #666;
 $red: #ff1755;
+$offWhite: #f6f6f6;
+$pastelPurple: rgb(185, 155, 240);
+$pastelCyan: rgb(75, 210, 235);
 
 // Fonts
 body {
-  font-family: 'Open Sans', sans-serif;
+  background: $offWhite;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   color: $black;
   font-weight: 400;
@@ -27,18 +32,49 @@ body {
 }
 
 @mixin transition($e) {
-  -webkit-transition:$e;
-  -moz-transition:$e;
-  transition:$e;
+  -webkit-transition: $e;
+  -moz-transition: $e;
+  transition: $e;
 }
 
 a {
-  text-decoration: none;
-  @include transition(.4s ease-in-out);
-  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 300;
+  color: $black;
+  transition: color 0.2s ease;
+  padding: 3px 0;
+  margin-bottom: 15px;
 
   &:hover {
-    color: $red;
-    @include transition(.4s ease-in-out);
+    text-decoration: none;
+    color: $lightGrey;
+
+    &::after,
+    &::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc(100% + 5px);
+    width: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  &::before {
+    transition: width 0.4s cubic-bezier(0.51, 0.18, 0, 0.88) 0.1s;
+    background: $pastelPurple;
+  }
+
+  &::after {
+    transition: width 0.2s cubic-bezier(0.29, 0.18, 0.26, 0.83);
+    background: $pastelCyan;
   }
 }

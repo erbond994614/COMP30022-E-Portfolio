@@ -1,0 +1,24 @@
+@import "config.scss";
+
+body {
+  .container {
+    background: $offWhite;
+    flex-direction: column;
+    // width: 100%;
+    // padding: 12px 20px;
+    // margin: 8px 0;
+    display: flex;
+    // box-sizing: border-box;
+    // align-self: center;
+    // justify-content: center;
+
+    form {
+      label {
+        color: $black;
+        input {
+          color: $black;
+        }
+      }
+    }
+  }
+}

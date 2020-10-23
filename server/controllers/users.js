@@ -33,7 +33,7 @@ const loginUser = async function(req, res) {
             res.status(400).send({error: "Incorrect Email or Password"})
         }
     } catch {
-        res.status(500).send({error: "An unexpected error occured"})
+        res.status(400).send({error: "An unexpected error occured"})
     }
 }
 

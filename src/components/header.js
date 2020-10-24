@@ -17,12 +17,6 @@ const Header = () => {
               <li>
                 <Link to="logout">Logout</Link>
               </li>
-              <li>
-                <Link to="dev">TestPage</Link>
-              </li>
-              <li>
-                <Link to="downloads">Downloads</Link>
-              </li>
             </div>
           ) : (
             <div>

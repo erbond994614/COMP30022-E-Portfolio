@@ -9,19 +9,10 @@ import ProfilePictureUpload from './ProfilePictureUpload'
 
 const Portfolio = () => {
     var portfolio = useSelector(state => state.userAuth.user.portfolio)
+    const id = useSelector(state => state.userAuth.user._id)
 
     if (!portfolio) {
         portfolio = studentTemplate
-    }
-
-    function handleEditPortfolio (event) {
-        event.preventDefault()
-        history.push('/info')
-    }
-
-    function handleEditAboutMe(event) {
-        event.preventDefault()
-        history.push('/aboutme')
     }
 
     return (
@@ -45,12 +36,12 @@ const Portfolio = () => {
                             )
                         })}
                     </div>
-                    <button className='editButton' onClick={handleEditPortfolio}>Edit</button>
+                    <button className='editButton' onClick={() => history.push('/info')}>Edit</button>
                 </div>
                 <br/>
                 <h3>About Me</h3>
 
-                <button className='editButton' onClick={handleEditAboutMe}>Edit</button>
+                <button className='editButton' onClick={() => history.push('/aboutme')}>Edit</button>
 
                 <br/>
                 <div className='aboutme'>         
@@ -59,6 +50,14 @@ const Portfolio = () => {
                     <h4>Paragraph 3 <br/><br/><p>{portfolio.aboutMe.para3}</p></h4>
                 </div>
             </section>
+            <button
+                type="button"
+                onClick={() => window.open(`/display/${id}`, '_blank')}
+                className="btn btn-secondary btn-block"
+            >
+                Preview
+            </button>
+            <h4>Your Display Link is http://{window.location.hostname}/display/{id}</h4>
         </div>
     )
 }

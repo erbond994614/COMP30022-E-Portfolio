@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { updatePortfolio } from "../redux/actions/users";
 import history from "../history";
 import { studentTemplate } from "./Template/templates";
@@ -34,8 +33,6 @@ const AboutMe = () => {
     const newPortfolio = JSON.parse(JSON.stringify(portfolio)); // Deep copy because of redux immutability
     newPortfolio.aboutMe = { para1, para2, para3 };
 
-    sessionStorage.setItem("savedTemplate", JSON.stringify(newPortfolio));
-
     // use the same update func to simplify the code
     dispatch(updatePortfolio(newPortfolio, token));
   }
@@ -43,14 +40,6 @@ const AboutMe = () => {
   function handleReset(event) {
     event.preventDefault();
     history.goBack();
-  }
-
-  function handlePreview() {
-    const newPortfolio = JSON.parse(JSON.stringify(portfolio)); // Deep copy because of redux immutability
-    newPortfolio.aboutMe = { para1, para2, para3 };
-
-    sessionStorage.setItem("savedTemplate", JSON.stringify(newPortfolio));
-    window.open("/preview", "_blank");
   }
 
   return (
@@ -102,13 +91,6 @@ const AboutMe = () => {
 
       <button type="submit" className="btn btn-primary btn-block">
         Save
-      </button>
-      <button
-        type="button"
-        onClick={handlePreview}
-        className="btn btn-secondary btn-block"
-      >
-        Preview
       </button>
       <button type="reset" className="btn btn-primary btn-block">
         Discard Changes

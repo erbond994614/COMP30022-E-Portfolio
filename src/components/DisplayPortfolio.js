@@ -43,18 +43,6 @@ const DisplayPortfolio = () => {
         <br />
         <h3>About Me</h3>
 
-        {/* items = info.items.map((item) => {item.title}: {item.content}<br/>) for arbitrary info */}
-        <div className="text">
-          Name: {portfolio.info.name}
-          <br />
-          Age: {portfolio.info.age}
-          <br />
-          Major: {portfolio.info.major}
-        </div>
-
-        <br />
-        <h3>About Me</h3>
-
         <br />
         <div className="aboutme">
           <h4>

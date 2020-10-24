@@ -43,7 +43,7 @@ const StudentInformation = () => {
                     })}
                     <label>New Field Title:</label>
                     <input type='text' className='form-control' value={newField} onChange={event => setNewField(event.target.value)} placeholder='Enter title of new field'/>
-                    <button className='btn btn-primary btn-block' onClick={(event) => {event.preventDefault(); setInfo(state => {
+                    <button className='btn btn-secondary btn-block' onClick={(event) => {event.preventDefault(); setInfo(state => {
                         const newState = JSON.parse(JSON.stringify(state))
                         newState[newField] = ''
                         return newState})}}>Add New Field</button>

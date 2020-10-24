@@ -5,8 +5,6 @@ import Homepage from "./components/Homepage";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import TestPage from "./components/TestPage";
-import PreviewPortfolio from "./components/PreviewPortfolio";
-import DisplaySharablePortfolio from "./components/DisplaySharablePortfolio";
 import Portfolio from "./components/Portfolio";
 import Information from "./components/Information";
 import AboutMe from "./components/AboutMe";
@@ -95,18 +93,6 @@ const Routes = [
     exact: false,
     requiresAuth: false,
     component: DisplayRouter,
-  },
-  {
-    path: "/preview/:id",
-    exact: false,
-    requiresAuth: false,
-    component: DisplaySharablePortfolio,
-  },
-  {
-    path: "/preview",
-    exact: true,
-    requiresAuth: false,
-    component: PreviewPortfolio,
   },
 ];
 

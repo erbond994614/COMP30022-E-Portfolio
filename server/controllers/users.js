@@ -149,11 +149,14 @@ const uploadAvatar = async function(req,res) {
 const updateUserInfo = async function(req,res) {
    let user = await User.findOne({email: req.user.email});
    if(user){
-       let info = req.body;
-       console.log(req.body,'req.body');
-       console.log(req,'req')
-       user.portfolio.info = info;
-       console.log(user.portfolio)
+       let info = req.body.info;
+       let aboutMe = req.body.aboutMe;
+       if(info){
+        user.portfolio.info = info;
+       }
+       if(aboutMe){
+        user.portfolio.aboutMe = aboutMe
+       }
        user.save().then(() => {
             res.status(201).send(user)
        }).catch((err) => {

@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import animal from "./animal.jpg";
-import food from "./food.jpg";
-import people from "./people.jpg";
-import travel from "./travel.jpg";
-import avatarImg from "./avatar.svg";
 import "./Artist.scss";
-//import Upload from '../ProfilePictureUpload';
 import Zmage from 'react-zmage';
 import { useDispatch, useSelector } from 'react-redux';
 import Upload from '../Upload/index.js';
@@ -19,9 +13,16 @@ const Artist = () => {
   const token = useSelector(state => state.userAuth.token)
   const dispath = useDispatch();
   const [userInfo,setUserInfo] = useState(user.portfolio.info);
+  const [aboutMe,setAboutMe] = useState(user.portfolio.aboutMe);
   const [isEdit,setIsEdit] = useState(false);
+  const [aboutMeEdit,setAboutMeEdit] = useState(false);
+
   const handleChange = (key,value) => {
     setUserInfo(Object.assign({},userInfo,{[key]:value}))
+  }
+
+  const aboutMeChange = (key,value) => {
+    setAboutMe(Object.assign({},aboutMe,{[key]:value}))
   }
   /**
    * form event handler
@@ -29,9 +30,15 @@ const Artist = () => {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispath(updateUserInfo(userInfo,token))
+    dispath(updateUserInfo({info:userInfo},token))
     setIsEdit(false);
   }
+
+  const handleAboutMeSubmit = () => {
+    dispath(updateUserInfo({aboutMe:aboutMe},token))
+    setAboutMeEdit(false)
+  }
+
   /**
    * remove blog 
    * @param {Object} item 
@@ -126,14 +133,28 @@ const Artist = () => {
           <div className="row">
             <div className="col-10 col-sm-12">
               <div className="box">
-                <h5 className="mt-3 text-left">FootPoint</h5>
-                <div className="text-wrap">
-                  some text...
+                <h5 className="mt-3 text-left">About Me</h5>
+                <div className="text-wrap mb-3">
+                <input type="text" readOnly={!aboutMeEdit} value={aboutMe.para1}  onChange={e => aboutMeChange('para1',e.target.value)} className="form-control form-control-sm" id="name" aria-describedby="emailHelp" />
+                </div>
+                <div className="text-wrap mb-3">
+                <input type="text" readOnly={!aboutMeEdit} value={aboutMe.para2}  onChange={e => aboutMeChange('para2',e.target.value)} className="form-control form-control-sm" id="name" aria-describedby="emailHelp" />
+                </div>
+                <div className="text-wrap mb-3">
+                <input type="text" readOnly={!aboutMeEdit} value={aboutMe.para3}  onChange={e => aboutMeChange('para3',e.target.value)} className="form-control form-control-sm" id="name" aria-describedby="emailHelp" />
+                </div>
+                <div className="form-group">
+                  <button type="button" className="btn btn-primary btn-sm mr-3" onClick={() => setAboutMeEdit(!aboutMeEdit)}>
+                    Edit
+                  </button>
+                  <button className="btn btn-primary btn-sm" type="submit" onClick={handleAboutMeSubmit}>
+                    Save
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-10 col-sm-12">
               <div className="box">
                 <h5 className="mt-3 text-left">Contact</h5>
@@ -142,7 +163,7 @@ const Artist = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

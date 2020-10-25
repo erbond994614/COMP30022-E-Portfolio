@@ -1,5 +1,6 @@
 const User = require("../dbModels/users")
 const bcrypt = require("bcrypt")
+const mongoose = require('mongoose');
 
 //Add a new user to the database
 const createUser = async function (req, res) {
@@ -92,6 +93,102 @@ const uploadProfilePicture = async function (req, res) {
         res.status(400).send({error: "unable to find user"})
     }
 }
+/**
+ * update user avatar image
+ * @param {Object} req 
+ * @param {Object} res 
+ */
+const uploadAvatar = async function(req,res) {
+    const user = await User.findOne({email: req.user.email});
+    if(user){
+        if(req.files){
+            const input = req.files.input;
+            const file = {
+                name:input.name,
+                mimetype: input.mimetype,
+                size:input.size,
+                data:input.data.toString('base64')
+            }
+            user.avatar = file;
+            user.save().then(() => {
+                res.status(201).send(user)
+            }).catch((err) => {
+                console.log(err);
+                res.status(400).send({error: "update error"})
+            })
+        }
+    }
+}
+/**
+ * update user info
+ * @param {Object} req 
+ * @param {Object} res 
+ */
+const updateUserInfo = async function(req,res) {
+   let user = await User.findOne({email: req.user.email});
+   if(user){
+       let info = req.body;
+       console.log(req.body,'req.body');
+       console.log(req,'req')
+       user.portfolio.info = info;
+       console.log(user.portfolio)
+       user.save().then(() => {
+            res.status(201).send(user)
+       }).catch((err) => {
+            console.log(err);
+            res.status(400).send({error: "update error"})
+       })
+
+   }
+}
+
+/**
+ * upload new blog image
+ * @param {Object} req 
+ * @param {Object} res 
+ */
+const uploadBlog = async function(req,res) {
+    let user = await User.findOne({email:req.user.email});
+    if(user && req.files){
+        const input = req.files.input;
+            const file = {
+                name:input.name,
+                mimetype: input.mimetype,
+                size:input.size,
+                data:input.data.toString('base64')
+            }
+        user.portfolio.blogs.push(file);
+        user.save().then(() => {
+            res.status(201).send(user)
+        }).catch((err) => {
+            console.log(err);
+            res.status(400).send({error: "update error"})
+       })
+    }
+}
+
+/**
+ * delete blog img from mongodb
+ * @param {Object} req 
+ * @param {Object} res
+ *  
+ */
+const deleteBlog = async function(req,res) {
+    try {
+        await User.updateOne({email:req.user.email},{
+            "$pull":{
+                "portfolio.blogs":{
+                    '_id':mongoose.Types.ObjectId(req.body.id)
+                }
+            }
+        })
+        let user = await User.findOne({email:req.user.email});
+        res.status(201).send(user);    
+    } catch (e) {
+        console.log(e)
+        res.status(400).send({error:"update error"})
+    }
+}
 
 module.exports = {
     createUser,
@@ -99,5 +196,9 @@ module.exports = {
     logoutUser,
     updatePortfolio,
     getPortfolio,
-    uploadProfilePicture
+    uploadProfilePicture,
+    uploadAvatar,
+    updateUserInfo,
+    uploadBlog,
+    deleteBlog
 }

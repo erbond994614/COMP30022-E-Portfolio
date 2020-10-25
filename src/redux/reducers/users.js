@@ -1,20 +1,23 @@
 import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    SIGNUP_REQUEST,
-    SIGNUP_SUCCESS,
-    SIGNUP_FAILURE,
-    LOGOUT_REQUEST,
-    LOGOUT_SUCCESS,
-    PORTFOLIO_UPDATE_REQUEST,
-    PORTFOLIO_UPDATE_SUCCESS,
-    PORTFOLIO_UPDATE_FAILURE,
-    PROFILE_PICTURE_UPLOAD_REQUEST,
-    PROFILE_PICTURE_UPLOAD_SUCCESS,
-    PROFILE_PICTURE_UPLOAD_FAILURE,
-    UPDATE_USER_AVATAR
-} from '../constants/users'
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  PORTFOLIO_UPDATE_REQUEST,
+  PORTFOLIO_UPDATE_SUCCESS,
+  PORTFOLIO_UPDATE_FAILURE,
+  PROFILE_PICTURE_UPLOAD_REQUEST,
+  PROFILE_PICTURE_UPLOAD_SUCCESS,
+  PROFILE_PICTURE_UPLOAD_FAILURE,
+  UPDATE_USER_AVATAR
+  //FILE_UPLOAD_REQUEST,
+  //FILE_UPLOAD_SUCCESS,
+  //FILE_UPLOAD_FAILURE
+} from "../constants/users";
 
 /**
  * Get state from localstorage for keep logged in
@@ -35,7 +38,6 @@ const getStateFromLocal = () => {
  * @param {String} value setItem Value
  */
 const setStateToLocal = (key,value) => {
-    debugger
     window.localStorage.setItem(key,value)
 }
 
@@ -48,10 +50,10 @@ const clearStateLocal = () => {
 }
 
 const initialState = {
-        pending: false,
-        user: {},
-        token: ""
-    }
+  pending: false,
+  user: {},
+  token: "",
+};
 
 const userAuth = (state = getStateFromLocal(), action) => {
     switch (action.type) {
@@ -122,4 +124,5 @@ const userAuth = (state = getStateFromLocal(), action) => {
     }
 }
 
-export default userAuth
+
+export default userAuth;

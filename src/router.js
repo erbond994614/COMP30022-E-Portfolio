@@ -6,8 +6,8 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import TestPage from "./components/TestPage";
 import Portfolio from "./components/Portfolio";
-import Information from "./components/Information";
-import AboutMe from "./components/AboutMe";
+import InformationForm from "./components/InformationForm";
+import AboutMeForm from "./components/AboutMeForm";
 import Logout from "./components/Logout";
 import Artist from "./components/Artist/Artist";
 import DisplayPortfolio from "./components/DisplayPortfolio";
@@ -40,7 +40,7 @@ const Routes = [
     path: "/info",
     exact: true,
     requiresAuth: true,
-    component: Information,
+    component: InformationForm,
   },
   {
     path: "/portfolio",
@@ -54,7 +54,7 @@ const Routes = [
     exact: true,
     requiresAuth: true,
     role: ["student", "artist", "professional"],
-    component: AboutMe,
+    component: AboutMeForm,
   },
   {
     path: "/logout",

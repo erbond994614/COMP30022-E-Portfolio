@@ -28,12 +28,12 @@ export const downloadPortfolio = (userId) => {
             response.json().then(result => {
                 if (response.status === 201) {
                     dispatch(portfolioDownloadSuccess(result))
+                    history.push('/display')
                 } else {
                     dispatch(portfolioDownloadFailure())
                     alert(result.error)
                 }
             })
         )
-        history.push('/display')
     }
 }

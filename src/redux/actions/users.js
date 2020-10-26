@@ -92,7 +92,7 @@ export const login = (payload) => {
             response.json().then(result => {
                 if (response.status === 201) {
                     dispatch(loginSuccess(result.user, result.token));
-                    if(result.user.portfolio.info.major === 'Arts'){
+                    if(result.user.role === 'artist'){
                         history.push('/artist')
                     }else {
                         history.push('/portfolio')

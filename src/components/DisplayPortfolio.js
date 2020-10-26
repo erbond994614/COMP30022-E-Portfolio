@@ -8,7 +8,7 @@ import AboutMe from './AboutMe'
 import Downloads from './Downloads'
 
 const DisplayPortfolio = () => {
-  var portfolio = useSelector((state) => state.portfolio.portfolio);
+  var portfolio = useSelector((state) => state.portfolioStore.portfolio);
 
   if (!portfolio) {
     portfolio = studentTemplate;

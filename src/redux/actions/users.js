@@ -128,8 +128,6 @@ export const login = (payload) => {
     )}
 }
 
-
-
 export const signup = (payload) => {
   // {email, password, portfolio}
   return (dispatch) => {

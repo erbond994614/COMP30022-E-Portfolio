@@ -98,22 +98,23 @@ const uploadFile = async function (req, res) {
   const user = await User.findOne({ email: req.user.email });
   if (user) {
     if (req.files) {
-      let file = req.files.input;
-      let fileSchema = {};
-      fileSchema.name = file.name;
-      fileSchema.size = file.size;
-      fileSchema.mimetype = file.mimetype;
-      fileSchema.data = file.data.toString("base64");
+      let input = req.files.input;
+      let file = {
+        name: input.name,
+        size: input.size,
+        mimetype: input.mimetype,
+        data: input.data.toString("base64"),
+      }
 
-      user.portfolio.downloads.push(fileSchema);
+      user.portfolio.downloads.push(file);
       await user.save();
-      res.status(200).send(user);
+      res.status(201).send(user);
     } else {
       res.status(400).send({ error: "no file found " });
     }
-}else {
+  }else {
     res.status(400).send({ error: "update error" });
-}
+  }
 }
 /**
  * update user avatar image

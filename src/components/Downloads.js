@@ -8,7 +8,7 @@ const Downloads = (props) => {
         if (!props.display) {
             return state.userAuth.user.portfolio.downloads
         } else {
-            return state.portfolio.portfolio.downloads
+            return state.portfolioStore.portfolio.downloads
         }
     })
 

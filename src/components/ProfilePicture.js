@@ -9,7 +9,7 @@ const ProfilePicture = (props) => {
         if (!props.display) {
             return state.userAuth.user.portfolio.profilePicture;
         } else {
-            return state.portfolio.portfolio.profilePicture
+            return state.portfolioStore.portfolio.profilePicture
         }
     })
     

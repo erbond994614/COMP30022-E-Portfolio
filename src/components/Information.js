@@ -3,7 +3,14 @@ import { useSelector } from 'react-redux'
 import history from '../history'
 
 const Information = (props) => {
-    const info = useSelector(state => {if (!props.display) return state.userAuth.user.portfolio.info; else return state.portfolio.portfolio.info})
+    const info = useSelector(state => {
+        if (!props.display) {
+            return state.userAuth.user.portfolio.info
+        } else {
+            return state.portfolioStore.portfolio.info
+        }
+    })
+
     return (
         <div className='text'>
             {Object.entries(info).map(([key, value]) => {

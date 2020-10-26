@@ -3,7 +3,14 @@ import { useSelector } from 'react-redux'
 import history from '../history'
 
 const AboutMe = (props) => {
-    const aboutMe = useSelector(state => {if (!props.display) return state.userAuth.user.portfolio.aboutMe; else return state.portfolio.portfolio.aboutMe})
+    const aboutMe = useSelector(state => {
+        if (!props.display) {
+            return state.userAuth.user.portfolio.aboutMe
+        } else {
+            return state.portfolioStore.portfolio.aboutMe
+        }
+    })
+    
     return (
         <>
             <h3>About Me</h3>

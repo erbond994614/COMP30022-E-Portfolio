@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import Homepage from "./components/Homepage";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import TestPage from "./components/TestPage";
 import Portfolio from "./components/Portfolio";
 import InformationForm from "./components/InformationForm";
 import AboutMeForm from "./components/AboutMeForm";
@@ -68,12 +67,6 @@ const Routes = [
     requiresAuth: true,
     role: "artist",
     component: Artist,
-  },
-  {
-    path: "/dev",
-    exact: true,
-    requiresAuth: true,
-    component: TestPage,
   },
   {
     path: "/temp",

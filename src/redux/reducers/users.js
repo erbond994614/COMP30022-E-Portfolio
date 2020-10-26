@@ -13,49 +13,27 @@ import {
   PROFILE_PICTURE_UPLOAD_REQUEST,
   PROFILE_PICTURE_UPLOAD_SUCCESS,
   PROFILE_PICTURE_UPLOAD_FAILURE,
-  UPDATE_USER_AVATAR
-  //FILE_UPLOAD_REQUEST,
-  //FILE_UPLOAD_SUCCESS,
-  //FILE_UPLOAD_FAILURE
+  FILE_UPLOAD_REQUEST,
+  FILE_UPLOAD_SUCCESS,
+  FILE_UPLOAD_FAILURE
 } from "../constants/users";
 
-/**
- * Get state from localstorage for keep logged in
- */
-const getStateFromLocal = () => {
-    let user = window.localStorage.getItem('user')
-    let token = window.localStorage.getItem('token')
-    return {
-        user:(user && JSON.parse(user)) || {},
-        token:token,
-        pending:false
+const user = JSON.parse(localStorage.getItem('user'))
+const token = JSON.parse(localStorage.getItem('token'))
+
+const initialState = user
+  ? {
+      pending: false,
+      user,
+      token,
     }
-}
+  : {
+      pending: false,
+      user: {},
+      token: "",
+    }
 
-/**
- * Save state to localstorage
- * @param {String} key setItem Key 
- * @param {String} value setItem Value
- */
-const setStateToLocal = (key,value) => {
-    window.localStorage.setItem(key,value)
-}
-
-/**
- * When logout, clear localstorage
- */
-const clearStateLocal = () => {
-    window.localStorage.removeItem('user');
-    window.localStorage.removeItem('token');
-}
-
-const initialState = {
-  pending: false,
-  user: {},
-  token: "",
-};
-
-const userAuth = (state = getStateFromLocal(), action) => {
+const userAuth = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
         case SIGNUP_REQUEST:
@@ -65,8 +43,6 @@ const userAuth = (state = getStateFromLocal(), action) => {
                 token: ''
             }
         case LOGIN_SUCCESS:
-            setStateToLocal('user',JSON.stringify(action.user))
-            setStateToLocal('token',action.token)
             return {
                 pending: false,
                 user: action.user,
@@ -81,25 +57,23 @@ const userAuth = (state = getStateFromLocal(), action) => {
         case LOGIN_FAILURE:
         case SIGNUP_FAILURE:
         case LOGOUT_SUCCESS:
-            clearStateLocal();
-            return initialState;
+            return {
+                pending: false,
+                user: {},
+                token: ""
+            }
         case LOGOUT_REQUEST:
         case PORTFOLIO_UPDATE_REQUEST:
         case PROFILE_PICTURE_UPLOAD_REQUEST:
+        case FILE_UPLOAD_REQUEST:
             return {
                 pending: true,
                 user: state.user,
                 token: state.token
             }
         case PORTFOLIO_UPDATE_SUCCESS:
-            setStateToLocal('user',JSON.stringify(action.user))
-            return {
-                pending:true,
-                user:action.user,
-                token:state.token
-            }
         case PROFILE_PICTURE_UPLOAD_SUCCESS:
-            setStateToLocal('user',JSON.stringify(action.user))
+        case FILE_UPLOAD_SUCCESS:
             return {
                 pending: false,
                 user: action.user,
@@ -107,17 +81,11 @@ const userAuth = (state = getStateFromLocal(), action) => {
             }
         case PORTFOLIO_UPDATE_FAILURE:
         case PROFILE_PICTURE_UPLOAD_FAILURE:
+        case FILE_UPLOAD_FAILURE:
             return {
                 pending: false,
                 user: state.user,
                 token: state.token
-            }
-        case UPDATE_USER_AVATAR:
-            setStateToLocal('user',JSON.stringify(action.user))
-            return {
-                pending:false,
-                user:action.user,
-                token:state.token
             }
         default:
             return state

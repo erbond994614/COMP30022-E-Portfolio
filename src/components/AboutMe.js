@@ -7,12 +7,31 @@ const AboutMe = (props) => {
     return (
         <>
             <h3>About Me</h3>
-            {!props.display ? <button className='editButton' onClick={() => history.push('/aboutme')}>Edit About Me</button> : null}
-            <br/>
-            <div className='aboutme'>         
-                <h4>Paragraph 1 <br/><br/><p>{aboutMe.para1}</p></h4>
-                <h4>Paragraph 2 <br/><br/><p>{aboutMe.para2}</p></h4>
-                <h4>Paragraph 3 <br/><br/><p>{aboutMe.para3}</p></h4>
+
+            {!props.display
+                ? <button className="editButton" onClick={() => history.push("/aboutme")}>
+                Edit
+                </button>
+                : null
+            }
+
+            <br />
+            <div className="aboutme">
+                <h4>
+                    Paragraph 1 <br />
+                    <br />
+                    <p>{aboutMe.para1}</p>
+                </h4>
+                <h4>
+                    Paragraph 2 <br />
+                    <br />
+                    <p>{aboutMe.para2}</p>
+                </h4>
+                <h4>
+                    Paragraph 3 <br />
+                    <br />
+                    <p>{aboutMe.para3}</p>
+                </h4>
             </div>
         </>
     )

@@ -18,7 +18,9 @@ export const artistTemplate = {
     info: {
         Name: "Artist Template",
         Age: '20',
-        Major: "Arts"
+        Major: "Arts",
+        Graduate:"",
+        Location:""
     },
     aboutMe: {
         para1: "i am a artist",

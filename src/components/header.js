@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const auth = useSelector((state) => state.userAuth.token);
+  const auth = useSelector((store) => store.userAuth.token);
+  const user = useSelector((store) => store.userAuth && store.userAuth.user);
   return (
     <header>
       <div className="logo">
@@ -17,12 +18,6 @@ const Header = () => {
               <li>
                 <Link to="logout">Logout</Link>
               </li>
-              <li>
-                <Link to="dev">TestPage</Link>
-              </li>
-              <li>
-                <Link to="downloads">Downloads</Link>
-              </li>
             </div>
           ) : (
             <div>
@@ -34,6 +29,13 @@ const Header = () => {
               </li>
             </div>
           )}
+          {
+            auth && user.role === "artist" ? (
+              <li>
+                <Link to="artist">Artist</Link>
+              </li>
+            ): null
+          }
         </ul>
       </nav>
     </header>

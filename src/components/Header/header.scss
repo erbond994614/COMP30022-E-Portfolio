@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    .logo-box {
+        margin-left: 40px;
+        height: 80px;
+        width: 80px;
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .home-index {
+        margin-left: 20px;
+    }
+    .right-nav {
+        margin-left: auto;
+        margin-right: 120px;
+        ul {
+            display: flex;
+            li + li {
+                margin-left: 15px;
+            }
+        }
+    }
+}
+
+ul,ol,li {
+    list-style-type: none;
+}

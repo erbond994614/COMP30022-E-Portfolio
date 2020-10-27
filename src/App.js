@@ -2,7 +2,7 @@ import React from "react";
 import Router from "./router";
 import history from './history';
 // components
-import Header from "./components/header";
+import Header from "./components/Header/header";
 import Footer from "./components/footer";
 
 //import Downloads from './components/Downloads';

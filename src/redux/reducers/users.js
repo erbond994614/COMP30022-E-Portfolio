@@ -15,24 +15,29 @@ import {
   PROFILE_PICTURE_UPLOAD_FAILURE,
   FILE_UPLOAD_REQUEST,
   FILE_UPLOAD_SUCCESS,
-  FILE_UPLOAD_FAILURE
+  FILE_UPLOAD_FAILURE,
+  UPDATE_USER_AVATAR
 } from "../constants/users";
 
 const user = JSON.parse(localStorage.getItem('user'))
 const token = JSON.parse(localStorage.getItem('token'))
 
-const initialState = user
-  ? {
-      pending: false,
-      user,
-      token,
-    }
-  : {
-      pending: false,
-      user: {},
-      token: "",
-    }
-
+// const initialState = user
+//   ? {
+//       pending: false,
+//       user,
+//       token,
+//     }
+//   : {
+//       pending: false,
+//       user: {},
+//       token: "",
+//     }
+const initialState = {
+    pending:false,
+    user:{},
+    token:''
+}
 const userAuth = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
@@ -72,6 +77,11 @@ const userAuth = (state = initialState, action) => {
                 token: state.token
             }
         case PORTFOLIO_UPDATE_SUCCESS:
+            return {
+                pending:false,
+                user:action.user,
+                token:state.token
+            }
         case PROFILE_PICTURE_UPLOAD_SUCCESS:
         case FILE_UPLOAD_SUCCESS:
             return {
@@ -86,6 +96,12 @@ const userAuth = (state = initialState, action) => {
                 pending: false,
                 user: state.user,
                 token: state.token
+            }
+        case UPDATE_USER_AVATAR:
+            return {
+                pending:false,
+                user:action.user,
+                token:state.token
             }
         default:
             return state

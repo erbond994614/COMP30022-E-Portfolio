@@ -13,6 +13,18 @@ const Artist = () => {
 
   return (
     <section className="main-container">
+      {/* <section className="page-des">
+        <h3>Welcome to Quick e-Portfolio!</h3>
+        <p>
+          Join today, create and manage your very own e-Portfolio website in 5
+          minutes!
+        </p>
+        <p>
+          Using Quick e-Portfolio to make your own Blog, Foot Print, and upload
+          your resume online!
+        </p>
+        <p>Sample of Personal e-Portfolio</p>
+      </section> */}
       <div className="user-info-box">
         <div className="container">
           <div className="row mb-3">
@@ -28,27 +40,60 @@ const Artist = () => {
                 {/*<form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" readOnly={!isEdit} value={userInfo.Name}  onChange={e => handleChange('Name',e.target.value)} className="form-control form-control-sm" id="name" aria-describedby="emailHelp" />
+                    <input
+                      type="text"
+                      readOnly={!isEdit}
+                      value={userInfo.Name}
+                      onChange={(e) => handleChange("Name", e.target.value)}
+                      className="form-control form-control-sm"
+                      id="name"
+                      aria-describedby="emailHelp"
+                    />
                   </div>
                   <div className="form-group">
                     <label htmlFor="age">Age</label>
-                    <input type="number" readOnly={!isEdit} value={userInfo.Age}   onChange={e => handleChange('Age',e.target.value)} className="form-control form-control-sm" id="age" />
+                    <input
+                      type="number"
+                      readOnly={!isEdit}
+                      value={userInfo.Age}
+                      onChange={(e) => handleChange("Age", e.target.value)}
+                      className="form-control form-control-sm"
+                      id="age"
+                    />
                   </div>
                   <div className="form-group">
                     <label htmlFor="graduate">Graduate</label>
-                    <input type="text" readOnly={!isEdit} value={userInfo.Graduate}  onChange={e => handleChange('Graduate',e.target.value)} className="form-control form-control-sm" id="graduate" />
+                    <input
+                      type="text"
+                      readOnly={!isEdit}
+                      value={userInfo.Graduate}
+                      onChange={(e) => handleChange("Graduate", e.target.value)}
+                      className="form-control form-control-sm"
+                      id="graduate"
+                    />
                   </div>
                   <div className="form-group">
                     <label htmlFor="location">Location</label>
-                    <input type="text" readOnly={!isEdit} value={userInfo.Location}  onChange={e => handleChange('Location',e.target.value)} className="form-control form-control-sm" id="location" />
+                    <input
+                      type="text"
+                      readOnly={!isEdit}
+                      value={userInfo.Location}
+                      onChange={(e) => handleChange("Location", e.target.value)}
+                      className="form-control form-control-sm"
+                      id="location"
+                    />
                   </div>
                   <div className="form-group">
-                  <button type="button" className="btn btn-primary btn-sm mr-3" onClick={() => setIsEdit(!isEdit)}>
-                    Edit
-                  </button>
-                  <button className="btn btn-primary btn-sm" type="submit">
-                    Save
-                  </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm mr-3"
+                      onClick={() => setIsEdit(!isEdit)}
+                    >
+                      Edit
+                    </button>
+                    <button className="btn btn-primary btn-sm" type="submit">
+                      Save
+                    </button>
                   </div>
                 </form>*/}
                 <Information/>
@@ -83,19 +128,51 @@ const Artist = () => {
               <div className="box">
                 <h5 className="mt-3 text-left">About Me</h5>
                 <div className="text-wrap mb-3">
-                <input type="text" readOnly={!aboutMeEdit} value={aboutMe.para1}  onChange={e => aboutMeChange('para1',e.target.value)} className="form-control form-control-sm" id="name" aria-describedby="emailHelp" />
+                  <input
+                    type="text"
+                    readOnly={!aboutMeEdit}
+                    value={aboutMe.para1}
+                    onChange={(e) => aboutMeChange("para1", e.target.value)}
+                    className="form-control form-control-sm"
+                    id="name"
+                    aria-describedby="emailHelp"
+                  />
                 </div>
                 <div className="text-wrap mb-3">
-                <input type="text" readOnly={!aboutMeEdit} value={aboutMe.para2}  onChange={e => aboutMeChange('para2',e.target.value)} className="form-control form-control-sm" id="name" aria-describedby="emailHelp" />
+                  <input
+                    type="text"
+                    readOnly={!aboutMeEdit}
+                    value={aboutMe.para2}
+                    onChange={(e) => aboutMeChange("para2", e.target.value)}
+                    className="form-control form-control-sm"
+                    id="name"
+                    aria-describedby="emailHelp"
+                  />
                 </div>
                 <div className="text-wrap mb-3">
-                <input type="text" readOnly={!aboutMeEdit} value={aboutMe.para3}  onChange={e => aboutMeChange('para3',e.target.value)} className="form-control form-control-sm" id="name" aria-describedby="emailHelp" />
+                  <input
+                    type="text"
+                    readOnly={!aboutMeEdit}
+                    value={aboutMe.para3}
+                    onChange={(e) => aboutMeChange("para3", e.target.value)}
+                    className="form-control form-control-sm"
+                    id="name"
+                    aria-describedby="emailHelp"
+                  />
                 </div>
                 <div className="form-group">
-                  <button type="button" className="btn btn-primary btn-sm mr-3" onClick={() => setAboutMeEdit(!aboutMeEdit)}>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm mr-3"
+                    onClick={() => setAboutMeEdit(!aboutMeEdit)}
+                  >
                     Edit
                   </button>
-                  <button className="btn btn-primary btn-sm" type="submit" onClick={handleAboutMeSubmit}>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    type="submit"
+                    onClick={handleAboutMeSubmit}
+                  >
                     Save
                   </button>
                 </div>
@@ -119,6 +196,5 @@ const Artist = () => {
     </section>
   );
 };
-
 
 export default Artist;

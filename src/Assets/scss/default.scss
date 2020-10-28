@@ -1,5 +1,11 @@
 @import "config.scss";
 
+// reset all element margin and padding
+* {
+  margin: 0;
+  padding: 0;
+}
+
 header {
   position: relative;
   display: block;
@@ -21,6 +27,18 @@ header {
       font-size: 40px;
     }
   }
+  .logo-box {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 80px;
+    width: 80px;
+    img {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
 
   nav,
   nav ul,
@@ -30,11 +48,7 @@ header {
   }
 
   nav {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    @include translateY(-50%);
-
+   
     ul li {
       list-style-type: none;
       display: inline-block;

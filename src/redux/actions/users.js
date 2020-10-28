@@ -17,14 +17,7 @@ import {
   FILE_UPLOAD_REQUEST,
   FILE_UPLOAD_SUCCESS,
   FILE_UPLOAD_FAILURE,
-  UPDATE_USER_AVATAR
 } from "../constants/users";
-
-
-export const updateUserAvatarSuccess = (user) => ({
-    type:UPDATE_USER_AVATAR,
-    user
-})
 
 export const loginRequest = () => ({
   type: LOGIN_REQUEST,
@@ -198,105 +191,6 @@ export const uploadProfilePicture = (image, token) => {
         }
     }))
 }}
-
-/**
- * update user avatar and update state
- * @param {File} form 
- * @param {String} token 
- * @param {Function} dispatch 
- */
-export async function updateUserAvatar(form,token,dispatch) {
-    const request = {
-        method:"POST",
-        headers:{
-            Authorization:token
-        },
-        body:form
-    }
-    try {
-        let res = await fetch('/api/users/uploadAvatar',request);
-        if(res.status === 201){
-            let result = await res.json();
-            dispatch(updateUserAvatarSuccess(result))
-        }
-    } catch (e) {
-        console.log(e)     
-    }
-}
-/**
- * upload blog and update state
- * @param {File} form 
- * @param {String} token 
- * @param {Function} dispatch 
- */
-export async function uploadBlog(form,token,dispatch) {
-    const request = {
-        method:"POST",
-        headers:{
-            Authorization:token
-        },
-        body:form
-    }
-    try {
-        let res = await fetch('/api/users/uploadBlog',request);
-        if(res.status === 201){
-            let result = await res.json();
-            dispatch(updateUserAvatarSuccess(result))
-        }
-    } catch (e) {
-        console.log(e)
-    }
-}
-/**
- *  delete blog and update state
- * @param {Object} form 
- * @param {String} token 
- * @param {Function} dispatch 
- */
-export async function deleteBlog(form,token,dispatch) {
-    const request = {
-        method:"POST",
-        headers:{
-            Authorization:token,
-            "Content-Type": 'application/json'
-        },
-        body:JSON.stringify(form)
-    }
-    try {
-        let res = await fetch('/api/users/deleteBlog',request);
-        if(res.status === 201){
-            let result = await res.json();
-            dispatch(updateUserAvatarSuccess(result))
-        }
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-/**
- * update user info and update state
- * @param {Object} formData 
- * @param {String} token 
- */
-export const updateUserInfo = (formData,token) => {
-    return dispatch => {
-        const request = {
-            method:"POST",
-            headers:{
-                Authorization:token,
-                "Content-Type": 'application/json'
-            },
-            body:JSON.stringify(formData)
-        }
-        fetch('/api/users/updateUserInfo',request).then((response) => {
-            response.json().then(result => {
-                if (response.status === 201) {
-                    dispatch(profilePictureUploadSuccess(result))
-                }
-            })
-        })
-    }
-}
 
 export const uploadFile = (file, token) => {
   return (dispatch) => {

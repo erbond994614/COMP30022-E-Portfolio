@@ -1,54 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Artist.scss";
 import Zmage from 'react-zmage';
-import { useDispatch, useSelector } from 'react-redux';
-import Upload from '../Upload/index.js';
-import Avatar from './Avatar';
-import {updateUserInfo,deleteBlog} from '../../redux/actions/users';
-
-
+import { useSelector } from 'react-redux';
+import ProfilePicture from "../ProfilePicture";
+import Information from '../Information'
+import Blog from '../Blog'
+import AboutMe from '../AboutMe'
+import Preview from '../Preview'
 
 const Artist = () => {
   const user = useSelector(state => state.userAuth.user)
-  const token = useSelector(state => state.userAuth.token)
-  const dispath = useDispatch();
-  const [userInfo,setUserInfo] = useState(user.portfolio.info);
-  const [aboutMe,setAboutMe] = useState(user.portfolio.aboutMe);
-  const [isEdit,setIsEdit] = useState(false);
-  const [aboutMeEdit,setAboutMeEdit] = useState(false);
-
-  const handleChange = (key,value) => {
-    setUserInfo(Object.assign({},userInfo,{[key]:value}))
-  }
-
-  const aboutMeChange = (key,value) => {
-    setAboutMe(Object.assign({},aboutMe,{[key]:value}))
-  }
-  /**
-   * form event handler
-   * @param {Event} e 
-   */
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispath(updateUserInfo({info:userInfo},token))
-    setIsEdit(false);
-  }
-
-  const handleAboutMeSubmit = () => {
-    dispath(updateUserInfo({aboutMe:aboutMe},token))
-    setAboutMeEdit(false)
-  }
-
-  /**
-   * remove blog 
-   * @param {Object} item 
-   */
-  const handleRemove = (item) => {
-    let form = {
-      id:item._id
-    }
-    deleteBlog(form,token,dispath)
-  }
 
   return (
     <section className="main-container">
@@ -57,10 +18,14 @@ const Artist = () => {
           <div className="row mb-3">
             <div className="col-8 col-sm-12">
               <div className="d-flex flex-column justify-content-center align-items-center">
-                <div className="avatar-box">
+                {/*<div className="avatar-box">
                   <Avatar avatar={user.avatar && user.avatar.data} />
+                </div>*/}
+                <div className='container'>
+                  <ProfilePicture/>
+                  <br/>
                 </div>
-                <form onSubmit={handleSubmit}>
+                {/*<form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input type="text" readOnly={!isEdit} value={userInfo.Name}  onChange={e => handleChange('Name',e.target.value)} className="form-control form-control-sm" id="name" aria-describedby="emailHelp" />
@@ -85,7 +50,8 @@ const Artist = () => {
                     Save
                   </button>
                   </div>
-                  </form>
+                </form>*/}
+                <Information/>
               </div>
             </div>
           </div>
@@ -95,14 +61,12 @@ const Artist = () => {
                 <h5 className="mt-3 text-left">MY GALLEY</h5>
                 <div className="d-flex flex-wrap justify-content-start">
                   {
-                    user.portfolio.blogs.map((item,index) => (
+                    user.portfolio.blog.map((item,index) => (
                       <div className="galley-item mr-3 mb-1" key={index}>
-                        <Zmage src={'data:image/jpg;base64,'+item.data} />
-                        <button type="button" className="btn btn-link" onClick={() => handleRemove(item)}>Delete</button>
+                        <Zmage src={'data:image/jpg;base64,'+item.file.data} />
                       </div>
                     ))
                   }
-                  <Upload />
                 </div>
               </div>
             </div>
@@ -110,27 +74,11 @@ const Artist = () => {
           <div className="row">
             <div className="col-10 col-sm-12">
               <div className="box d-flex flex-column">
-                <h5 className="mt-3 text-left">BLOG</h5>
-                {
-                  user.portfolio.blogs.map((item,index) => {
-                    return ( <div className="d-flex" key={index}>
-                    <div className="col-6">
-                      <div className="blog-img">
-                        <Zmage src={'data:image/jpg;base64,'+item.data}></Zmage>
-                      </div>
-                    </div>
-                    <div className="col-6  text-wrap">
-                      some text...
-                    </div>
-                    </div>)
-                  })
-                }
-               
-               
+                <Blog/>
               </div>
             </div>
           </div>
-          <div className="row">
+          {/*<div className="row">
             <div className="col-10 col-sm-12">
               <div className="box">
                 <h5 className="mt-3 text-left">About Me</h5>
@@ -153,7 +101,8 @@ const Artist = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div>*/}
+          <AboutMe/>
           {/* <div className="row">
             <div className="col-10 col-sm-12">
               <div className="box">
@@ -166,6 +115,7 @@ const Artist = () => {
           </div> */}
         </div>
       </div>
+      <Preview/>
     </section>
   );
 };

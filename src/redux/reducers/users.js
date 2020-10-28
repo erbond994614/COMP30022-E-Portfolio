@@ -18,19 +18,10 @@ import {
   FILE_UPLOAD_FAILURE
 } from "../constants/users";
 
-const user = JSON.parse(localStorage.getItem('user'))
-const token = JSON.parse(localStorage.getItem('token'))
-
-const initialState = user
-  ? {
-      pending: false,
-      user,
-      token,
-    }
-  : {
-      pending: false,
-      user: {},
-      token: "",
+const initialState = {
+        pending: false,
+        user: {},
+        token: "",
     }
 
 const userAuth = (state = initialState, action) => {
@@ -43,11 +34,6 @@ const userAuth = (state = initialState, action) => {
                 token: ''
             }
         case LOGIN_SUCCESS:
-            return {
-                pending: false,
-                user: action.user,
-                token: action.token
-            }
         case SIGNUP_SUCCESS:
             return {
                 pending: false,

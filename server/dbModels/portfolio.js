@@ -9,8 +9,7 @@ const portfolioSchema = mongoose.Schema({
         para2: {type: String, required: true},
         para3: {type: String, required: true}
     },
-    blogs:[fileSchema],
-    downloads: [fileSchema]
+    blog:[{file: fileSchema, text: {type: String}}],
 })
 
 module.exports = portfolioSchema

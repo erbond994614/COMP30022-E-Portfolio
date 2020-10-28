@@ -10,7 +10,7 @@ export const studentTemplate = {
         para2: "this is a paragraph",
         para3: "there are 3 paragraphs"
     },
-    downloads: []
+    blog: []
 }
 
 export const artistTemplate = {
@@ -27,7 +27,7 @@ export const artistTemplate = {
         para2: "this is a paragraph",
         para3: "there are 3 paragraphs"
     },
-    downloads: []
+    blog: []
 }
 
 export const professionalTemplate = {
@@ -42,5 +42,5 @@ export const professionalTemplate = {
         para2: "this is a paragraph",
         para3: "there are 3 paragraphs"
     },
-    downloads: []
+    blog: []
 }

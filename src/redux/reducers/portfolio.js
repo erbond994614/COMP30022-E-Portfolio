@@ -4,14 +4,7 @@ import {
     PORTFOLIO_DOWNLOAD_FAILURE
 } from '../constants/portfolio'
 
-const portfolio = JSON.parse(localStorage.getItem('portfolio'))
-
-const initialState = portfolio
-    ? {
-        pending: false,
-        portfolio
-    }
-    : {
+const initialState = {
         pending: false,
         portfolio: null
     }

@@ -12,14 +12,9 @@ const FileUpload = () => {
     dispatch(uploadFile(new FormData(form.current), token));
   }
 
-  const changeHandler = (e) => {
-    console.log(e.target.files);
-  };
-
   return (
     <form onSubmit={handleSubmit} ref={form}>
       <input
-        onChange={changeHandler}
         allow=".pdf/*, image/*, .ppt/*"
         type="file"
         name="input"

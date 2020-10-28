@@ -5,7 +5,7 @@ import { studentTemplate } from "./Template/templates";
 import ProfilePicture from './ProfilePicture'
 import Information from './Information'
 import AboutMe from './AboutMe'
-import Downloads from './Downloads'
+import Blog from './Blog'
 
 const DisplayPortfolio = () => {
   var portfolio = useSelector((state) => state.portfolioStore.portfolio);
@@ -27,7 +27,7 @@ const DisplayPortfolio = () => {
         <br/>
         <AboutMe display={true}/>
 
-        <Downloads display={true}/>
+        <Blog display={true}/>
       </section>
     </div>
   );

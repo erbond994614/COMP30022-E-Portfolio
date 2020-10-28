@@ -11,6 +11,7 @@ import Logout from "./components/Logout";
 import Artist from "./components/Artist/Artist";
 import DisplayPortfolio from "./components/DisplayPortfolio";
 import DisplayRouter from "./components/DisplayRouter";
+import BlogForm from "./components/BlogForm";
 
 /**
  * import all routes and register routes;
@@ -54,6 +55,13 @@ const Routes = [
     requiresAuth: true,
     role: ["student", "artist", "professional"],
     component: AboutMeForm,
+  },
+  {
+    path: "/blog",
+    exact: true,
+    requiresAuth: true,
+    role: ["student", "artist", "professional"],
+    component: BlogForm
   },
   {
     path: "/logout",

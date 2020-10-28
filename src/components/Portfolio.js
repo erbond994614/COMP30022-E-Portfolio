@@ -6,7 +6,7 @@ import ProfilePicture from './ProfilePicture'
 import Information from './Information'
 import AboutMe from './AboutMe'
 import Preview from './Preview'
-import Downloads from "./Downloads";
+import Blog from "./Blog";
 
 const Portfolio = () => {
     var portfolio = useSelector(state => state.userAuth.user.portfolio)
@@ -28,7 +28,7 @@ const Portfolio = () => {
                 <br/>
                 <AboutMe/>
 
-                <Downloads/>
+                <Blog/>
             </section>
             <Preview/>
     </div>

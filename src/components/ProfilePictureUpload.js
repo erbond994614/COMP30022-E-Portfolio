@@ -25,6 +25,7 @@ const ProfilePictureUpload = () => {
 
     return (
         <form onSubmit={handleSubmit} ref={form}>
+            <label>Change Profile Picture</label>
             <input type="file" accept='image/*' name="input" required />
             <input type='submit' value='Upload'/>
         </form>    

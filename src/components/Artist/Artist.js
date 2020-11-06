@@ -7,6 +7,7 @@ import Information from '../Information'
 import Blog from '../Blog'
 import AboutMe from '../AboutMe'
 import Preview from '../Preview'
+import FileUpload from "../FileUpload";
 
 const Artist = () => {
   const user = useSelector(state => state.userAuth.user)
@@ -120,6 +121,8 @@ const Artist = () => {
             <div className="col-10 col-sm-12">
               <div className="box d-flex flex-column">
                 <Blog/>
+                Add New Post:
+                <FileUpload/>
               </div>
             </div>
           </div>

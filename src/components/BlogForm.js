@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updatePortfolio } from '../redux/actions/users'
 import history from '../history'
 import DisplayFile from './DisplayFile'
-import FileUpload from './FileUpload'
 
 const BlogForm = () => {
     const dispatch = useDispatch()
@@ -49,9 +48,6 @@ const BlogForm = () => {
                 <button type="submit" className="btn btn-primary btn-block" >Save</button>
                 <button type="reset" className="btn btn-primary btn-block" onClick={(event) => history.push('/portfolio')}>Discard Changes</button>
             </form>
-            <br/>
-            Add New Post:
-            <FileUpload/>
         </>
     )
 }

@@ -19,6 +19,7 @@ const ProfilePicture = (props) => {
                 ? <DisplayFile className='avatar' file={profilePicture} />
                 : <img className='avatar' src={avatar} alt='Avatar' />
             }
+            <br/>
             {!props.display ? <ProfilePictureUpload/> : null}
         </>
     )

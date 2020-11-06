@@ -43,9 +43,8 @@ describe('User Controller - Create User', () => {
                         para2: "this is a paragraph",
                         para3: "there are 3 paragraphs"
                     },
-                    downloads: []
-                },
-                tokens: []
+                    blog: []
+                }
             }
         })
         const res = httpMocks.createResponse(req)
@@ -82,9 +81,8 @@ describe('User Controller - Create User', () => {
                         para2: "this is a paragraph",
                         para3: "there are 3 paragraphs"
                     },
-                    downloads: []
-                },
-                tokens: []
+                    blog: []
+                }
             }
         })
         const res = httpMocks.createResponse(req)
@@ -110,8 +108,7 @@ describe('User Controller - Create User', () => {
                         para2: "this is a paragraph",
                         para3: "there are 3 paragraphs"
                     }
-                },
-                tokens: []
+                }
             }
         })
         const res = httpMocks.createResponse(req)
@@ -198,7 +195,7 @@ describe('User Controller - Update Portfolio', () => {
                     para2: "this is a paragraph about nothing",
                     para3: "there are 3 paragraphs about nothing"
                 },
-                downloads: []
+                blog: []
             },
             user: {
                 email: 'test@student'

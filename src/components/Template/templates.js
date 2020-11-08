@@ -35,7 +35,9 @@ export const professionalTemplate = {
     info: {
         Name: "Professional Template",
         Age: '20',
-        Major: "CS"
+        Major: "CS",
+        Graduate:"",
+        Location:""
     },
     aboutMe: {
         para1: "i am a professional",

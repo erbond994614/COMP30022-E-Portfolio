@@ -117,6 +117,8 @@ export const login = (payload) => {
           dispatch(loginSuccess(result.user, result.token));
           if (result.user.role === "artist") {
             history.push("/artist");
+          } else if (result.user.role === 'professional'){
+            history.push('/professional')
           } else {
             history.push("/portfolio");
           }

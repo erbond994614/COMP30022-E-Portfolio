@@ -129,7 +129,8 @@ const Artist = () => {
               </div>
             </div>
           </div>
-          <div className="row">
+          {
+            user.role === 'professional' ? <div className="row">
             <div className="col-10 col-sm-12 mb-3">
               <div className="galley-box">
                 <h5 className="mt-3 text-left">MY Certificate</h5>
@@ -150,7 +151,8 @@ const Artist = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> : null
+          }
           <div className="row">
             <div className="col-10 col-sm-12">
               <div className="galley-box">

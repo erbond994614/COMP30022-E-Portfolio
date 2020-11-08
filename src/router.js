@@ -69,6 +69,13 @@ const Routes = [
     component: Artist,
   },
   {
+    path:"/professional",
+    exact:true,
+    requiresAuth:true,
+    role:"professional",
+    component:Artist
+  },
+  {
     path: "/temp",
     exact: true,
     requiresAuth: true,

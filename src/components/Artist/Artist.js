@@ -4,7 +4,7 @@ import Zmage from "react-zmage";
 import { useDispatch, useSelector } from "react-redux";
 import Upload from "../Upload/index.js";
 import Avatar from "./Avatar";
-import { updateUserInfo, deleteBlog } from "../../redux/actions/users";
+import { updateUserInfo, deleteBlog,uploadBlog,deleteCertificate,uploadCertificates } from "../../redux/actions/users";
 
 const Artist = () => {
   const user = useSelector((state) => state.userAuth.user);
@@ -48,20 +48,17 @@ const Artist = () => {
     deleteBlog(form, token, dispath);
   };
 
+
+  const handleCertificateRemove = (item) => {
+    let form = {
+      id:item._id
+    }
+    deleteCertificate(form,token,dispath)
+  }
+
+
   return (
     <section className="main-container">
-      {/* <section className="page-des">
-        <h3>Welcome to Quick e-Portfolio!</h3>
-        <p>
-          Join today, create and manage your very own e-Portfolio website in 5
-          minutes!
-        </p>
-        <p>
-          Using Quick e-Portfolio to make your own Blog, Foot Print, and upload
-          your resume online!
-        </p>
-        <p>Sample of Personal e-Portfolio</p>
-      </section> */}
       <div className="user-info-box">
         <div className="container">
           <div className="row mb-3">
@@ -133,6 +130,28 @@ const Artist = () => {
             </div>
           </div>
           <div className="row">
+            <div className="col-10 col-sm-12 mb-3">
+              <div className="galley-box">
+                <h5 className="mt-3 text-left">MY Certificate</h5>
+                <div className="d-flex flex-wrap justify-content-start">
+                  {!user.certificates ? null : user.certificates.map((item, index) => (
+                    <div className="galley-item mr-3 mb-1" key={index}>
+                      <Zmage src={"data:image/jpg;base64," + item.data} />
+                      <button
+                        type="button"
+                        className="btn btn-link"
+                        onClick={() => handleCertificateRemove(item)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                  <Upload submit={uploadCertificates} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
             <div className="col-10 col-sm-12">
               <div className="galley-box">
                 <h5 className="mt-3 text-left">MY GALLEY</h5>
@@ -149,7 +168,7 @@ const Artist = () => {
                       </button>
                     </div>
                   ))}
-                  <Upload />
+                  <Upload submit={uploadBlog} />
                 </div>
               </div>
             </div>

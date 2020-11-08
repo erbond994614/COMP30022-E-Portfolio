@@ -28,4 +28,12 @@ router.post('/deleteBlog',auth,controller.deleteBlog)
 
 router.post(`/file`, auth, controller.uploadFile);
 
+router.post('/forgetPassword',controller.forgetPassword);
+
+router.post('/resetPassword',controller.resetPassword);
+
+router.post('/updateCertificates',auth,controller.updateCertificates);
+
+router.post('/delCertificate',auth,controller.delCertificate)
+
 module.exports = router;

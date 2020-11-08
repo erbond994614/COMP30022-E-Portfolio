@@ -1,7 +1,8 @@
 const User = require("../dbModels/users")
 const bcrypt = require("bcrypt")
 const mongoose = require('mongoose');
-
+const {createEmailSc,sendEmail}  = require('./email');
+const SecurityCodeStore = require('../dbModels/securityCodeStore');
 //Add a new user to the database
 const createUser = async function (req, res) {
   try {
@@ -215,6 +216,83 @@ const deleteBlog = async function(req,res) {
         res.status(400).send({error:"update error"})
     }
 }
+/**
+ * get security code from user email to reset password
+ * @param {Object} req 
+ * @param {Object} res 
+ */
+const forgetPassword = async (req,res) => {
+  console.log(req.body);
+  const {email} = req.body;
+  let user = await User.findOne({email:email});
+  if(user){
+    let code = await createEmailSc(email);
+    await sendEmail(code,email);
+  }
+  res.status(201).send();
+}
+/**
+ * reset password from security code 
+ * @param {Object} req 
+ * @param {Object} res 
+ */
+const resetPassword = async(req,res) => {
+  const {email,password,code} = req.body;
+  let log = await SecurityCodeStore.findOne({email:email,scode:code});
+  if(log){
+    let user = await User.findOne({email:email});
+    user.password = password;
+    await user.save();
+    res.status(201).send();
+  }else {
+    res.status(400).send({error:"code error"})
+  }
+}
+
+/**
+ * upload certifacate
+ * @param {Object} req 
+ * @param {Object} res 
+ */
+const updateCertificates = async (req,res) => {
+  let user = await User.findOne({email:req.user.email});
+    if(user && req.files){
+        const input = req.files.input;
+            const file = {
+                name:input.name,
+                size:input.size,
+                data:input.data.toString('base64')
+            }
+        user.certificates.push(file);
+        user.save().then(() => {
+            res.status(201).send(user)
+        }).catch((err) => {
+            console.log(err);
+            res.status(400).send({error: "update error"})
+       })
+    }
+}
+/**
+ * delete certificate
+ * @param {Object} req 
+ * @param {Object} res 
+ */
+const delCertificate = async (req,res) => {
+  try {
+    await User.updateOne({email:req.user.email},{
+        "$pull":{
+            "certificates":{
+                '_id':mongoose.Types.ObjectId(req.body.id)
+            }
+        }
+    })
+    let user = await User.findOne({email:req.user.email});
+    res.status(201).send(user);    
+} catch (e) {
+    console.log(e)
+    res.status(400).send({error:"update error"})
+}
+}
 
 module.exports = {
     createUser,
@@ -227,7 +305,11 @@ module.exports = {
     updateUserInfo,
     uploadBlog,
     deleteBlog,
-    uploadFile
+    uploadFile,
+    forgetPassword,
+    resetPassword,
+    updateCertificates,
+    delCertificate
 }
 
 

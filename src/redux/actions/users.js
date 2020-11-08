@@ -297,6 +297,97 @@ export const updateUserInfo = (formData,token) => {
         })
     }
 }
+/**
+ * get security code from user email
+ * @param {Object} formData 
+ */
+export const getSecurityCode = async (formData) => {
+  const request = {
+    method:"POST",
+    headers:{
+      'Content-Type':"application/json"
+    },
+    body:JSON.stringify(formData)
+  }
+  try {
+    let res = await fetch('/api/users/forgetPassword',request);
+    if(res.status === 201){
+      return true
+    }
+  } catch (e) {
+
+  }
+}
+/**
+ * reset password 
+ * @param {Object} formData 
+ */
+export const resetPassword = async (formData) => {
+  const request = {
+    method:"POST",
+    headers:{
+      'Content-Type':"application/json"
+    },
+    body:JSON.stringify(formData)
+  }
+  try {
+    let res = await fetch('/api/users/resetPassword',request);
+    if(res.status === 201){
+      return true
+    }
+  } catch (e) {
+  }
+}
+
+/**
+ * upload certicate and update state
+ * @param {File} form 
+ * @param {String} token 
+ * @param {Function} dispatch 
+ */
+export async function uploadCertificates(form,token,dispatch) {
+  const request = {
+      method:"POST",
+      headers:{
+          Authorization:token
+      },
+      body:form
+  }
+  try {
+      let res = await fetch('/api/users/updateCertificates',request);
+      if(res.status === 201){
+          let result = await res.json();
+          dispatch(updateUserAvatarSuccess(result))
+      }
+  } catch (e) {
+      console.log(e)
+  }
+}
+/**
+*  delete certicate and update state
+* @param {Object} form 
+* @param {String} token 
+* @param {Function} dispatch 
+*/
+export async function deleteCertificate(form,token,dispatch) {
+  const request = {
+      method:"POST",
+      headers:{
+          Authorization:token,
+          "Content-Type": 'application/json'
+      },
+      body:JSON.stringify(form)
+  }
+  try {
+      let res = await fetch('/api/users/delCertificate',request);
+      if(res.status === 201){
+          let result = await res.json();
+          dispatch(updateUserAvatarSuccess(result))
+      }
+  } catch (e) {
+      console.log(e)
+  }
+}
 
 export const uploadFile = (file, token) => {
   return (dispatch) => {

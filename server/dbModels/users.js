@@ -3,6 +3,7 @@ const bcrpyt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const portfolioSchema = require('./portfolio')
 const filesSchema = require('./files');
+const certificatesShema = require('./certificate');
 const tokenSchema = mongoose.Schema({
     token: { type: String, required: true }
 })
@@ -13,6 +14,7 @@ const userSchema = mongoose.Schema({
     password: {type: String, required: true, minlength: 6},
     role: {type: String, required: true},
     portfolio: portfolioSchema,
+    certificates:[certificatesShema],
     avatar:filesSchema,
     tokens: [tokenSchema]
 })

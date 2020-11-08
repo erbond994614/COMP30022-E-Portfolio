@@ -28,7 +28,7 @@ export default function Upload (props) {
         let formData = new FormData();
         formData.append('input',file)
         input.current.value = null;
-        await uploadBlog(formData,token,dispatch)
+        await props.submit(formData,token,dispatch);
         setUploading(false);
     }
     return (

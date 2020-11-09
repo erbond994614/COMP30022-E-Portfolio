@@ -14,7 +14,7 @@ const DisplayFile = ({ className, file }) => {
           download={file.name}
           href={`data:${file.mimetype};base64,${file.data}`}
           >
-            Download This File
+            Download {` ${file.name}`}
           </a>
       }
     </div>

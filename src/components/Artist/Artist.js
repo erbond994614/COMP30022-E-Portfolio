@@ -109,7 +109,9 @@ const Artist = () => {
                   {
                     user.portfolio.blog.map((item,index) => (
                       <div className="galley-item mr-3 mb-1" key={index}>
-                        <Zmage src={'data:image/jpg;base64,'+item.file.data} />
+                        {item.file.mimetype.includes('image')
+                        ? <Zmage src={'data:image/jpg;base64,'+item.file.data} />
+                        : null}
                       </div>
                     ))
                   }

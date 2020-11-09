@@ -30,6 +30,7 @@ const Blog = (props) => {
                             <div className="col-6  text-wrap">
                                 {item.text}
                             </div>
+                            <br/>
                         </div>
                     ))}
                 {/*<h5 className="mt-3 text-left">BLOG</h5>

@@ -72,6 +72,10 @@ const getPortfolio = async function (req, res) {
 };
 
 const uploadProfilePicture = async function (req, res) {
+  if (!req.files.input.mimetype.includes('image')) {
+    res.status(400).send({error: 'Unsupported File Type'})
+    return
+  }
   const user = await User.findOne({ email: req.user.email });
   if (user) {
     if (req.files) {

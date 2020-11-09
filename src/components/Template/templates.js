@@ -2,7 +2,7 @@ export const studentTemplate = {
     profilePicture: null,
     info: {
         Name: "Student Template",
-        Age: '20',
+        "Date of Birth": '01/01/2000',
         Major: "CS"
     },
     aboutMe: {
@@ -17,13 +17,11 @@ export const artistTemplate = {
     profilePicture: null,
     info: {
         Name: "Artist Template",
-        Age: '20',
-        Major: "Arts",
-        Graduate:"",
-        Location:""
+        "Date of Birth": '01/01/2000',
+        "Art Form": "Photography"
     },
     aboutMe: {
-        para1: "i am a artist",
+        para1: "i am an artist",
         para2: "this is a paragraph",
         para3: "there are 3 paragraphs"
     },
@@ -34,8 +32,9 @@ export const professionalTemplate = {
     profilePicture: null,
     info: {
         Name: "Professional Template",
-        Age: '20',
-        Major: "CS"
+        "Date of Birth": '01/01/2000',
+        Company: "Jobs Company",
+        Role: "Developer"
     },
     aboutMe: {
         para1: "i am a professional",

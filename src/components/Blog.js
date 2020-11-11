@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import history from '../history'
 import DisplayFile from './DisplayFile'
+import Upload from './Upload/index'
+import { uploadBlog } from '../redux/actions/users'
 
 const Blog = (props) => {
     const blog = useSelector((state) => {
@@ -14,7 +16,7 @@ const Blog = (props) => {
 
     return (
         <>
-            <h5 className="mt-3 text-left">BLOG</h5>
+            <h3 className="mt-3 text-left">Blog</h3>
             {!props.display
                 ? <button className='editButton' onClick={() => history.push('/blog')}>Edit</button>
                 : null
@@ -50,6 +52,13 @@ const Blog = (props) => {
                         )
                     })
                     }*/}
+                {!props.display
+                    ? <div>
+                        <h5>Add New Post:</h5>
+                        <Upload submit={uploadBlog}/>
+                    </div>
+                    : null
+                }
             </div>
         </>
     )

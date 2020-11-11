@@ -37,6 +37,11 @@ const Header = () => {
                 <Link to="artist">Artist</Link>
               </li>
             ) : null}
+            {auth && user.role === "professional" ? (
+              <li>
+                <Link to="professional">Professional</Link>
+              </li>
+            ) : null}
           </ul>
         </nav>
       </div>

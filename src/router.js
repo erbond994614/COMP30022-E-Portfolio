@@ -12,11 +12,12 @@ import Artist from "./components/Artist/Artist";
 import DisplayPortfolio from "./components/DisplayPortfolio";
 import DisplayRouter from "./components/DisplayRouter";
 import BlogForm from "./components/BlogForm";
+import ResetPass from './components/ResetPass';
 
 /**
  * import all routes and register routes;
  * @requiresAuth : current route require auth
- * @role : current route require role
+ * @role : current route require role 
  */
 const Routes = [
   {
@@ -77,6 +78,13 @@ const Routes = [
     component: Artist,
   },
   {
+    path:"/professional",
+    exact:true,
+    requiresAuth:true,
+    role:"professional",
+    component:Artist
+  },
+  {
     path: "/temp",
     exact: true,
     requiresAuth: true,
@@ -95,6 +103,12 @@ const Routes = [
     requiresAuth: false,
     component: DisplayRouter,
   },
+  {
+    path:"/resetPass",
+    exact:true,
+    requiresAuth:false,
+    component:ResetPass
+  }
 ];
 
 /**

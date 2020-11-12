@@ -35,23 +35,6 @@ const Blog = (props) => {
                             <br/>
                         </div>
                     ))}
-                {/*<h5 className="mt-3 text-left">BLOG</h5>
-                    {
-                    user.portfolio.blogs.map((item,index) => {
-                        return ( 
-                        <div className="d-flex" key={index}>
-                            <div className="col-6">
-                            <div className="blog-img">
-                                <Zmage src={'data:image/jpg;base64,'+item.data}></Zmage>
-                            </div>
-                            </div>
-                            <div className="col-6  text-wrap">
-                            some text...
-                            </div>
-                        </div>
-                        )
-                    })
-                    }*/}
                 {!props.display
                     ? <div>
                         <h5>Add New Post:</h5>
@@ -60,6 +43,7 @@ const Blog = (props) => {
                     : null
                 }
             </div>
+            <br/>
         </>
     )
 }

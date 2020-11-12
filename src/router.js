@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Homepage from "./components/Homepage";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Portfolio from "./components/Portfolio";
+import Student from "./components/Student";
 import InformationForm from "./components/InformationForm";
 import AboutMeForm from "./components/AboutMeForm";
 import Logout from "./components/Logout";
@@ -13,6 +13,7 @@ import DisplayPortfolio from "./components/DisplayPortfolio";
 import DisplayRouter from "./components/DisplayRouter";
 import BlogForm from "./components/BlogForm";
 import ResetPass from './components/ResetPass';
+import Portfolio from "./components/Portfolio";
 
 /**
  * import all routes and register routes;
@@ -44,11 +45,11 @@ const Routes = [
     component: InformationForm,
   },
   {
-    path: "/portfolio",
+    path: "/student",
     exact: true,
     requiresAuth: true,
     role: "student",
-    component: Portfolio,
+    component: Student,
   },
   {
     path: "/aboutme",
@@ -85,11 +86,10 @@ const Routes = [
     component:Artist
   },
   {
-    path: "/temp",
+    path: '/portfolio',
     exact: true,
     requiresAuth: true,
-    role: "student",
-    component: Portfolio,
+    component: Portfolio
   },
   {
     path: "/display",
@@ -132,7 +132,7 @@ export default function Router({ Header, Footer }) {
                   return <Redirect to="/"></Redirect>;
                 } else {
                   if (route.role) {
-                    if (user && route.role.includes(user.role)) {
+                    if (user && route.role.includes(user.portfolio.role)) {
                       return (
                         <>
                           {Header && <Header />}

@@ -24,7 +24,10 @@ export default function Upload (props) {
      */
     const handleChange = async (e) => {
         setUploading(true);
-        let formData = new FormData(input.current);
+        const file = e.target.files[0];
+        let formData = new FormData();
+        formData.append('input',file)
+        input.current.value = null;
         await props.submit(formData,token,dispatch);
         setUploading(false);
     }

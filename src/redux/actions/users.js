@@ -214,6 +214,8 @@ export async function uploadBlog(form,token,dispatch) {
         if(res.status === 201){
             let result = await res.json();
             dispatch(fileUploadSuccess(result))
+        } else {
+          dispatch(fileUploadFailure())
         }
     } catch (e) {
         console.log(e)

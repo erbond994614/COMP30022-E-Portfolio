@@ -123,31 +123,6 @@ const uploadBlogFile = async function (req, res) {
 }
 
 /**
- * upload new blog image
- * @param {Object} req 
- * @param {Object} res 
- *
-const uploadBlog = async function(req,res) {
-    let user = await User.findOne({email:req.user.email});
-    if(user && req.files){
-        const input = req.files.input;
-            const file = {
-                name:input.name,
-                mimetype: input.mimetype,
-                size:input.size,
-                data:input.data.toString('base64')
-            }
-        user.portfolio.blogs.push(file);
-        user.save().then(() => {
-            res.status(201).send(user)
-        }).catch((err) => {
-            console.log(err);
-            res.status(400).send({error: "update error"})
-       })
-    }
-}*/
-
-/**
  * get security code from user email to reset password
  * @param {Object} req 
  * @param {Object} res 
@@ -213,7 +188,6 @@ module.exports = {
     getPortfolio,
     uploadProfilePicture,
     uploadBlogFile,
-    //uploadBlog,
     forgetPassword,
     resetPassword,
     uploadCertificate,

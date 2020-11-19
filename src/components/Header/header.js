@@ -44,14 +44,16 @@ const Header = () => {
                 <IconButton
                   onClick={handleClick}
                   children={
-                    <Avatar
-                      src={`data:${user.portfolio.profilePicture.mimetype};base64,${user.portfolio.profilePicture.data}`}
-                      // Edit alignment properties here
-                      style={{
-                        width: 75,
-                        height: 75,
-                      }}
-                    />
+                    user.portfolio.profilePicture && (
+                      <Avatar
+                        src={`data:${user.portfolio.profilePicture.mimetype};base64,${user.portfolio.profilePicture.data}`}
+                        // Edit alignment properties here
+                        style={{
+                          width: 75,
+                          height: 75,
+                        }}
+                      />
+                    )
                   }
                 ></IconButton>
                 <Menu

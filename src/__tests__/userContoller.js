@@ -30,7 +30,6 @@ describe('User Controller - Create User', () => {
             body: {
                 email: 'test@student',
                 password: 'password',
-                role: 'student',
                 portfolio: {
                     profilePicture: null,
                     info: {
@@ -38,12 +37,14 @@ describe('User Controller - Create User', () => {
                         Age: 20,
                         Major: "CS"
                     },
+                    role: 'student',
                     aboutMe: {
                         para1: "i am a student",
                         para2: "this is a paragraph",
                         para3: "there are 3 paragraphs"
                     },
-                    blog: []
+                    blog: [],
+                    certificates: []
                 }
             }
         })
@@ -55,7 +56,6 @@ describe('User Controller - Create User', () => {
             expect(body).toHaveProperty('user')
             expect(body.user).toHaveProperty('email')
             expect(body.user).toHaveProperty('password')
-            expect(body.user).toHaveProperty('role')
             expect(body.user).toHaveProperty('portfolio')
             expect(body.user).toHaveProperty('tokens')
             expect(body.user.email).toBe('test@student')
@@ -68,7 +68,6 @@ describe('User Controller - Create User', () => {
             body: {
                 email: 'test@student',
                 password: 'newPassword',
-                role: 'student',
                 portfolio: {
                     profilePicture: null,
                     info: {
@@ -76,12 +75,14 @@ describe('User Controller - Create User', () => {
                         Age: 20,
                         Major: "CS"
                     },
+                    role: 'student',
                     aboutMe: {
                         para1: "i am a student",
                         para2: "this is a paragraph",
                         para3: "there are 3 paragraphs"
                     },
-                    blog: []
+                    blog: [],
+                    certificates: []
                 }
             }
         })
@@ -138,7 +139,6 @@ describe('User Controller - Login', () => {
             expect(body).toHaveProperty('user')
             expect(body.user).toHaveProperty('email')
             expect(body.user).toHaveProperty('password')
-            expect(body.user).toHaveProperty('role')
             expect(body.user).toHaveProperty('portfolio')
             expect(body.user).toHaveProperty('tokens')
             expect(body.user.email).toBe('test@student')
@@ -190,12 +190,14 @@ describe('User Controller - Update Portfolio', () => {
                     Age: 21,
                     Major: "CSS"
                 },
+                role: 'student',
                 aboutMe: {
                     para1: "i am a student of a uni",
                     para2: "this is a paragraph about nothing",
                     para3: "there are 3 paragraphs about nothing"
                 },
-                blog: []
+                blog: [],
+                certificates: []
             },
             user: {
                 email: 'test@student'
@@ -207,13 +209,12 @@ describe('User Controller - Update Portfolio', () => {
             expect(res.statusCode).toBe(201)
             expect(body).toHaveProperty('email')
             expect(body).toHaveProperty('password')
-            expect(body).toHaveProperty('role')
             expect(body).toHaveProperty('portfolio')
             expect(body).toHaveProperty('tokens')
             expect(body.email).toBe('test@student')
             expect(body.password).not.toBe('password')
-            expect(body.role).toBe('student')
             expect(body.portfolio).toHaveProperty('info')
+            expect(body.portfolio).toHaveProperty('role')
             expect(body.portfolio).toHaveProperty('aboutMe')
             expect(body.portfolio).toHaveProperty('profilePicture')
             expect(body.portfolio.info.has('Name')).toEqual(true)
@@ -222,6 +223,7 @@ describe('User Controller - Update Portfolio', () => {
             expect(body.portfolio.info.get('Name')).toBe('Test Student')
             expect(body.portfolio.info.get('Age')).toBe('21')
             expect(body.portfolio.info.get('Major')).toBe('CSS')
+            expect(body.portfolio.role).toBe('student')
             expect(body.portfolio.aboutMe).toHaveProperty('para1')
             expect(body.portfolio.aboutMe).toHaveProperty('para2')
             expect(body.portfolio.aboutMe).toHaveProperty('para3')

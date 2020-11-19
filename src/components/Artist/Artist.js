@@ -1,31 +1,36 @@
 import React from "react";
 import "./Artist.scss";
 import Zmage from 'react-zmage';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfilePicture from "../ProfilePicture";
 import Information from '../Information'
 import Blog from '../Blog'
 import AboutMe from '../AboutMe'
 import Preview from '../Preview'
-import FileUpload from "../FileUpload";
+import Upload from "../Upload/index.js";
+import { updatePortfolio, uploadBlog, uploadCertificate } from "../../redux/actions/users";
 
 const Artist = () => {
   const user = useSelector(state => state.userAuth.user)
+  const token = useSelector(state => state.userAuth.token)
+  const dispatch = useDispatch()
+
+  const handleCertificateRemove = (item) => {
+    const portfolio = JSON.parse(JSON.stringify(user.portfolio))
+    const index = portfolio.certificates.indexOf(item)
+    portfolio.certificates.splice(index, 1)
+    dispatch(updatePortfolio(portfolio, token))
+  }
+
+  const handleRemoveBlog = (item) => {
+    const portfolio = JSON.parse(JSON.stringify(user.portfolio))
+    const index = portfolio.blog.indexOf(item)
+    portfolio.blog.splice(index, 1)
+    dispatch(updatePortfolio(portfolio, token))
+  }
 
   return (
     <section className="main-container">
-      {/* <section className="page-des">
-        <h3>Welcome to Quick e-Portfolio!</h3>
-        <p>
-          Join today, create and manage your very own e-Portfolio website in 5
-          minutes!
-        </p>
-        <p>
-          Using Quick e-Portfolio to make your own Blog, Foot Print, and upload
-          your resume online!
-        </p>
-        <p>Sample of Personal e-Portfolio</p>
-      </section> */}
       <div className="user-info-box">
         <div className="container">
           <div className="row mb-3">
@@ -101,18 +106,52 @@ const Artist = () => {
               </div>
             </div>
           </div>
+          {
+            user.role === 'professional' ? <div className="row">
+            <div className="col-10 col-sm-12 mb-3">
+              <div className="galley-box">
+                <h3 className="mt-3 text-left">My Certificates</h3>
+                <div className="d-flex flex-wrap justify-content-start">
+                  {!user.portfolio.certificates ? null : user.portfolio.certificates.map((item, index) => (
+                    <div className="galley-item mr-3 mb-1" key={index}>
+                      <Zmage src={"data:image/jpg;base64," + item.data} />
+                      <button
+                        type="button"
+                        className="btn btn-link"
+                        onClick={() => handleCertificateRemove(item)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                  <Upload submit={uploadCertificate} />
+                </div>
+              </div>
+            </div>
+          </div> : null
+          }
           <div className="row">
             <div className="col-10 col-sm-12">
               <div className="galley-box">
-                <h5 className="mt-3 text-left">MY GALLERY</h5>
+                <h3 className="mt-3 text-left">My Gallery</h3>
                 <div className="d-flex flex-wrap justify-content-start">
-                  {
-                    user.portfolio.blog.map((item,index) => (
-                      <div className="galley-item mr-3 mb-1" key={index}>
-                        <Zmage src={'data:image/jpg;base64,'+item.file.data} />
+                  {user.portfolio.blog.map((item, index) => (
+                    <div key={index}>
+                      {item.file.mimetype.includes('image')
+                      ? <div className="galley-item mr-3 mb-1">
+                          <Zmage src={'data:image/jpg;base64,'+item.file.data} />
+                          <button
+                            type="button"
+                            className="btn btn-link"
+                            onClick={() => handleRemoveBlog(item)}
+                          >
+                            Delete
+                          </button>
                       </div>
-                    ))
-                  }
+                      : null}
+                    </div>
+                  ))}
+                  <Upload submit={uploadBlog} />
                 </div>
               </div>
             </div>
@@ -121,8 +160,7 @@ const Artist = () => {
             <div className="col-10 col-sm-12">
               <div className="box d-flex flex-column">
                 <Blog/>
-                Add New Post:
-                <FileUpload/>
+                <br/>
               </div>
             </div>
           </div>

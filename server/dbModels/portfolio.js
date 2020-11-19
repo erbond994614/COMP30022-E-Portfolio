@@ -4,12 +4,14 @@ const fileSchema = require('./files')
 const portfolioSchema = mongoose.Schema({
     profilePicture: fileSchema,
     info: {type: Map, of: String, required: true},
+    role: {type: String, required: true},
     aboutMe: {
         para1: {type: String, required: true},
         para2: {type: String, required: true},
         para3: {type: String, required: true}
     },
-    blog:[{file: fileSchema, text: {type: String}}],
+    blog: [{file: fileSchema, text: {type: String}}],
+    certificates: [fileSchema]
 })
 
 module.exports = portfolioSchema

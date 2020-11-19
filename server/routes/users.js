@@ -18,6 +18,12 @@ router.get("/:userId/portfolio", controller.getPortfolio);
 
 router.post("/profilePicture", auth, controller.uploadProfilePicture);
 
-router.post(`/file`, auth, controller.uploadBlogFile);
+router.post("/blog", auth, controller.uploadBlogFile);
+
+router.post('/forgetPassword',controller.forgetPassword);
+
+router.post('/resetPassword',controller.resetPassword);
+
+router.post('/certificates',auth,controller.uploadCertificate);
 
 module.exports = router;

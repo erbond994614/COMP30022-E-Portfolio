@@ -110,6 +110,8 @@ export const login = (payload) => {
           dispatch(loginSuccess(result.user, result.token));
           if (result.user.role === "artist") {
             history.push("/artist");
+          } else if (result.user.role === 'professional'){
+            history.push('/professional')
           } else {
             history.push("/portfolio");
           }
@@ -192,6 +194,107 @@ export const uploadProfilePicture = (image, token) => {
     }))
 }}
 
+/**
+ * upload blog and update state
+ * @param {File} form 
+ * @param {String} token 
+ * @param {Function} dispatch 
+ */
+export async function uploadBlog(form,token,dispatch) {
+  dispatch(fileUploadRequest())
+    const request = {
+        method:"POST",
+        headers:{
+            Authorization:token
+        },
+        body:form
+    }
+    try {
+        let res = await fetch('/api/users/blog',request);
+        if(res.status === 201){
+            let result = await res.json();
+            dispatch(fileUploadSuccess(result))
+        } else {
+          dispatch(fileUploadFailure())
+        }
+    } catch (e) {
+        console.log(e)
+        dispatch(fileUploadFailure())
+    }
+}
+
+/**
+ * get security code from user email
+ * @param {Object} formData 
+ */
+export const getSecurityCode = async (formData) => {
+  const request = {
+    method:"POST",
+    headers:{
+      'Content-Type':"application/json"
+    },
+    body:JSON.stringify(formData)
+  }
+  try {
+    let res = await fetch('/api/users/forgetPassword',request);
+    if(res.status === 201){
+      return true
+    }
+  } catch (e) {
+
+  }
+}
+
+/**
+ * reset password 
+ * @param {Object} formData 
+ */
+export const resetPassword = async (formData) => {
+  const request = {
+    method:"POST",
+    headers:{
+      'Content-Type':"application/json"
+    },
+    body:JSON.stringify(formData)
+  }
+  try {
+    let res = await fetch('/api/users/resetPassword',request);
+    if(res.status === 201){
+      return true
+    }
+  } catch (e) {
+  }
+}
+
+/**
+ * upload certicate and update state
+ * @param {File} form 
+ * @param {String} token 
+ * @param {Function} dispatch 
+ */
+export async function uploadCertificate(form,token,dispatch) {
+  dispatch(fileUploadRequest())
+  const request = {
+      method:"POST",
+      headers:{
+          Authorization:token
+      },
+      body:form
+  }
+  try {
+      let res = await fetch('/api/users/certificates',request);
+      if(res.status === 201){
+          let result = await res.json();
+          dispatch(fileUploadSuccess(result))
+      } else {
+        dispatch(fileUploadFailure())
+      }
+  } catch (e) {
+      console.log(e)
+      dispatch(fileUploadFailure())
+  }
+}
+
 export const uploadFile = (file, token) => {
   return (dispatch) => {
     dispatch(fileUploadRequest());
@@ -202,7 +305,7 @@ export const uploadFile = (file, token) => {
       },
       body: file,
     };
-    fetch("/api/users/file", request).then((response) =>
+    fetch("/api/users/blog", request).then((response) =>
       response.json().then((result) => {
         if (response.status === 201) {
           dispatch(fileUploadSuccess(result));

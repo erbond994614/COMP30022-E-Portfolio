@@ -15,12 +15,6 @@ const AboutMe = () => {
   }
   const aboutMe = portfolio.aboutMe;
 
-  /* TODO if paragraph title is customizable, add attr to template and un-comment the following section
-    title
-    const [para1t, setFirstTitle] = useState(aboutMe.para1title)
-    const [para2t, setSecTitle] = useState(aboutMe.para2title)
-    const [para3t, setThirdTitle] = useState(aboutMe.para3title) */
-
   // content var and setters
   const [para1, setFirstPara] = useState(aboutMe.para1);
   const [para2, setSecPara] = useState(aboutMe.para2);
@@ -45,10 +39,6 @@ const AboutMe = () => {
   return (
     <form onSubmit={handleSubmit} onReset={handleReset}>
       <h3>Edit about me section</h3>
-      {/* <div className="form-group">
-                    <label>Paragraph 1 Title</label>
-                    <input type="text" className="form-control" value={titles[0]} onChange={event => setTitle[0](event.target.value)} placeholder="Paragraph 1" />
-                </div> */}
       <div className="form-group">
         <label>Paragraph 1 Content</label>
         <textarea
@@ -59,10 +49,7 @@ const AboutMe = () => {
           placeholder="I am a student"
         />
       </div>
-      {/* <div className="form-group">
-                    <label>Paragraph 2 Title</label>
-                    <input type="text" className="form-control" value={titles[1]} onChange={event => setTitle[1](event.target.value)} placeholder="Paragraph 2" />
-                </div> */}
+
       <div className="form-group">
         <label>Paragraph 2 Content</label>
         <textarea
@@ -73,11 +60,7 @@ const AboutMe = () => {
           placeholder="Paragraph 2 content"
         />
       </div>
-
-      {/* <div className="form-group">
-                    <label>Paragraph 3 Title</label>
-                    <input type="text" className="form-control" value={para3} onChange={event => setTitle[2](event.target.value)} placeholder="Paragraph 3" />
-                </div> */}
+      
       <div className="form-group">
         <label>Paragraph 3 Content</label>
         <textarea

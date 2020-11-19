@@ -22,23 +22,10 @@ const AboutMe = (props) => {
                 : null
             }
 
-            <br />
             <div className="aboutme">
-                <h4>
-                    Paragraph 1 <br />
-                    <br />
-                    <p>{aboutMe.para1}</p>
-                </h4>
-                <h4>
-                    Paragraph 2 <br />
-                    <br />
-                    <p>{aboutMe.para2}</p>
-                </h4>
-                <h4>
-                    Paragraph 3 <br />
-                    <br />
-                    <p>{aboutMe.para3}</p>
-                </h4>
+                <h4>{aboutMe.para1}</h4>
+                <h4>{aboutMe.para2}</h4>
+                <h4>{aboutMe.para3}</h4>
             </div>
         </>
     )

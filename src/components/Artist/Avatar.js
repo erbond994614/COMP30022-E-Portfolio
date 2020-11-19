@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import AvatarImg from './avatar.svg';
-import {updateUserAvatar} from '../../redux/actions/users';
+import {uploadProfilePicture} from '../../redux/actions/users';
 import './Avatar.scss';
 import { useDispatch, useSelector } from 'react-redux';
 /**
@@ -14,11 +14,13 @@ export default function Avatar(props) {
     const input = React.createRef();
     const [uploadShow,setUploadShow] = useState(false);
     const [uploading,setUploading] = useState(false);
+
     const handleUpload = () => {
         if(!uploading){
             input.current.click();
         }
     }
+
     /**
      * input change event handler 
      * @param {Event} e 
@@ -29,7 +31,7 @@ export default function Avatar(props) {
         let formData = new FormData();
         formData.append('input',file)
         input.current.value = null;
-        await updateUserAvatar(formData,token,dispatch)
+        await uploadProfilePicture(formData,token,dispatch)
         setUploading(false);
     }
 

@@ -5,6 +5,7 @@ import Logo from "./logo.png";
 import "./header.scss";
 import { Button, Avatar, IconButton, MenuItem, Menu } from "@material-ui/core";
 import Logout from "../Logout";
+import DefaultAvatar from "../Template/avatar.png";
 
 const Header = () => {
   const auth = useSelector((store) => store.userAuth.token);
@@ -44,9 +45,18 @@ const Header = () => {
                 <IconButton
                   onClick={handleClick}
                   children={
-                    user.portfolio.profilePicture && (
+                    user.portfolio.profilePicture ? (
                       <Avatar
                         src={`data:${user.portfolio.profilePicture.mimetype};base64,${user.portfolio.profilePicture.data}`}
+                        // Edit alignment properties here
+                        style={{
+                          width: 75,
+                          height: 75,
+                        }}
+                      />
+                    ) : (
+                      <Avatar
+                        src={DefaultAvatar}
                         // Edit alignment properties here
                         style={{
                           width: 75,
@@ -63,7 +73,14 @@ const Header = () => {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  {user.role === "student" ? (
+                  <MenuItem
+                    component={Link}
+                    to="/portfolio"
+                    onClick={handleClose}
+                  >
+                    View Portfolio
+                  </MenuItem>
+                  {/* {user.portfolio.role === "student" ? (
                     <MenuItem
                       component={Link}
                       to="/portfolio"
@@ -79,7 +96,7 @@ const Header = () => {
                     >
                       View Artist Portfolio
                     </MenuItem>
-                  )}
+                  )} */}
                   <MenuItem component={Logout} onClick={handleClose}></MenuItem>
                 </Menu>
               </>

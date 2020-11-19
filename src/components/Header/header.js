@@ -3,25 +3,94 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logo from "./logo.png";
 import "./header.scss";
+import { Button, Avatar, IconButton, MenuItem, Menu } from "@material-ui/core";
+import Logout from "../Logout";
+
 
 const Header = () => {
   const auth = useSelector((store) => store.userAuth.token);
   const user = useSelector((store) => store.userAuth && store.userAuth.user);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  
+
   return (
     <header className="header">
-      <div className="logo-box">
-        <img src={Logo} alt="logo"></img>
-      </div>
       <div className="home-index">
-        <Link to="/">ePortfolio</Link>
+        <Button
+          color="primary"
+          component={Link}
+          to="/"
+        >
+          <div className="logo-box">
+            <img src={Logo} alt="logo"></img>
+          </div>
+          <h2>E-Portfolio</h2>
+        </Button>
       </div>
       <div className="right-nav">
         <nav>
           <ul>
             {auth ? (
-              <li>
-                <Link to="logout">Logout</Link>
-              </li>
+              <>
+                {/* <IconButton
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                  children={}
+                  size="small"
+                ></IconButton> */}
+                <IconButton
+        
+                  onClick={handleClick}
+                  children={
+                    <Avatar 
+                      src={`data:${user.portfolio.profilePicture.mimetype};base64,${user.portfolio.profilePicture.data}`} 
+                      // Edit alignment properties here
+                      style={{
+                        width: 75,
+                        height: 75,
+                      }}
+                    />
+                  }
+                  
+                >
+                </IconButton>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  {user.role === "student" ? (
+                    <MenuItem
+                      component={Link}
+                      to="/portfolio"
+                      onClick={handleClose}
+                    >
+                      View Portfolio
+                    </MenuItem>
+                  ) : (
+                    <MenuItem
+                      component={Link}
+                      to="/artist"
+                      onClick={handleClose}
+                    >
+                      View Artist Portfolio
+                    </MenuItem>
+                  )}
+                  <MenuItem component={Logout} onClick={handleClose}></MenuItem>
+                </Menu>
+              </>
             ) : (
               <>
                 <li>
@@ -32,11 +101,6 @@ const Header = () => {
                 </li>
               </>
             )}
-            {auth && user.role === "artist" ? (
-              <li>
-                <Link to="artist">Artist</Link>
-              </li>
-            ) : null}
           </ul>
         </nav>
       </div>

@@ -104,7 +104,7 @@ const Artist = () => {
           <div className="row">
             <div className="col-10 col-sm-12">
               <div className="galley-box">
-                <h5 className="mt-3 text-left">MY GALLEY</h5>
+                <h5 className="mt-3 text-left">MY GALLERY</h5>
                 <div className="d-flex flex-wrap justify-content-start">
                   {
                     user.portfolio.blog.map((item,index) => (

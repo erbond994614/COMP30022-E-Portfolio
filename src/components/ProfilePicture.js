@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Avatar from './Artist/Avatar'
+import Avatar from "./Artist/Avatar";
 import avatar from "./Template/avatar.png";
 import DisplayFile from "./DisplayFile";
 
@@ -16,7 +16,7 @@ const ProfilePicture = (props) => {
   return (
     <>
       {!props.display ? (
-        <Avatar/>
+        <Avatar />
       ) : profilePicture ? (
         <DisplayFile className="avatar-box" file={profilePicture} />
       ) : (

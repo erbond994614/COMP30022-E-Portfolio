@@ -5,6 +5,7 @@ import Logo from "./logo.png";
 import "./header.scss";
 import { Button, Avatar, IconButton, MenuItem, Menu } from "@material-ui/core";
 import Logout from "../Logout";
+import ViewPortfolio from "../ViewPortfolio";
 import DefaultAvatar from "../Template/avatar.png";
 
 const Header = () => {
@@ -66,7 +67,7 @@ const Header = () => {
                     )
                   }
                 ></IconButton>
-                <Menu
+                 <Menu
                   id="simple-menu"
                   anchorEl={anchorEl}
                   keepMounted
@@ -74,11 +75,10 @@ const Header = () => {
                   onClose={handleClose}
                 >
                   <MenuItem
-                    component={Link}
-                    to="/portfolio"
+                    component={ViewPortfolio}
+                    // to="/portfolio"
                     onClick={handleClose}
                   >
-                    View Portfolio
                   </MenuItem>
                   {/* {user.portfolio.role === "student" ? (
                     <MenuItem

@@ -32,6 +32,7 @@ const Preview = () => {
         id="myInput"
         type="text"
         value={`http://${window.location.hostname}/display/${id}`}
+        readOnly={true}
       />
       <h4>
         Your Display Link is http://{window.location.hostname}/display/{id}

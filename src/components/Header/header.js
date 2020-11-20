@@ -97,7 +97,7 @@ const Header = () => {
                       View Artist Portfolio
                     </MenuItem>
                   )} */}
-                  <MenuItem component={Logout} onClick={handleClose}></MenuItem>
+                  <MenuItem component={React.forwardRef(Logout)} onClick={handleClose}></MenuItem>
                 </Menu>
               </>
             ) : (

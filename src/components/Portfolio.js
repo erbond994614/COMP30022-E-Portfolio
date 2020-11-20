@@ -41,7 +41,7 @@ const Portfolio = (props) => {
         {...other}
       >
         {value === index && (
-          <Box p={3}>
+          <Box p={0}>
             <Typography>{children}</Typography>
           </Box>
         )}
@@ -72,23 +72,16 @@ const Portfolio = (props) => {
             textColor="primary"
             centered
           >
-            <Tab label="My Certificates" />
-            <Tab label="My Gallery" />
-            <Tab label="Blog" />
             <Tab label="About Me" />
+            <Tab label="Blog" />
+            {portfolio.role !== 'student' ? <Tab label="My Gallery" /> : null}
+            {portfolio.role === 'professional' ? <Tab label="My Certificates" /> : null}
           </Tabs>
 
           <TabPanel value={currentTab} index={0}>
-            {portfolio.role === "professional" ? (
-              <Certificates display={props.display} />
-            ) : null}
+            <AboutMe display={props.display} />
           </TabPanel>
           <TabPanel value={currentTab} index={1}>
-            {portfolio.role !== "student" ? (
-              <Gallery display={props.display} />
-            ) : null}
-          </TabPanel>
-          <TabPanel value={currentTab} index={2}>
             <div className="row">
               <div className="col-10 col-sm-12">
                 <div className="box d-flex flex-column">
@@ -97,11 +90,16 @@ const Portfolio = (props) => {
               </div>
             </div>
           </TabPanel>
-          <TabPanel value={currentTab} index={3}>
-            {portfolio.role !== "student" ? (
-              <AboutMe display={props.display} />
-            ) : null}
-          </TabPanel>
+          {portfolio.role !== "student" ?
+            <TabPanel value={currentTab} index={2}>
+              <Gallery display={props.display} />
+            </TabPanel>
+            : null}
+          {portfolio.role === "professional" ? (
+            <TabPanel value={currentTab} index={3}>
+              <Certificates display={props.display} />
+            </TabPanel>
+          ) : null}
         </div>
       </div>
       {!props.display ? <Preview /> : null}

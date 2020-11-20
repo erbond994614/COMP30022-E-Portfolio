@@ -28,11 +28,11 @@ header {
     }
   }
   .logo-box {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    height: 80px;
-    width: 80px;
+    // position: absolute;
+    // left: 10px;
+    // top: 10px;
+    // height: 80px;
+    // width: 80px;
     img {
       display: block;
       height: 100%;
@@ -48,7 +48,6 @@ header {
   }
 
   nav {
-   
     ul li {
       list-style-type: none;
       display: inline-block;

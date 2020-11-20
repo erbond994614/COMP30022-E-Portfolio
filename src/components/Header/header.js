@@ -25,9 +25,7 @@ const Header = () => {
     <header className="header">
       <div className="home-index">
         <Button color="primary" component={Link} to="/">
-          <div className="logo-box">
-            <img src={Logo} alt="logo"></img>
-          </div>
+          <img className="logo-box" src={Logo} alt="logo"></img>
           <h2>E-Portfolio</h2>
         </Button>
       </div>
@@ -67,37 +65,26 @@ const Header = () => {
                     )
                   }
                 ></IconButton>
-                 <Menu
+                <Menu
                   id="simple-menu"
+                  style={{ marginTop: "84px" }}
                   anchorEl={anchorEl}
                   keepMounted
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
                   <MenuItem
+                    style={{ margin: "500px" }}
                     component={ViewPortfolio}
                     // to="/portfolio"
                     onClick={handleClose}
-                  >
-                  </MenuItem>
-                  {/* {user.portfolio.role === "student" ? (
-                    <MenuItem
-                      component={Link}
-                      to="/portfolio"
-                      onClick={handleClose}
-                    >
-                      View Portfolio
-                    </MenuItem>
-                  ) : (
-                    <MenuItem
-                      component={Link}
-                      to="/artist"
-                      onClick={handleClose}
-                    >
-                      View Artist Portfolio
-                    </MenuItem>
-                  )} */}
-                  <MenuItem component={React.forwardRef(Logout)} onClick={handleClose}></MenuItem>
+                  ></MenuItem>
+                  <br />
+                  <MenuItem
+                    style={{ margin: "500px" }}
+                    component={React.forwardRef(Logout)}
+                    onClick={handleClose}
+                  ></MenuItem>
                 </Menu>
               </>
             ) : (

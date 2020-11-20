@@ -8,6 +8,8 @@ $red: #ff1755;
 $offWhite: #f6f6f6;
 $pastelPurple: rgb(185, 155, 240);
 $pastelCyan: rgb(75, 210, 235);
+$purpleBlue: #3f51b5;
+$blue: #144fae;
 
 // Fonts
 body {
@@ -70,11 +72,11 @@ a {
 
   &::before {
     transition: width 0.4s cubic-bezier(0.51, 0.18, 0, 0.88) 0.1s;
-    background: $pastelPurple;
+    background: $purpleBlue;
   }
 
   &::after {
     transition: width 0.2s cubic-bezier(0.29, 0.18, 0.26, 0.83);
-    background: $pastelCyan;
+    background: $blue;
   }
 }

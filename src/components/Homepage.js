@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ".././Assets/css/homepage.min.css";
 import HomepageSlideshow from "./HomepageSlideshow/Slideshow";
 
@@ -24,12 +23,8 @@ const Homepage = () => {
       </div>
       <div className="row mt-3 justify-content-center">
         <div className="col-xl-11 col-lg-11 col-md-11 col-sm-11 col-xs-11">
-          {/* <img src={homeImg} alt="home"></img> */}
           <HomepageSlideshow />
         </div>
-      </div>
-      <div>
-        <Link to="temp">Template</Link>
       </div>
     </div>
   );

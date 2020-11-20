@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 
 const DisplayFile = ({ className, file }) => {
   return (
@@ -11,12 +12,14 @@ const DisplayFile = ({ className, file }) => {
           style={{ objectFit: "cover" }}
         />
       ) : (
-        <a
-          download={file.name}
-          href={`data:${file.mimetype};base64,${file.data}`}
-        >
-          Download {` ${file.name}`}
-        </a>
+        <Button variant="outlined" color="primary">
+          <a
+            download={file.name}
+            href={`data:${file.mimetype};base64,${file.data}`}
+          >
+            Download {` ${file.name}`}
+          </a>
+        </Button>
       )}
     </div>
   );

@@ -1,9 +1,9 @@
 import "react-slideshow-image/dist/styles.css";
 import React from "react";
 import { Fade } from "react-slideshow-image";
-import student from "./1.jpg";
-import artist from "./2.png";
-import professional from "./3.jpg";
+import student from "./student.PNG";
+import artist from "./artist.PNG";
+import professional from "./pro.PNG";
 
 const HomepageSlideshow = () => {
   const fadeImages = [student, artist, professional];
@@ -18,10 +18,10 @@ const HomepageSlideshow = () => {
             <p>Student Template</p>
           </div>
           <div className="each-fade">
-            <p>Artist Template</p>
             <div>
               <img src={fadeImages[1]} alt="artist" />
             </div>
+            <p>Artist Template</p>
           </div>
           <div className="each-fade">
             <div>

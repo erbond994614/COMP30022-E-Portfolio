@@ -5,7 +5,7 @@ import Logo from "./logo.png";
 import "./header.scss";
 import { Button, Avatar, IconButton, MenuItem, Menu } from "@material-ui/core";
 import Logout from "../Logout";
-
+import DefaultAvatar from "../Template/avatar.png";
 
 const Header = () => {
   const auth = useSelector((store) => store.userAuth.token);
@@ -20,16 +20,10 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  
-
   return (
     <header className="header">
       <div className="home-index">
-        <Button
-          color="primary"
-          component={Link}
-          to="/"
-        >
+        <Button color="primary" component={Link} to="/">
           <div className="logo-box">
             <img src={Logo} alt="logo"></img>
           </div>
@@ -49,21 +43,29 @@ const Header = () => {
                   size="small"
                 ></IconButton> */}
                 <IconButton
-        
                   onClick={handleClick}
                   children={
-                    <Avatar 
-                      src={`data:${user.portfolio.profilePicture.mimetype};base64,${user.portfolio.profilePicture.data}`} 
-                      // Edit alignment properties here
-                      style={{
-                        width: 75,
-                        height: 75,
-                      }}
-                    />
+                    user.portfolio.profilePicture ? (
+                      <Avatar
+                        src={`data:${user.portfolio.profilePicture.mimetype};base64,${user.portfolio.profilePicture.data}`}
+                        // Edit alignment properties here
+                        style={{
+                          width: 75,
+                          height: 75,
+                        }}
+                      />
+                    ) : (
+                      <Avatar
+                        src={DefaultAvatar}
+                        // Edit alignment properties here
+                        style={{
+                          width: 75,
+                          height: 75,
+                        }}
+                      />
+                    )
                   }
-                  
-                >
-                </IconButton>
+                ></IconButton>
                 <Menu
                   id="simple-menu"
                   anchorEl={anchorEl}
@@ -71,7 +73,14 @@ const Header = () => {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  {user.role === "student" ? (
+                  <MenuItem
+                    component={Link}
+                    to="/portfolio"
+                    onClick={handleClose}
+                  >
+                    View Portfolio
+                  </MenuItem>
+                  {/* {user.portfolio.role === "student" ? (
                     <MenuItem
                       component={Link}
                       to="/portfolio"
@@ -87,8 +96,8 @@ const Header = () => {
                     >
                       View Artist Portfolio
                     </MenuItem>
-                  )}
-                  <MenuItem component={Logout} onClick={handleClose}></MenuItem>
+                  )} */}
+                  <MenuItem component={React.forwardRef(Logout)} onClick={handleClose}></MenuItem>
                 </Menu>
               </>
             ) : (
@@ -101,16 +110,6 @@ const Header = () => {
                 </li>
               </>
             )}
-            {auth && user.role === "artist" ? (
-              <li>
-                <Link to="artist">Artist</Link>
-              </li>
-            ) : null}
-            {auth && user.role === "professional" ? (
-              <li>
-                <Link to="professional">Professional</Link>
-              </li>
-            ) : null}
           </ul>
         </nav>
       </div>

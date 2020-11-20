@@ -12,7 +12,7 @@ const Logout = () => {
     }
 
     return (
-        <button className='btn btn-primary btn-block' onClick={handleLogout}>Logout</button>
+        <button className='btn btn-secondary btn-block' onClick={handleLogout}>Logout</button>
     )
 }
 

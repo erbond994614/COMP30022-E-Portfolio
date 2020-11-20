@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Avatar from './Artist/Avatar'
 import avatar from "./Template/avatar.png";
 import DisplayFile from "./DisplayFile";
-import ProfilePictureUpload from "./ProfilePictureUpload";
 
 const ProfilePicture = (props) => {
   const profilePicture = useSelector((state) => {
@@ -16,17 +16,11 @@ const ProfilePicture = (props) => {
   return (
     <>
       {!props.display ? (
-        <ProfilePictureUpload>
-          {profilePicture ? (
-            <DisplayFile className="avatar" file={profilePicture} />
-          ) : (
-            <img className="avatar" src={avatar} alt="Avatar" />
-          )}
-        </ProfilePictureUpload>
+        <Avatar/>
       ) : profilePicture ? (
-        <DisplayFile className="avatar" file={profilePicture} />
+        <DisplayFile className="avatar-box" file={profilePicture} />
       ) : (
-        <img className="avatar" src={avatar} alt="Avatar" />
+        <img className="avatar-box" src={avatar} alt="Avatar" />
       )}
     </>
   );

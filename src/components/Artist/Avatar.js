@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import AvatarImg from './avatar.svg';
+import AvatarImg from '../Template/avatar.png';
 import {uploadProfilePicture} from '../../redux/actions/users';
 import './Avatar.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Avatar(props) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.userAuth.token)
-    let avatar = props.avatar ? 'data:image/jpg;base64,'+props.avatar : AvatarImg;
+    const avatar = useSelector(state => state.userAuth.user.portfolio.profilePicture)
     const input = React.createRef();
     const [uploadShow,setUploadShow] = useState(false);
     const [uploading,setUploading] = useState(false);
@@ -31,7 +31,7 @@ export default function Avatar(props) {
         let formData = new FormData();
         formData.append('input',file)
         input.current.value = null;
-        await uploadProfilePicture(formData,token,dispatch)
+        dispatch(uploadProfilePicture(formData,token))
         setUploading(false);
     }
 
@@ -41,7 +41,10 @@ export default function Avatar(props) {
                 <input type="file" ref={input} onChange={handleChange}></input>
                 Upload Avatar
             </div>
-            <img src={avatar} alt='avatar'></img>
+            {avatar
+                ? <img src={`data:${avatar.mimetype};base64,${avatar.data}`} alt="avatar" />
+                : <img src={AvatarImg} alt='avatar' />
+            }
         </div>
     )    
 }

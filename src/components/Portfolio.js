@@ -13,6 +13,7 @@ import Gallery from "./Gallery";
 import Blog from "./Blog";
 import AboutMe from "./AboutMe";
 import Preview from "./Preview";
+import "./Template/Template.css";
 
 const Portfolio = (props) => {
   const portfolio = useSelector((state) => {
@@ -74,8 +75,10 @@ const Portfolio = (props) => {
           >
             <Tab label="About Me" />
             <Tab label="Blog" />
-            {portfolio.role !== 'student' ? <Tab label="My Gallery" /> : null}
-            {portfolio.role === 'professional' ? <Tab label="My Certificates" /> : null}
+            {portfolio.role !== "student" ? <Tab label="My Gallery" /> : null}
+            {portfolio.role === "professional" ? (
+              <Tab label="My Certificates" />
+            ) : null}
           </Tabs>
 
           <TabPanel value={currentTab} index={0}>
@@ -90,11 +93,11 @@ const Portfolio = (props) => {
               </div>
             </div>
           </TabPanel>
-          {portfolio.role !== "student" ?
+          {portfolio.role !== "student" ? (
             <TabPanel value={currentTab} index={2}>
               <Gallery display={props.display} />
             </TabPanel>
-            : null}
+          ) : null}
           {portfolio.role === "professional" ? (
             <TabPanel value={currentTab} index={3}>
               <Certificates display={props.display} />

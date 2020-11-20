@@ -5,6 +5,8 @@ Supervisor: Shubham Rawal / Mayank Sharma
 
 Group Members: Edward Bond, Lijun Wang, Joseph Matthew Leonardi
 
+This project can be found deployed on [Heroku](comp30022-tbd-dev.herokuapp.com)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -23,7 +23,7 @@ const Portfolio = (props) => {
     }
   });
 
-  const [currentTab, setCurrentTab] = useState(3);
+  const [currentTab, setCurrentTab] = useState(0);
 
   const handleChange = (event, newTabValue) => {
     console.log("newTabValue: ", newTabValue);
@@ -41,7 +41,7 @@ const Portfolio = (props) => {
         {...other}
       >
         {value === index && (
-          <Box p={0}>
+          <Box p={3}>
             <Typography>{children}</Typography>
           </Box>
         )}

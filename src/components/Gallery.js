@@ -49,6 +49,7 @@ const Gallery = (props) => {
                   {!props.display
                   ? <Upload submit={uploadBlog} />
                   : null}
+                  <br />
                 </div>
               </div>
             </div>

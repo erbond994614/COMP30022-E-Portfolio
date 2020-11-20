@@ -7,7 +7,7 @@ const SecurityCodeStoreSchema = mongoose.Schema(
     createdAt: {
       type: Date,
       required: true,
-      index: { expires: 60 },
+      index: { expires: 600 },
     }
   }
 );
